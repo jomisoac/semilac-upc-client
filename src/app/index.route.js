@@ -10,7 +10,7 @@
     function routeConfig($stateProvider, $urlRouterProvider, $locationProvider, RestangularProvider)
     {
       // config restangular
-        RestangularProvider.setBaseUrl('http://localhost/semilac-upc/public/api');
+        RestangularProvider.setBaseUrl('http://localhost/semilac-upc-server/public/api');
         
         $locationProvider.html5Mode(true);
 
