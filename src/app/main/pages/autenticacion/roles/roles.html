@@ -1,0 +1,28 @@
+<!-- ROLES -->
+<div id="boards" class="md-accent-bg" layout="column" flex>
+
+    <!-- ROL SELECCION -->
+    <div id="board-selector" layout="column" layout-align="start center" flex>
+
+        <h1 >INICIA SESION COMO</h1>
+
+        <!-- LISTA DE ROLES -->
+        <div class="board-list" layout="row" layout-align="center center" layout-wrap>
+
+            <!-- ROLES -->
+            <div class="board-list-item" ng-repeat="rol in vm.roles"
+                 ng-click="vm.seleccionarRol(rol.nombre)"
+                 layout="column" layout-align="center center">
+                <md-icon md-font-icon="icon-trello" class="icon s64"></md-icon>
+                <div class="board-name">{{rol.nombre}}</div>
+            </div>
+            <!-- / ROLES -->
+
+        </div>
+        <!-- / LISTA DE ROLES -->
+
+    </div>
+    <!-- / ROL SELECCION -->
+
+</div>
+<!-- / ROLES -->

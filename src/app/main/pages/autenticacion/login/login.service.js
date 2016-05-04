@@ -17,5 +17,13 @@
         this.currentUser = function(){
             return JSON.parse(sessionStorage.getItem('usuario'));
         }
+
+        this.storeSelectRol = function (selectRol) {
+            sessionStorage.setItem('selectedRol',JSON.stringify(selectRol));
+        }
+
+        this.getSelectedRol = function () {
+            return JSON.parse(sessionStorage.getItem('selectedRol'));
+        }
     }
 })();

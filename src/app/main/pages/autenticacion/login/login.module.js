@@ -7,7 +7,7 @@
         .config(config);
 
     /** @ngInject */
-    function config($stateProvider, $translatePartialLoaderProvider, msNavigationServiceProvider)
+    function config($stateProvider)
     {
         // State
         $stateProvider.state('app.pages_autenticacion_login', {
@@ -21,6 +21,9 @@
                     templateUrl: 'app/main/pages/autenticacion/login/login.html',
                     controller : 'LoginController as vm'
                 }
+            },
+            data:{
+              onlyAccess: 'SUPER_ADMIN',
             },
             bodyClass: 'login'
         });
