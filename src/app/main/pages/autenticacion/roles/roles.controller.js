@@ -32,9 +32,17 @@
                 if (rol[i].nombre == 'SUPER_ADMIN') {
                     authService.storeSelectRol('SUPER_ADMIN');
                     $state.go('app.sample');
-                } else if (rol[i].nombre == 'EMPRESA') {
+                } else if (rol == 'DIRECTOR') {
+                    authService.storeSelectRol('DIRECTOR');
                     // $state.go('app.empresas_gestion_conductores');
-                } else if (rol[i].nombre == 'CENTRAL_EMPRESA') {
+                } else if (rol == 'TUTOR') {
+                    authService.storeSelectRol('TUTOR');
+                    // $state.go('app.centrales_turnos');
+                } else if (rol == 'LIDER') {
+                    authService.storeSelectRol('LIDER');
+                    // $state.go('app.centrales_turnos');
+                } else if (rol == 'ESTUDIANTE') {
+                    authService.storeSelectRol('ESTUDIANTE');
                     // $state.go('app.centrales_turnos');
                 }
             }
