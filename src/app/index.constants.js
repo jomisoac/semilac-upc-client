@@ -3,5 +3,8 @@
     'use strict';
 
     angular
-        .module('fuse');
+        .module('fuse')
+        .constant('api', 'http://localhost/semilac-upc-server/public/api');
+
+
 })();

@@ -19,6 +19,9 @@
                         controller : 'SampleController as vm'
                     }
                 },
+                data   : {
+                  onlyAccess: ['TUTOR']
+                }
             });
 
 
@@ -37,6 +40,6 @@
                 'param1': 'page'
              },*/
             weight   : 1
-        });
+        }, ['TUTOR']);
     }
 })();

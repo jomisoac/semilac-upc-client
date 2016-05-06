@@ -22,8 +22,8 @@
                     controller : 'LoginController as vm'
                 }
             },
-            data:{
-              onlyAccess: 'SUPER_ADMIN',
+            data  : {
+              noRequiresLogin: true
             },
             bodyClass: 'login'
         });
