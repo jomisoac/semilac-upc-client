@@ -7,10 +7,10 @@
         .config(routeConfig);
 
     /** @ngInject */
-    function routeConfig($stateProvider, $urlRouterProvider, $locationProvider, RestangularProvider)
+    function routeConfig($stateProvider, $urlRouterProvider, $locationProvider, RestangularProvider, api)
     {
       // config restangular
-        RestangularProvider.setBaseUrl('http://localhost/semilac-upc-server/public/api');
+        RestangularProvider.setBaseUrl(api);
         
         $locationProvider.html5Mode(true);
 

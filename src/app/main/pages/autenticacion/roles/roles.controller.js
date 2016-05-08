@@ -27,17 +27,18 @@
             }
         }
 
+        // aca redirecciona cuando tiene un rol unico
         function redirectRol(rol){
             for(var i = 0; i < rol.length; i++){
                 if (rol[i].nombre == 'SUPER_ADMIN') {
                     authService.storeSelectRol('SUPER_ADMIN');
-                    $state.go('app.sample');
+                    $state.go('app.registrar_director');
                 } else if (rol == 'DIRECTOR') {
                     authService.storeSelectRol('DIRECTOR');
                     // $state.go('app.empresas_gestion_conductores');
                 } else if (rol == 'TUTOR') {
                     authService.storeSelectRol('TUTOR');
-                    // $state.go('app.centrales_turnos');
+                    $state.go('app.sample');
                 } else if (rol == 'LIDER') {
                     authService.storeSelectRol('LIDER');
                     // $state.go('app.centrales_turnos');
@@ -48,16 +49,18 @@
             }
         }
         
+        
+        // aca redirecciona cuando se selecciona un rol en especifico
         function seleccionarRol(rol) {
             if (rol == 'SUPER_ADMIN') {
                 authService.storeSelectRol(rol);
-                $state.go('app.sample');
+                $state.go('app.registrar_director');
             } else if (rol == 'DIRECTOR') {
                 authService.storeSelectRol(rol);
                 // $state.go('app.empresas_gestion_conductores');
             } else if (rol == 'TUTOR') {
                 authService.storeSelectRol(rol);
-                // $state.go('app.centrales_turnos');
+                $state.go('app.sample');
             } else if (rol == 'LIDER') {
                 authService.storeSelectRol(rol);
                 // $state.go('app.centrales_turnos');

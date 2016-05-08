@@ -20,7 +20,7 @@
                     $state.go('app.pages_autenticacion_login');
                 }else if(to.data && to.data.onlyAccess){
                     var rol = authService.getSelectedRol();
-                    console.log('o: '+window.location.hash+'|d: '+to.url+'user_rol: '+rol);
+                    // console.log('o: '+window.location.hash+'|d: '+to.url+'user_rol: '+rol);
                     if (!(!to.data.onlyAccess || to.data.onlyAccess.indexOf(rol) > -1 || to.data.onlyAccess.toLowerCase == 'all')) {
                         e.preventDefault();
                         $state.go('app.pages_autenticacion_login');
