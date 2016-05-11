@@ -32,7 +32,7 @@
             for(var i = 0; i < rol.length; i++){
                 if (rol[i].nombre == 'SUPER_ADMIN') {
                     authService.storeSelectRol('SUPER_ADMIN');
-                    $state.go('app.registrar_director');
+                    $state.go('app.abrir_convocatoria');
                 } else if (rol == 'DIRECTOR') {
                     authService.storeSelectRol('DIRECTOR');
                     // $state.go('app.empresas_gestion_conductores');
@@ -54,7 +54,7 @@
         function seleccionarRol(rol) {
             if (rol == 'SUPER_ADMIN') {
                 authService.storeSelectRol(rol);
-                $state.go('app.registrar_director');
+                $state.go('app.abrir_convocatoria');
             } else if (rol == 'DIRECTOR') {
                 authService.storeSelectRol(rol);
                 // $state.go('app.empresas_gestion_conductores');

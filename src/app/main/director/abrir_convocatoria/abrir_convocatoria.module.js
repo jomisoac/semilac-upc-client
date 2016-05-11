@@ -19,6 +19,9 @@
                         controller : 'AbrirConvocatoriaController as vm'
                     }
                 },
+                data   : {
+                    onlyAccess: ['SUPER_ADMIN']
+                }
             });
 
 

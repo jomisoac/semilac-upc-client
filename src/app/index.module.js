@@ -28,5 +28,7 @@
             //autenticacion
             'app.pages.autenticacion.login',
             'app.pages.autenticacion.roles',
+            //abrir convocatorias
+            'app.abrir_convocatoria',
         ]);
 })();

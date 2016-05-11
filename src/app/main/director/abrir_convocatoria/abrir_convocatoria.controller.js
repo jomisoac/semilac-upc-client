@@ -12,6 +12,15 @@
     {
         var vm = this;
         vm.convocatoria={};
-        var convocatorias = Restangular.all('/convocatorias');
+        var convovatorias = [];
+
+        vm.guardar = guardar;
+        function  guardar() {
+            if(convovatorias.push(vm.convocatoria)){
+                alert('se registro la convocatoria correctamente');
+            }else {
+                alert('no se pudo registrar la convocaria');
+            }
+        }
     }
 })();
