@@ -11,6 +11,7 @@
     {
       var vm = this;
       var login = Restangular.all('/login');
+
       vm.usuario = {};
       vm.mensajeError = '';
 
@@ -26,7 +27,7 @@
             }), function () {
                 vm.mensajeError = error.status == 401 ? error.data.mensajeError : 'A ocurrido un error inesperado';
             }
-        }
+        }   
 
         function redirectRoles(){
             $state.go('app.pages_autenticacion_roles');

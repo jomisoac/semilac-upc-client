@@ -24,8 +24,7 @@
                 }
             });
 
-
-                // Navigation
+        // Navigation
         msNavigationServiceProvider.saveItem('fuse', {
             title : 'EJEMPLO',
             group : true,
@@ -34,7 +33,7 @@
 
         msNavigationServiceProvider.saveItem('fuse.sample', {
             title    : 'Ejemplo',
-            icon     : 'icon-tile-four',
+            icon     : 'icon-tile-fourda',
             state    : 'app.sample',
             /*stateParams: {
                 'param1': 'page'

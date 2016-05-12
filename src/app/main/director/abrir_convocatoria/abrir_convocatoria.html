@@ -1,0 +1,46 @@
+<br><br>
+<center>
+<div ng-controller="AbrirConvocatoriaController" layout="column" ng-cloak class="md-inline-form" style="width:75%;">
+
+    <md-content layout-padding>
+        <div>
+            <form name="userForm">
+                <div layout-gt-sm="row" layout-align="center center">
+
+                        </md-input-container class="md-block" flex-gt-sm>
+                            <md-datepicker ng-model="vm.convocatoria.fechaInicial" md-placeholder="Fecha Inicial">
+                        </md-datepicker>
+
+
+                        </md-input-container class="md-block" flex-gt-sm>
+                            <md-datepicker ng-model="vm.convocatoria.fechaFinal" md-placeholder="Fecha Final">
+                        </md-datepicker>
+                </div>
+
+                <div layout-gt-sm="row" >
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Asunto</label>
+                    <textarea ng-model="vm.convocatoria.asunto"  rows="5" md-select-on-focus flex="100"></textarea>
+                </md-input-container>
+                </div>
+
+                <div layout-gt-sm="row">
+                    <div layout-gt-sm="row" layout-align="center center" ng-model="vm.convocatoria.cargar">
+                        <input type="file" class="md-raised md-primary" >
+                    </div>
+                </div>
+
+                <div layout-gt-sm="row" layout-align="center center">
+
+                        <md-button class="md-raised md-primary" ng-click="vm.guardar()">Guardar</md-button>
+                        <md-button class="md-raised md-warn" ng-click="vm.cancelar()">Cancelar</md-button>
+
+                </div>
+
+
+            </form>
+
+        </div>
+    </md-content>
+</div>
+</center>
