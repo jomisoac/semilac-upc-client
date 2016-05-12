@@ -1,0 +1,129 @@
+<div class="container">
+    <div ng-controller="TutorController" style='padding: 25px;' layout="column" ng-cloak class="md-horintal-form">
+        <div layout="row">
+            <div flex layout="row" layout-align="center center">
+                <div flex-sm="100" flex-gt-sm="90" flex-gt-md="90" flex-gt-lg="50" class="md-whiteframe-z2">
+                    <md-content class="md-padding">
+                        <form name="registroForm">
+                            <div layout-gt-sm="row">
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Nombres</label>
+                                    <input ng-model="vm.nombre">
+                                    <div ng-messages="registroForm.nombre.$error" ng-show="registroForm.nombre.$dirty">
+                                        <div ng-message="required">Este campo es obligatorio!</div>
+                                    </div>
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Apellidos</label>
+                                    <input ng-model="vm.apellidos">
+                                    <div ng-messages="registroForm.apellidos.$error">
+                                        <div ng-message="required">Este campo es obligatorio.</div>
+                                    </div>
+                                </md-input-container>
+                            </div>
+                            <div layout-gt-sm="row">
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Tipo de Identificacion</label>
+                                    <md-select name="tipo_Id" ng-model="tipo_Id" required>
+                                        <md-option value="1">Cedula de Ciudadania</md-option>
+                                        <md-option value="2">Tarjeda de Identidad</md-option>
+                                        <md-option value="3">Pasaporte</md-option>
+                                    </md-select>
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Identificacion</label>
+                                    <input ng-model="vm.Identificacion" type="number">
+                                    <div ng-messages="registroForm.Identificacion.$error">
+                                        <div ng-message="required">Este campo es obligatorio.</div>
+                                    </div>
+                                </md-input-container>
+                            </div>
+
+                            <div layout-gt-sm="row">
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Fecha de Expedicion</label>
+                                    <input ng-model="vm.fecha_expedicion" type="date">
+                                    <div ng-messages="registroForm.fecha_expedicion.$error">
+                                        <div ng-message="required">Este campo es obligatorio.</div>
+                                    </div>
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Fecha de Nacimiento</label>
+                                    <input ng-model="vm.fecha_nacimiento" type="date">
+                                    <div ng-messages="registroForm.fecha_nacimiento.$error">
+                                        <div ng-message="required">Este campo es obligatorio.</div>
+                                    </div>
+                                </md-input-container>
+                            </div>
+                            <div layout-gt-sm="row">
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Direccion de Residencia</label>
+                                    <input ng-model="vm.direccion">
+                                    <div ng-messages="registroForm.direccion.$error">
+                                        <div ng-message="required">Este campo es obligatorio.</div>
+                                    </div>
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Celular</label>
+                                    <input ng-model="vm.celular" type="number">
+                                    <div ng-messages="registroForm.celular.$error">
+                                        <div ng-message="required">Este campo es obligatorio.</div>
+                                    </div>
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Correo Personal</label>
+                                    <input ng-model="vm.email" type="email" placeholder="ejemplo@ejemplo.com"
+                                           ng-pattern="/^.+@.+\..+$/" required>
+                                    <div ng-messages="email.$error" role="alert" multiple>
+                                        <div ng-message="required">
+                                            <span>Este campo es requrido</span>
+                                        </div>
+                                        <div ng-message="pattern">
+                                            <span>Ingresa una direccion de email valida</span>
+                                        </div>
+                                    </div>
+                                </md-input-container>
+                            </div>
+                            <fieldset class="standard">
+                                <legend align="center">DATOS DE USUARIO</legend>
+                                <div layout-gt-sm="row">
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Correo Institucional</label>
+                                        <input type="email" name="email" ng-model="vm.usuario.name"
+                                               placeholder="ejemplo@unicesar.edu.co"
+                                               ng-pattern="/^.+@.+\..+$/" required>
+                                        <div ng-messages="email.$error" role="alert" multiple>
+                                            <div ng-message="required">
+                                                <span>Este campo es requrido</span>
+                                            </div>
+                                            <div ng-message="pattern">
+                                                <span>Ingresa una direccion de email valida</span>
+                                            </div>
+                                        </div>
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <input type="password" name="password" ng-model="vm.usuario.pass"
+                                               placeholder="Contrase&ntilde;a" equired>
+                                        <div ng-messages="password.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span>Este campo es requerido</span>
+                                            </div>
+                                        </div>
+                                    </md-input-container>
+                                </div>
+                            </fieldset>
+                            <div flex layout="row" layout-align="center center">
+                                <md-button ng-click="vm.aceptar()" type="submit"
+                                           class="md-raised md-accent submit-button" aria-label="ACEPTAR">ACEPTAR
+                                </md-button>
+                                <md-button ng-click="vm.Cancelar()" type="submit"
+                                           class="md-raised md-accent submit-button" aria-label="CANCELAR">CANCELAR
+                                </md-button>
+                            </div>
+                        </form>
+                    </md-content>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

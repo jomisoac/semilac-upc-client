@@ -24,6 +24,8 @@
             'app.sample2',
             //requisito
             'app.director.requisito',
-            'app.abrir_convocatoria'
+            'app.abrir_convocatoria',
+            'app.tutor'
+
         ]);
 })();
