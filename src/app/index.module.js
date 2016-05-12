@@ -7,16 +7,22 @@
      */
     angular
         .module('fuse', [
+
             // Core
             'app.core',
+
             //jwt
             'angular-jwt',
+
             //restangular
             'restangular',
+
             // Navigation
             'app.navigation',
+
             // Toolbar
             'app.toolbar',
+
             // Sample
             'app.sample',
             //autenticacion
@@ -24,8 +30,7 @@
             'app.pages.autenticacion.roles',
             //abrir convocatorias
             'app.abrir_convocatoria',
-            'app.sample2',
-            //requisito
-            'app.director.requisito'
+            //resgistrar director
+            'app.sample2'
         ]);
 })();

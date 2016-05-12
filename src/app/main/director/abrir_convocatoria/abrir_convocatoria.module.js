@@ -20,7 +20,7 @@
                     }
                 },
                 data   : {
-                    onlyAccess: ['SUPER_ADMIN']
+                    onlyAccess: ['DIRECTOR']
                 }
             });
 

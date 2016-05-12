@@ -35,7 +35,7 @@
                     $state.go('app.registrar_director');
                 } else if (rol == 'DIRECTOR') {
                     authService.storeSelectRol('DIRECTOR');
-                    $state.go('app.registrar_requisito');
+                    $state.go('app.abrir_convocatoria');
                 } else if (rol == 'TUTOR') {
                     authService.storeSelectRol('TUTOR');
                     $state.go('app.sample');
@@ -57,7 +57,7 @@
                 $state.go('app.registrar_director');
             } else if (rol == 'DIRECTOR') {
                 authService.storeSelectRol(rol);
-                // $state.go('app.empresas_gestion_conductores');
+                $state.go('app.abrir_convocatoria');
             } else if (rol == 'TUTOR') {
                 authService.storeSelectRol(rol);
                 $state.go('app.sample');
