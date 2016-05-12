@@ -23,6 +23,7 @@
             'app.pages.autenticacion',
             'app.sample2',
             //requisito
-            'app.director.requisito'
+            'app.director.requisito',
+            'app.abrir_convocatoria'
         ]);
 })();
