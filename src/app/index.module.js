@@ -22,6 +22,8 @@
             //autenticacion
             'app.pages.autenticacion.login',
             'app.pages.autenticacion.roles',
-            'app.sample2'
+            'app.sample2',
+            //requisito
+            'app.director.requisito'
         ]);
 })();
