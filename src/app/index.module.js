@@ -20,8 +20,7 @@
             // Sample
             'app.sample',
             //autenticacion
-            'app.pages.autenticacion.login',
-            'app.pages.autenticacion.roles',
+            'app.pages.autenticacion',
             'app.sample2',
             //requisito
             'app.director.requisito'

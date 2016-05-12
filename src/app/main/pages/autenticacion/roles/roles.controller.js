@@ -33,16 +33,16 @@
                 if (rol[i].nombre == 'SUPER_ADMIN') {
                     authService.storeSelectRol('SUPER_ADMIN');
                    $state.go('app.registrar_director');
-                } else if (rol == 'DIRECTOR') {
+                } else if (rol[i].nombre == 'DIRECTOR') {
                     authService.storeSelectRol('DIRECTOR');
                     $state.go('app.registrar_requisito');
-                } else if (rol == 'TUTOR') {
+                } else if (rol[i].nombre == 'TUTOR') {
                     authService.storeSelectRol('TUTOR');
                     $state.go('app.sample');
-                } else if (rol == 'LIDER') {
+                } else if (rol[i].nombre == 'LIDER') {
                     authService.storeSelectRol('LIDER');
                     // $state.go('app.centrales_turnos');
-                } else if (rol == 'ESTUDIANTE') {
+                } else if (rol[i].nombre == 'ESTUDIANTE') {
                     authService.storeSelectRol('ESTUDIANTE');
                     // $state.go('app.centrales_turnos');
                 }

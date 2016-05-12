@@ -83,7 +83,6 @@
             {
                 // Create an empty children array in the item
                 item.children = [];
-
                 // Add the default weight if not provided or if it's not a number
                 if ( angular.isUndefined(item.weight) || !angular.isNumber(item.weight) )
                 {
