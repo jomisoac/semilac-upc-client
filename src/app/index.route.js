@@ -14,6 +14,11 @@
         
         $locationProvider.html5Mode(true);
 
+        // $urlRouterProvider.otherwise( function($injector) {
+        //     var $state = $injector.get("$state");
+        //     $state.go('/autenticacion/login');
+        // });
+
         $urlRouterProvider.otherwise('/autenticacion/login');
 
         /**
