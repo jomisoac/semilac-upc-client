@@ -1,21 +1,23 @@
 <div class="container">
-    <div style='padding: 25px;' layout="column" ng-cloak class="md-horintal-form">
+    <div ng-controller="RegistrarTutorController" layout="column" ng-cloak class="md-horizontal-form"
+         style="width:80%;">
         <div layout="row">
             <div flex layout="row" layout-align="center center">
                 <div flex-sm="100" flex-gt-sm="90" flex-gt-md="90" flex-gt-lg="50" class="md-whiteframe-z2">
                     <md-content class="md-padding">
+                        <center><span class="md-display-1">Datos del tutor</span></center>
                         <form name="registroForm">
                             <div layout-gt-sm="row">
                                 <md-input-container class="md-block" flex-gt-sm>
                                     <label>Nombres</label>
-                                    <input ng-model="vm.nombre">
-                                    <div ng-messages="registroForm.nombre.$error" ng-show="registroForm.nombre.$dirty">
-                                        <div ng-message="required">Este campo es obligatorio!</div>
+                                    <input ng-model="vm.nombre" required name="nombre" autofocus>
+                                    <div ng-messages="registroForm.nombre.$error">
+                                        <div ng-message="required">Este campo es obligatorio.</div>
                                     </div>
                                 </md-input-container>
                                 <md-input-container class="md-block" flex-gt-sm>
                                     <label>Apellidos</label>
-                                    <input ng-model="vm.apellidos">
+                                    <input ng-model="vm.apellidos" required name="apellidos">
                                     <div ng-messages="registroForm.apellidos.$error">
                                         <div ng-message="required">Este campo es obligatorio.</div>
                                     </div>
@@ -23,17 +25,19 @@
                             </div>
                             <div layout-gt-sm="row">
                                 <md-input-container class="md-block" flex-gt-sm>
-                                    <label>Tipo de Identificacion</label>
-                                    <md-select name="tipo_Id" ng-model="tipo_Id" required>
-                                        <md-option value="1">Cedula de Ciudadania</md-option>
-                                        <md-option value="2">Tarjeda de Identidad</md-option>
-                                        <md-option value="3">Pasaporte</md-option>
+                                    <label>Tipo de identificación</label>
+                                    <md-select required name="tipo_Id" ng-model="tipo_Id" required>
+                                        <md-option value="1">Cédula de ciudadanía</md-option>
+                                        <md-option value="2">Tarjeta de identidad</md-option>
                                     </md-select>
+                                    <div ng-messages="registroForm.tipo_Id.$error">
+                                        <div ng-message="required">Este campo es obligatorio.</div>
+                                    </div>
                                 </md-input-container>
                                 <md-input-container class="md-block" flex-gt-sm>
-                                    <label>Identificacion</label>
-                                    <input ng-model="vm.Identificacion" type="number">
-                                    <div ng-messages="registroForm.Identificacion.$error">
+                                    <label>Identificación</label>
+                                    <input ng-model="vm.identificacion" type="number" required name="identificacion">
+                                    <div ng-messages="registroForm.identificacion.$error">
                                         <div ng-message="required">Este campo es obligatorio.</div>
                                     </div>
                                 </md-input-container>
@@ -41,15 +45,15 @@
 
                             <div layout-gt-sm="row">
                                 <md-input-container class="md-block" flex-gt-sm>
-                                    <label>Fecha de Expedicion</label>
-                                    <input ng-model="vm.fecha_expedicion" type="date">
+                                    <label>Fecha de expedición</label>
+                                    <input ng-model="vm.fecha_expedicion" type="date" required name="fecha_expedicion">
                                     <div ng-messages="registroForm.fecha_expedicion.$error">
                                         <div ng-message="required">Este campo es obligatorio.</div>
                                     </div>
                                 </md-input-container>
                                 <md-input-container class="md-block" flex-gt-sm>
-                                    <label>Fecha de Nacimiento</label>
-                                    <input ng-model="vm.fecha_nacimiento" type="date">
+                                    <label>Fecha de nacimiento</label>
+                                    <input ng-model="vm.fecha_nacimiento" type="date" required name="fecha_nacimiento">
                                     <div ng-messages="registroForm.fecha_nacimiento.$error">
                                         <div ng-message="required">Este campo es obligatorio.</div>
                                     </div>
@@ -57,53 +61,54 @@
                             </div>
                             <div layout-gt-sm="row">
                                 <md-input-container class="md-block" flex-gt-sm>
-                                    <label>Direccion de Residencia</label>
-                                    <input ng-model="vm.direccion">
+                                    <label>Dirección de residencia</label>
+                                    <input ng-model="vm.direccion" required name="direccion">
                                     <div ng-messages="registroForm.direccion.$error">
                                         <div ng-message="required">Este campo es obligatorio.</div>
                                     </div>
                                 </md-input-container>
                                 <md-input-container class="md-block" flex-gt-sm>
                                     <label>Celular</label>
-                                    <input ng-model="vm.celular" type="number">
+                                    <input ng-model="vm.celular" type="number" required name="celular">
                                     <div ng-messages="registroForm.celular.$error">
                                         <div ng-message="required">Este campo es obligatorio.</div>
                                     </div>
                                 </md-input-container>
                                 <md-input-container class="md-block" flex-gt-sm>
-                                    <label>Correo Personal</label>
+                                    <label>Correo personal</label>
                                     <input ng-model="vm.email" type="email" placeholder="ejemplo@ejemplo.com"
-                                           ng-pattern="/^.+@.+\..+$/" required>
+                                           ng-pattern="/^.+@.+\..+$/" required name="email">
                                     <div ng-messages="email.$error" role="alert" multiple>
                                         <div ng-message="required">
                                             <span>Este campo es requrido</span>
                                         </div>
                                         <div ng-message="pattern">
-                                            <span>Ingresa una direccion de email valida</span>
+                                            <span>Ingresa una dirección de email valida</span>
                                         </div>
                                     </div>
                                 </md-input-container>
                             </div>
                             <fieldset class="standard">
-                                <legend align="center">DATOS DE USUARIO</legend>
+                                <legend align="center">Datos de usuario</legend>
                                 <div layout-gt-sm="row">
                                     <md-input-container class="md-block" flex-gt-sm>
-                                        <label>Correo Institucional</label>
-                                        <input type="email" name="email" ng-model="vm.usuario.name"
+                                        <label>Correo institucional</label>
+                                        <input type="correo_institucional" name="correo_institucional"
+                                               ng-model="vm.correo_institucional"
                                                placeholder="ejemplo@unicesar.edu.co"
                                                ng-pattern="/^.+@.+\..+$/" required>
-                                        <div ng-messages="email.$error" role="alert" multiple>
+                                        <div ng-messages="correo_institucional.$error" role="alert" multiple>
                                             <div ng-message="required">
                                                 <span>Este campo es requrido</span>
                                             </div>
                                             <div ng-message="pattern">
-                                                <span>Ingresa una direccion de email valida</span>
+                                                <span>Ingresa una dirección de email válida</span>
                                             </div>
                                         </div>
                                     </md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
-                                        <input type="password" name="password" ng-model="vm.usuario.pass"
-                                               placeholder="Contrase&ntilde;a" equired>
+                                        <input type="password" name="password" ng-model="vm.password"
+                                               placeholder="Contrase&ntilde;a" required>
                                         <div ng-messages="password.$error" role="alert">
                                             <div ng-message="required">
                                                 <span>Este campo es requerido</span>
@@ -113,11 +118,14 @@
                                 </div>
                             </fieldset>
                             <div flex layout="row" layout-align="center center">
-                                <md-button ng-click="vm.aceptar()" type="submit"
-                                           class="md-raised md-accent submit-button" aria-label="ACEPTAR">ACEPTAR
+                                <md-button ng-click="vm.Aceptar()" type="submit"
+                                           class="md-raised md-accent submit-button" aria-label="Aceptar"
+                                           ng-disabled="registroForm.$invalid || registroForm.$pristine">Aceptar
+
                                 </md-button>
                                 <md-button ng-click="vm.Cancelar()" type="submit"
-                                           class="md-raised md-accent submit-button" aria-label="CANCELAR">CANCELAR
+                                           class="md-raised md-accent submit-button" aria-label="Cancelar"
+                                           ng-disabled="registroForm.$invalid || registroForm.$pristine">Cancelar
                                 </md-button>
                             </div>
                         </form>

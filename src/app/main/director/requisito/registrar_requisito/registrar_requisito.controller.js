@@ -1,9 +1,10 @@
-(function () {
+(function ()
+{
     'use strict';
 
     angular
-        .module('app.director.requisitos')
-        .controller('RequisitoController', RequisitoController);
+            .module('app.director.requisito.registrar_requisito')
+            .controller('RequisitoController', RequisitoController);
 
     /** @ngInject */
     function RequisitoController() {
@@ -13,13 +14,14 @@
 
 
         vm.registrar = function () {
-            cargar();
+            if (vm.requisitos.push(vm.requisito)) {
+                alert('se registro el requisito correctamente');
+                vm.requsito = {};
+                console.log(vm.requisitos);
+            } else {
+                alert('no se pudo registrar el requisito');
+            }
         };
-
-        function cargar() {
-
-        }
-
     }
 })();
 
