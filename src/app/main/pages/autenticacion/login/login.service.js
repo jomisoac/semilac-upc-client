@@ -3,7 +3,7 @@
 
     angular
         .module('app.pages.autenticacion.login')
-        .service('authService', authService);
+        .service('authService', authService)
 
     function authService(jwtHelper){
 
@@ -24,6 +24,10 @@
 
         this.getSelectedRol = function () {
             return JSON.parse(sessionStorage.getItem('selectedRol'));
+        }
+
+        this.stateRoles = function (roles) {
+            sessionStorage.setItem('stateRoles',JSON.stringify(roles));
         }
     }
 })();

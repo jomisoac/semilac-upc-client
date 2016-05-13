@@ -7,14 +7,13 @@
             .controller('RequisitoController', RequisitoController);
 
     /** @ngInject */
-    function RequisitoController()
-    {
+    function RequisitoController() {
         var vm = this;
         vm.requisito = {};
         vm.requisitos = [];
-        
-        
-        vm.registrar = function(){
+
+
+        vm.registrar = function () {
             if (vm.requisitos.push(vm.requisito)) {
                 alert('se registro el requisito correctamente');
                 vm.requsito = {};
@@ -23,11 +22,6 @@
                 alert('no se pudo registrar el requisito');
             }
         };
-        
-        function cargar (){
-
-        }
-       
     }
 })();
 

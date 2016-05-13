@@ -18,7 +18,7 @@
                     }
                 },
                 data: {
-                    onlyAccess: ['TUTOR']
+                    onlyAccess: ['TUTOR', 'SUPER_ADMIN']
                 }
             });
 
