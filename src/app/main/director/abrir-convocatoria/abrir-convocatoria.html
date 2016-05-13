@@ -1,0 +1,66 @@
+<div class="container">
+    <div style='padding: 25px;' layout="column" ng-cloak class="md-horintal-form">
+        <md-content layout-padding>
+            <div class="borde">
+                <center>
+                    <span class="md-display-1">Abrir convocatoria</span>
+                </center>
+                <br>
+                <form name="userForm">
+                    <div layout-gt-sm="row" layout-align="center center">
+
+                        </md-input-container class="md-block" flex-gt-sm>
+                        <md-datepicker ng-model="vm.convocatoria.fechaInicial" required name="fechainicial"
+                                       md-placeholder="Fecha inicial">
+                            <div ng-messages="userForm.fechainicial.$error">
+                                <div ng-message="required">Este campo es requerido</div>
+                            </div>
+                        </md-datepicker>
+
+
+                        </md-input-container class="md-block" flex-gt-sm>
+                        <md-datepicker ng-model="vm.convocatoria.fechaFinal" required name="fechafinal" md-placeholder="Fecha final">
+                            <div ng-messages="userForm.fechafinal.$error">
+                                <div ng-message="required">Este campo es requerido</div>
+                            </div>
+                        </md-datepicker>
+                    </div>
+
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Asunto</label>
+                            <textarea ng-model="vm.convocatoria.asunto" required name="asunto" rows="5" md-select-on-focus
+                                      autofocus flex="100"></textarea>
+                            <div ng-messages="userForm.asunto.$error">
+                                <div ng-message="required">Este campo es requerido</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+
+                    <div layout-gt-sm="row">
+                        <div layout-gt-sm="row" layout-align="center center" ng-model="vm.convocatoria.acta">
+                            <input type="file" required name="acta" class="md-raised md-primary">
+                            <div ng-messages="userForm.acta.$error">
+                                <div ng-message="required">Este campo es requerido</div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div layout-gt-sm="row" layout-align="center center">
+
+                        <md-button type="submit" class="md-raised md-primary" ng-click="vm.guardar()"
+                                   ng-disabled="userForm.$invalid || userForm.$pristine">Guardar
+                        </md-button>
+                        <md-button type="submit" class="md-raised md-warn" ng-click="vm.cancelar()"
+                                   ng-disabled="userForm.$invalid || userForm.$pristine">Cancelar
+                        </md-button>
+
+                    </div>
+
+                </form>
+
+            </div>
+        </md-content>
+    </div>
+</div>

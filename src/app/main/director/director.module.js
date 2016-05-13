@@ -3,7 +3,7 @@
     angular
         .module('app.director', [
             'app.director.requisitos',
-            'app.director.abrir_convocatoria'
+            'app.director.abrirConvocatoria'
         ])
         .config(config);
     function config(msNavigationServiceProvider, authProvider) {
@@ -35,10 +35,10 @@
         });
         console.log('director '+ authProvider.checkUser(['DIRECTOR']))
 
-        msNavigationServiceProvider.saveItem('director.abrir_convocatoria', {
+        msNavigationServiceProvider.saveItem('director.abrir-convocatoria', {
             title: 'Abrir convocatoria',
             icon: 'icon-tile-four',
-            state: 'app.abrir_convocatoria',
+            state: 'app.abrir-convocatoria',
             /*stateParams: {
              'param1': 'page'
              },*/

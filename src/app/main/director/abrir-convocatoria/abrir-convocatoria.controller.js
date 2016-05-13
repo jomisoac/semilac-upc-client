@@ -2,12 +2,12 @@
     'use strict';
 
     angular
-        .module('app.director.abrir_convocatoria')
-        .controller('abrirConvocatoriaController', abrirConvocatoriaController);
+        .module('app.director.abrirConvocatoria')
+        .controller('AbrirConvocatoriaController', AbrirConvocatoriaController);
 
 
     /** @ngInject */
-    function abrirConvocatoriaController() {
+    function AbrirConvocatoriaController() {
         var vm = this;
         vm.convocatoria = {};
         var convovatorias = [];
@@ -16,7 +16,6 @@
         vm.guardar = guardar;
 
         function guardar() {
-            console.log()
             if (convovatorias.push(vm.convocatoria)) {
                 alert('se registro la convocatoria correctamente');
                 vm.convocatoria = {};
