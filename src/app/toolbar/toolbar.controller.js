@@ -7,7 +7,7 @@
         .controller('ToolbarController', ToolbarController);
 
     /** @ngInject */
-    function ToolbarController($rootScope, $state, authService)
+    function ToolbarController($rootScope, $state, authService, $mdSidenav, $mdToast)
     {
         var vm = this;
 
@@ -20,7 +20,7 @@
         //
         vm.logout = logout;
         vm.toggleHorizontalMobileMenu = toggleHorizontalMobileMenu;
-
+        vm.toggleSidenav = toggleSidenav;
         //////////
 
         init();
@@ -59,6 +59,17 @@
         {
             vm.bodyEl.toggleClass('ms-navigation-horizontal-mobile-menu-active');
         }
+
+        /**
+         * Toggle sidenav
+         *
+         * @param sidenavId
+         */
+        function toggleSidenav(sidenavId)
+        {
+            $mdSidenav(sidenavId).toggle();
+        }
+
     }
 
 })();
