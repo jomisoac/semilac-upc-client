@@ -3,11 +3,11 @@
     'use strict';
 
     angular
-        .module('app.director.requisito.registrar_requisito', [])
+        .module('app.director.requisitos', [])
         .config(config);
 
     /** @ngInject */
-    function config($stateProvider, msNavigationServiceProvider)
+    function config($stateProvider)
     {
         // State
         $stateProvider

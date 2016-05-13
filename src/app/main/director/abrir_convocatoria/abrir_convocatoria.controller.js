@@ -1,30 +1,28 @@
-(function ()
-{
+(function () {
     'use strict';
 
     angular
-        .module('app.abrir_convocatoria')
-        .controller('AbrirConvocatoriaController', AbrirConvocatoriaController);
+        .module('app.director.abrir_convocatoria')
+        .controller('abrirConvocatoriaController', abrirConvocatoriaController);
 
 
     /** @ngInject */
-    function AbrirConvocatoriaController()
-    {
+    function abrirConvocatoriaController() {
         var vm = this;
-        vm.convocatoria={};
+        vm.convocatoria = {};
         var convovatorias = [];
 
 
         vm.guardar = guardar;
 
-        function  guardar() {
+        function guardar() {
             console.log()
-            if(convovatorias.push(vm.convocatoria)){
+            if (convovatorias.push(vm.convocatoria)) {
                 alert('se registro la convocatoria correctamente');
                 vm.convocatoria = {};
                 console.log(convovatorias);
-            }else {
-                alert('no se pudo registrar la convocaria');
+            } else {
+                alert('no se pudo registrar la convocatoria');
             }
         }
     }

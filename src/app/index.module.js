@@ -17,14 +17,14 @@
             'app.navigation',
             // Toolbar
             'app.toolbar',
-            // Sample
-            'app.sample',
+            // ejemplos
+            // 'app.sample',
+            // 'app.sample2',
             //autenticacion
             'app.pages.autenticacion',
-            'app.sample2',
-            //requisito
-            'app.director.requisito',
-            'app.abrir_convocatoria',
+            //director
+            'app.director',
+            // tuto
             'app.tutor'
 
         ]);

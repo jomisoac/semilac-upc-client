@@ -1,27 +1,25 @@
-(function ()
-{
+(function () {
     'use strict';
 
     angular
-            .module('app.director.requisito.registrar_requisito')
-            .controller('RequisitoController', RequisitoController);
+        .module('app.director.requisitos')
+        .controller('RequisitoController', RequisitoController);
 
     /** @ngInject */
-    function RequisitoController()
-    {
+    function RequisitoController() {
         var vm = this;
         vm.requisito = {};
         vm.requisitos = [];
-        
-        
-        vm.registrar = function(){
-           cargar(); 
+
+
+        vm.registrar = function () {
+            cargar();
         };
-        
-        function cargar (){
-            
+
+        function cargar() {
+
         }
-       
+
     }
 })();
 
