@@ -2,19 +2,19 @@
     'use strict';
 
     angular
-        .module('app.tutor.registrar_tutor', [])
+        .module('app.tutor.registrarTutor', [])
         .config(config);
 
     /** @ngInject */
     function config($stateProvider, msNavigationServiceProvider) {
         // State
         $stateProvider
-            .state('app.registrar_tutor', {
-                url: '/registrar_tutor',
+            .state('app.registrar-tutor', {
+                url: '/registrar-tutor',
                 views: {
                     'content@app': {
-                        templateUrl: 'app/main/tutor/registrar_tutor/registroTutor.html',
-                        controller: 'TutorController as vm'
+                        templateUrl: 'app/main/tutor/registrar-tutor/registrar-tutor.html',
+                        controller: 'RegistrarTutorController as vm'
                     }
                 },
                 data: {

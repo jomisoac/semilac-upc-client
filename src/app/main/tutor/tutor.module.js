@@ -3,7 +3,7 @@
 
     angular
         .module('app.tutor', [
-            'app.tutor.registrar_tutor'
+            'app.tutor.registrarTutor'
         ])
         .config(config);
 
@@ -15,18 +15,18 @@
             weight: 1
         });
 
-        msNavigationServiceProvider.saveItem('uni.gestionar_tutor', {
+        msNavigationServiceProvider.saveItem('uni.gestionar-tutor', {
             title: 'Gestionar tutor',
             icon: 'icon-tile-four',
             weight: 1
         });
 
-        msNavigationServiceProvider.saveItem('uni.gestionar_tutor.registrar', {
+        msNavigationServiceProvider.saveItem('uni.gestionar-tutor.registrar', {
             title: 'Registrar tutor',
-            state: 'app.registrar_tutor'
+            state: 'app.registrar-tutor'
         });
 
-        msNavigationServiceProvider.saveItem('uni.gestionar_tutor.consultar', {
+        msNavigationServiceProvider.saveItem('uni.gestionar-tutor.consultar', {
             title: 'Consultar tutor',
             state: ''
         });

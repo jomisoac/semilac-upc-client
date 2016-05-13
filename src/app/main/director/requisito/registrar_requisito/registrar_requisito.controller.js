@@ -15,11 +15,17 @@
         
         
         vm.registrar = function(){
-           cargar(); 
+            if (vm.requisitos.push(vm.requisito)) {
+                alert('se registro el requisito correctamente');
+                vm.requsito = {};
+                console.log(vm.requisitos);
+            } else {
+                alert('no se pudo registrar el requisito');
+            }
         };
         
         function cargar (){
-            
+
         }
        
     }
