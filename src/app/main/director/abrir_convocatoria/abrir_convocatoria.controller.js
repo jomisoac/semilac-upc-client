@@ -18,7 +18,6 @@
         vm.guardar = guardar;
 
         function  guardar() {
-            console.log()
             if(convovatorias.push(vm.convocatoria)){
                 alert('se registro la convocatoria correctamente');
                 vm.convocatoria = {};
