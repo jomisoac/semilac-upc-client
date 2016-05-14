@@ -20,6 +20,8 @@
             // ejemplos
             // 'app.sample',
             // 'app.sample2',
+            //superadmin
+            'app.superadmin',
             //autenticacion
             'app.pages.autenticacion',
             //director
