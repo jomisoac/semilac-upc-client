@@ -7,21 +7,36 @@
             .controller('RequisitoController', RequisitoController);
 
     /** @ngInject */
-    function RequisitoController() {
+    function RequisitoController(Restangular, $mdToast) {
         var vm = this;
         vm.requisito = {};
-        vm.requisitos = [];
+        var requisito = Restangular.all('/requisitos');
 
+        vm.guardar = guardar;
+        vm.limpiar = limpiar;
 
-        vm.registrar = function () {
-            if (vm.requisitos.push(vm.requisito)) {
-                alert('se registro el requisito correctamente');
-                vm.requsito = {};
-                console.log(vm.requisitos);
-            } else {
-                alert('no se pudo registrar el requisito');
+        function guardar() {
+            requisito.post(vm.requisito).then(function (d) {
+                message(d);
+                vm.requisito = '';
+            }), function (error) {
+                var mensajeError = error.status == 401 ? error.data.mensajeError : 'A ocurrido un error inesperado';
+                message(mensajeError);
             }
         };
+
+        function limpiar() {
+            vm.requisito = '';
+        }
+
+        function message(body) {
+            $mdToast.show({
+                template: '<md-toast id="language-message" layout="column" layout-align="center start"><div class="md-toast-content">' + body + '</div></md-toast>',
+                hideDelay: 3000,
+                position: 'top right',
+                parent: '#content'
+            });
+        }
     }
 })();
 
