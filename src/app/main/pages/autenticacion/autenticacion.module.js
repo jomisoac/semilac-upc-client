@@ -4,6 +4,7 @@
     angular
         .module('app.pages.autenticacion', [
             'app.pages.autenticacion.login',
-            'app.pages.autenticacion.roles'
+            'app.pages.autenticacion.roles',
+            'app.pages.autenticacion.perfil'
         ]);
 })();

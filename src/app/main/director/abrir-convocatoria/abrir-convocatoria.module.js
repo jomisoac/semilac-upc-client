@@ -9,7 +9,7 @@
     function config($stateProvider) {
         // State
         $stateProvider
-            .state('app.abrir-convocatoria', {
+            .state('app.abrir_convocatoria', {
                 url: '/abrir-convocatoria',
                 views: {
                     'content@app': {

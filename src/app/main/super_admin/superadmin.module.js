@@ -2,10 +2,11 @@
 	'use strict';
 	angular
 	.module('app.superadmin', [
-		'app.superadmin.registrar_director',
+		'app.superadmin.registrarDirector'
 		])
-			.config(config);
-	function config(msNavigationServiceProvider){
+		.config(config);
+
+	function config(msNavigationServiceProvider, authProvider){
 		// Navigation
 		msNavigationServiceProvider.saveItem('superadmin', {
 			title : 'Registrar Director',

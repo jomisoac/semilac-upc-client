@@ -35,7 +35,8 @@
 
         function loadUser(){
             if(authService.currentUser()) {
-                vm.userNombre = authService.currentUser().email
+                vm.userId = authService.currentUser().id;
+                vm.userNombre = authService.currentUser().email;
                 vm.userRol = authService.getSelectedRol().selectedRol;
             }
         };

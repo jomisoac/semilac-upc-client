@@ -10,7 +10,7 @@
     function runBlock($rootScope, $timeout, $state, authService, jwtHelper)
     {
         // Activate loading indicator
-        var stateChangeStartEvent = $rootScope.$on('$stateChangeStart', function (e, to)
+        var stateChangeStartEvent = $rootScope.$on('$stateChangeStart', function (e, to, toParams, fromState)
         {
             $rootScope.loadingProgress = true;
             if (!to.data || !to.data.noRequiresLogin || to.data.noRequiresLogin == false) {

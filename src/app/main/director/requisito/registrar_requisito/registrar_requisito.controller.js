@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-            .module('app.director.requisito.registrar_requisito')
+            .module('app.requisitos.registrar')
             .controller('RequisitoController', RequisitoController);
 
     /** @ngInject */

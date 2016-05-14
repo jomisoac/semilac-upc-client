@@ -32,13 +32,13 @@
             for(var i = 0; i < rol.length; i++){
                 if (rol[i].nombre == 'SUPER_ADMIN') {
                     authService.storeSelectRol('SUPER_ADMIN');
-                   $state.go('app.registrar_director');
+                   $state.go('app.superadmin_registrar_director');
                 } else if (rol[i].nombre == 'DIRECTOR') {
                     authService.storeSelectRol('DIRECTOR');
                     $state.go('app.registrar_requisito');
                 } else if (rol[i].nombre == 'TUTOR') {
                     authService.storeSelectRol('TUTOR');
-                    $state.go('app.registrar-tutor');
+                    $state.go('app.registrar_tutor');
                 } else if (rol[i].nombre == 'LIDER') {
                     authService.storeSelectRol('LIDER');
                     // $state.go('app.centrales_turnos');
@@ -54,13 +54,13 @@
         function seleccionarRol(rol) {
             if (rol == 'SUPER_ADMIN') {
                 authService.storeSelectRol(rol);
-                $state.go('app.registrar_director');
+                $state.go('app.superadmin_registrar_director');
             } else if (rol == 'DIRECTOR') {
                 authService.storeSelectRol(rol);
                 $state.go('app.registrar_requisito');
             } else if (rol == 'TUTOR') {
                 authService.storeSelectRol(rol);
-                $state.go('app.registrar-tutor');
+                $state.go('app.registrar_tutor');
             } else if (rol == 'LIDER') {
                 authService.storeSelectRol(rol);
                 // $state.go('app.centrales_turnos');

@@ -17,13 +17,10 @@
             'app.navigation',
             // Toolbar
             'app.toolbar',
-            // ejemplos
-            // 'app.sample',
-            // 'app.sample2',
-            //superadmin
-            'app.superadmin',
             //autenticacion
             'app.pages.autenticacion',
+            //superadmin
+            'app.superadmin',
             //director
             'app.director',
             // tuto

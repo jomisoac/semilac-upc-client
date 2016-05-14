@@ -31,7 +31,7 @@
                 </md-button>
 
                 <md-menu-content width="3">
-                    <md-menu-item class="md-indent" ui-sref="app.pages_profile"
+                    <md-menu-item class="md-indent" ui-sref="app.perfil_usuario({ id: vm.userId })"
                                   ng-if="vm.userRol != 'SUPER_ADMIN'">
                         <md-icon md-font-icon="icon-account" class="icon"></md-icon>
                         <md-button>Mi perfil</md-button>

@@ -33,12 +33,11 @@
                 return authProvider.checkUser(['DIRECTOR']);
             }
         });
-        console.log('director '+ authProvider.checkUser(['DIRECTOR']))
 
         msNavigationServiceProvider.saveItem('director.abrir-convocatoria', {
             title: 'Abrir convocatoria',
             icon: 'icon-tile-four',
-            state: 'app.abrir-convocatoria',
+            state: 'app.abrir_convocatoria',
             /*stateParams: {
              'param1': 'page'
              },*/

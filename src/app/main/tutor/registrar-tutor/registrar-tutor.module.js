@@ -6,10 +6,10 @@
         .config(config);
 
     /** @ngInject */
-    function config($stateProvider, msNavigationServiceProvider) {
+    function config($stateProvider) {
         // State
         $stateProvider
-            .state('app.registrar-tutor', {
+            .state('app.registrar_tutor', {
                 url: '/registrar-tutor',
                 views: {
                     'content@app': {
@@ -21,23 +21,5 @@
                     onlyAccess: ['TUTOR', 'SUPER_ADMIN']
                 }
             });
-
-
-        /* // Navigation
-         msNavigationServiceProvider.saveItem('fuse', {
-         title : 'EJEMPLO',
-         group : true,
-         weight: 1
-         });
-
-         msNavigationServiceProvider.saveItem('fuse.tutor', {
-         title    : 'Registro de Tutor',
-         icon     : 'icon-tile-four',
-         state    : 'app.tutor',
-         /*stateParams: {
-         'param1': 'page'
-         },
-         weight   : 1
-         });*/
     }
 })();

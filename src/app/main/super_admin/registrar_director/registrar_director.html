@@ -1,140 +1,87 @@
-<<<<<<< HEAD
-<div layout="column" ng-cloak>
-  <md-content layout-padding>
-    <form name="projectForm">
-    <div layout-gt-sm="row">
-      <md-datepicker ng-model="vm.registrar.fecha" md-placeholder="Enter date"></md-datepicker>
-    <div>
-
-      <div layout-gt-sm="row">     
-      <md-input-container class="md-block">
-        <label>Identificacion</label>
-        <input md-maxlength="50" required name="identificacion" flex-gt-sm ng-model="vm.registrar.identificacion">
-        <div ng-messages="projectForm.identificacion.$error">
-          <div ng-message="required">Este es Requerido.</div>
-          <div ng-message="md-maxlength">Numero de caracteres maximos 50</div>
-        </div>
-      </md-input-container>
-
-       <md-input-container class="md-block">
-        <label>Email</label>
-        <input md-maxlength="50" required name="email" flex-gt-sm ng-model="vm.registrar.email">
-        <div ng-messages="projectForm.email.$error">
-          <div ng-message="required">Este es Requerido.</div>
-          <div ng-message="md-maxlength">Numero de caracteres maximos 50</div>
-          <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-        </div>
-      </md-input-container>     
-=======
 <div class="container">
-    <div ng-controller="registrarDirectorController" style='padding: 25px;' layout="column" ng-cloak class="md-horintal-form">
+    <div style='padding: 25px;' layout="column" ng-cloak class="md-horintal-form">
         <div layout="row">
             <div flex layout="row" layout-align="center center">
                 <div flex-sm="100" flex-gt-sm="90" flex-gt-md="90" flex-gt-lg="50" class="md-whiteframe-z2">
-                    <md-content class="md-padding">
-<form name="projectForm">
+                    <md-content layout-padding>
+                        <center><span class="md-display-1">Datos del director</span></center>
+                        <form name="registroForm">
+                            <div layout-gt-sm="row">
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Nombres</label>
+                                    <input ng-model="vm.director.nombres" required name="nombre" autofocus>
+                                    <div ng-messages="registroForm.nombre.$error">
+                                        <div ng-message="required">Este campo es obligatorio.</div>
+                                    </div>
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Apellidos</label>
+                                    <input ng-model="vm.director.apellidos" required name="apellidos">
+                                    <div ng-messages="registroForm.apellidos.$error">
+                                        <div ng-message="required">Este campo es obligatorio.</div>
+                                    </div>
+                                </md-input-container>
+                            </div>
+                            <div layout-gt-sm="row">
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Identificacion</label>
+                                    <input ng-model="vm.director.identificacion" required name="identificacion">
+                                    <div ng-messages="registroForm.identificacion.$error">
+                                        <div ng-message="required">Este campo es obligatorio.</div>
+                                    </div>
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Fecha de ingreso</label>
+                                    <input ng-model="vm.director.fechaIngreso" type="date" required name="fecha_ingreso">
+                                    <div ng-messages="registroForm.fecha_ingreso.$error">
+                                        <div ng-message="required">Este campo es obligatorio.</div>
+                                    </div>
+                                </md-input-container>
+                            </div>
+                            <fieldset class="standard">
+                                <legend align="center">Datos de usuario</legend>
+                                <div layout-gt-sm="row">
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Correo institucional</label>
+                                        <input type="email" name="email"
+                                               ng-model="vm.director.usuario.email"
+                                               placeholder="ejemplo@unicesar.edu.co"
+                                               ng-pattern="/^.+@.+\..+$/" required>
+                                        <div ng-messages="registroForm.email.$error" role="alert" multiple>
+                                            <div ng-message="required">
+                                                <span>Este campo es requrido</span>
+                                            </div>
+                                            <div ng-message="pattern">
+                                                <span>Ingresa una dirección de email válida</span>
+                                            </div>
+                                        </div>
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <input type="password" name="password" ng-model="vm.director.usuario.pass"
+                                               placeholder="Contrase&ntilde;a" required>
+                                        <div ng-messages="registroForm.password.$error" role="alert">
+                                            <div ng-message="required">
+                                                <span>Este campo es requerido</span>
+                                            </div>
+                                        </div>
+                                    </md-input-container>
+                                </div>
+                            </fieldset>
+                            <div flex layout="row" layout-align="center center">
+                                <md-button ng-click="vm.guardar()" type="submit"
+                                           class="md-raised md-accent submit-button" aria-label="Aceptar"
+                                           ng-disabled="registroForm.$invalid || registroForm.$pristine">Guardar
 
-       <div layout-gt-sm="row">
-                <h1 class="md-block" flex-gt-sm>Registro de Director</h1>
-                <md-datepicker ng-model="vm.director.fecha" md-placeholder="Enter date"></md-datepicker>
-        </div>
-    
-      <div layout-gt-sm="row">     
-            <md-input-container class="md-block">
-              <label>Identificacion</label>
-              <input md-maxlength="50" required name="identificacion" flex-gt-sm ng-model="vm.director.identificacion">
-              <div ng-messages="projectForm.identificacion.$error">
-                <div ng-message="required">Este es Requerido.</div>
-              </div>
-            </md-input-container>
-
-             <md-input-container class="md-block">
-              <label>Email</label>
-              <input md-maxlength="50" required name="email" flex-gt-sm ng-model="vm.director.email">
-              <div ng-messages="projectForm.email.$error">
-                <div ng-message="required">Este es Requerido.</div>
-                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-              </div>
-            </md-input-container>     
->>>>>>> iss53
-      </div>
-
-      <div layout-gt-sm="row">    
-      <md-input-container class="md-block">
-        <label>Nombres</label>
-<<<<<<< HEAD
-        <input md-maxlength="50" required name="nombres" flex-gt-sm ng-model="vm.registrar.nombres">
-        <div ng-messages="projectForm.nombres.$error">
-          <div ng-message="required">Este es Requerido.</div>
-          <div ng-message="md-maxlength">Numero de caracteres maximos 50</div>
-=======
-        <input md-maxlength="50" required name="nombres" flex-gt-sm ng-model="vm.director.nombres">
-        <div ng-messages="projectForm.nombres.$error">
-          <div ng-message="required">Este es Requerido.</div>
->>>>>>> iss53
-        </div>
-      </md-input-container>
-
-      <md-input-container class="md-block">
-        <label>Apellidos</label>
-<<<<<<< HEAD
-        <input md-maxlength="50" required name="apellidos" flex-gt-sm ng-model="vm.registrar.apellidos">
-        <div ng-messages="projectForm.apellidos.$error">
-          <div ng-message="required">Este es Requerido.</div>
-          <div ng-message="md-maxlength">Numero de caracteres maximos 50</div>
-=======
-        <input md-maxlength="50" required name="apellidos" flex-gt-sm ng-model="vm.director.apellidos">
-        <div ng-messages="projectForm.apellidos.$error">
-          <div ng-message="required">Este es Requerido.</div>
->>>>>>> iss53
-        </div>
-      </md-input-container>
-
-      </div>
-
-      <div layout-gt-sm="row">    
-      <md-input-container class="md-block">
-        <label>Contraseña</label>
-<<<<<<< HEAD
-        <input md-maxlength="50" required name="contra" flex-gt-sm ng-model="vm.registrar.contra">
-        <div ng-messages="projectForm.contra.$error">
-          <div ng-message="required">Este es Requerido.</div>
-          <div ng-message="md-maxlength">Numero de caracteres maximos 50</div>
-=======
-        <input md-maxlength="50" required name="contra" flex-gt-sm ng-model="vm.director.contra">
-        <div ng-messages="projectForm.contra.$error">
-          <div ng-message="required">Este es Requerido.</div>
->>>>>>> iss53
-        </div>
-      </md-input-container>
-
-      <md-input-container class="md-block">
-        <label>Repita la contraseña</label>
-<<<<<<< HEAD
-        <input md-maxlength="50" required name="contra2" flex-gt-sm ng-model="vm.registrar.contra2">
-        <div ng-messages="projectForm.contra2.$error">
-          <div ng-message="required">Este es Requerido.</div>
-          <div ng-message="md-maxlength">Numero de caracteres maximos 50</div>
-=======
-        <input md-maxlength="50" required name="contra2" flex-gt-sm ng-model="vm.director.contra2">
-        <div ng-messages="projectForm.contra2.$error">
-          <div ng-message="required">Este es Requerido.</div>
->>>>>>> iss53
-        </div>
-      </md-input-container>
-
-      </div>
-<<<<<<< HEAD
-    </form>
-  </md-content>
-</div>                
-=======
-        <md-button class="md-raised md-primary" ng-click="vm.guardar()" >Guardar</md-button>
-    </form>
+                                </md-button>
+                                <md-button ng-click="vm.limpiar()" type="submit"
+                                           class="md-raised md-accent submit-button" aria-label="Cancelar"
+                                           >Limpiar datos
+                                </md-button>
+                            </div>
+                        </form>
                     </md-content>
                 </div>
             </div>
         </div>
     </div>
 </div>
->>>>>>> iss53

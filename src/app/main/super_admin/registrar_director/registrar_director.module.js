@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('app.superadmin.registrar_director', [])
+        .module('app.superadmin.registrarDirector', [])
         .config(config);
 
     /** @ngInject */
