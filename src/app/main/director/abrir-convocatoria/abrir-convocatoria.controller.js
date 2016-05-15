@@ -7,7 +7,7 @@
 
 
     /** @ngInject */
-    function AbrirConvocatoriaController(Restangular) {
+    function AbrirConvocatoriaController(Restangular, $mdToast) {
         var vm = this;
         vm.convocatoria = {};
         var convocatoria = Restangular.all('/convocatorias');
