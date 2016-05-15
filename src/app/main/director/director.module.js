@@ -3,7 +3,8 @@
     angular
         .module('app.director', [
             'app.director.requisitos',
-            'app.director.abrirConvocatoria'
+            'app.director.abrirConvocatoria',
+            'app.director.registrarGrupo'
         ])
         .config(config);
     function config(msNavigationServiceProvider, authProvider) {
@@ -42,6 +43,23 @@
              'param1': 'page'
              },*/
             weight: 1,
+            hidden: function(){
+                return authProvider.checkUser(['DIRECTOR']);
+            }
+        });
+
+        msNavigationServiceProvider.saveItem('director.gestionar-grupo', {
+            title : 'Gestionar grupos',
+            icon  : 'icon-tile-four',
+            weight: 1,
+            hidden: function(){
+                return authProvider.checkUser(['DIRECTOR']);
+            }
+        });
+
+        msNavigationServiceProvider.saveItem('director.gestionar-grupo.registrar', {
+            title: 'Registrar grupo',
+            state: 'app.registrar-grupo',
             hidden: function(){
                 return authProvider.checkUser(['DIRECTOR']);
             }
