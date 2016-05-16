@@ -6,11 +6,11 @@
                     <span class="md-display-1">Abrir convocatoria</span>
                 </center>
                 <br>
-                <form name="userForm">
+                <form name="userForm" >
                     <div layout-gt-sm="row" layout-align="center center">
 
                         </md-input-container class="md-block" flex-gt-sm>
-                        <md-datepicker ng-model="vm.convocatoria.fechaInicial" required name="fechainicial"
+                        <md-datepicker ng-model="vm.convocatoria.fechainicial" required name="fechainicial"
                                        md-placeholder="Fecha inicial">
                             <div ng-messages="userForm.fechainicial.$error">
                                 <div ng-message="required">Este campo es requerido</div>
@@ -19,7 +19,7 @@
 
 
                         </md-input-container class="md-block" flex-gt-sm>
-                        <md-datepicker ng-model="vm.convocatoria.fechaFinal" required name="fechafinal" md-placeholder="Fecha final">
+                        <md-datepicker ng-model="vm.convocatoria.fechafinal" required name="fechafinal" md-placeholder="Fecha final">
                             <div ng-messages="userForm.fechafinal.$error">
                                 <div ng-message="required">Este campo es requerido</div>
                             </div>
@@ -38,8 +38,8 @@
                     </div>
 
                     <div layout-gt-sm="row">
-                        <div layout-gt-sm="row" layout-align="center center" ng-model="vm.convocatoria.acta">
-                            <input type="file" required name="acta" class="md-raised md-primary">
+                        <div layout-gt-sm="row" layout-align="center center">
+                            <input type="file" file-model = "vm.convocatoria.acta" required name="acta" class="md-raised md-primary">
                             <div ng-messages="userForm.acta.$error">
                                 <div ng-message="required">Este campo es requerido</div>
                             </div>
