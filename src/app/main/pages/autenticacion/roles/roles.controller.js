@@ -60,7 +60,7 @@
                 $state.go('app.registrar_requisito');
             } else if (rol == 'TUTOR') {
                 authService.storeSelectRol(rol);
-                $state.go('app.registrar_tutor');
+                
             } else if (rol == 'LIDER') {
                 authService.storeSelectRol(rol);
                 // $state.go('app.centrales_turnos');

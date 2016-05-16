@@ -1,15 +1,48 @@
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <span flex></span>
+        <div id="creala" md-offset="0 72" md-position-mode="target-right target">
+            <md-button class="language-button"
+                       md-menu-origin md-menu-align-target>
+                <div layout="row" layout-align="center center">
+                    <span class="iso">CREA TU CUENTA COMO:</span>
+                </div>
+            </md-button>
+        </div>
 
-
-
-
-
+        <div id="estudiante">
+            <div md-position-mode="left bottom">
+                <md-button class="user-button" ng-click="vm.registrarTutor()">
+                <div layout="row" layout-align="space-between center">
+                    <div class="avatar-wrapper">
+                        <img md-menu-align-target class="avatar" src="assets/images/avatars/profile.jpg">
+                    </div>
+                    <span class="username" hide-xs>TUTOR</span>
+                </div>
+                </md-button>
+            </div>
+        </div>
+        <div id="tutor">
+            <div md-position-mode="left bottom">
+                <md-button class="user-button" ng-click="vm.registrarEstudiante()">
+                <div layout="row" layout-align="space-between center">
+                    <div class="avatar-wrapper">
+                        <img md-menu-align-target class="avatar" src="assets/images/avatars/profile.jpg">
+                    </div>
+                    <span class="username" hide-xs>ESTUDIANTE</span>
+                </div>
+                </md-button>
+            </div>
+        </div>
+    </div>
+</md-toolbar>
 <div id="login" layout="row" layout-align="start">
     <div id="login-intro" flex hide show-gt-sm>
         <div class="logo md-accent-bg">
             <span>S</span>
         </div>
         <div class="title">
-              BINVENIDO A SEMILAC UPC!
+            BINVENIDO A SEMILAC UPC!
         </div>
         <div class="description">
             Aca podras hacer seguimiento de todos los proyectos y semilleros en nuestra institucion
@@ -26,7 +59,8 @@
 
             <form name="loginForm" novalidate>
                 <md-input-container class="md-block" md-no-float>
-                    <input type="email" name="email" ng-model="vm.usuario.name" placeholder="Email Ej: ejemplo@ejemplo.com"
+                    <input type="email" name="email" ng-model="vm.usuario.name"
+                           placeholder="Email Ej: ejemplo@ejemplo.com"
                            ng-pattern="/^.+@.+\..+$/" required>
                     <div ng-messages="loginForm.email.$error" role="alert" multiple>
                         <div ng-message="required">
@@ -43,7 +77,7 @@
                            required>
                     <div ng-messages="loginForm.password.$error" role="alert">
                         <div ng-message="required">
-                            <span >Este campo es requerido</span>
+                            <span>Este campo es requerido</span>
                         </div>
                     </div>
                 </md-input-container>
@@ -51,19 +85,15 @@
                 <div class="remember-forgot-password" layout="row" layout-sm="column"
                      layout-align="space-between center">
                     <a ui-sref="app.pages_auth_forgot-password" class="forgot-password md-accent-color">
-                      ¿Se te olvidó tu contraseña?</a>
+                        ¿Se te olvidó tu contraseña?</a>
                 </div>
 
-                <md-button ng-click="vm.iniciarSesion()" type="submit" class="md-raised md-accent submit-button" aria-label="INICIAR SESIÓN"
+                <md-button ng-click="vm.iniciarSesion()" type="submit" class="md-raised md-accent submit-button"
+                           aria-label="INICIAR SESIÓN"
                            ng-disabled="loginForm.$invalid || loginForm.$pristine">
                     INICIAR SESIÓN
                 </md-button>
             </form>
-
-            <div class="register" layout="row" layout-sm="column" layout-align="center center">
-                <span class="text">¿No tienes una cuenta?</span>
-                <a class="link" ui-sref="app.pages_auth_register">Crea una ahora</a>
-            </div>
         </div>
     </div>
 </div>

@@ -19,6 +19,7 @@
             'app.toolbar',
             //autenticacion
             'app.pages.autenticacion',
+            'app.pages.registrarse',
             //superadmin
             'app.superadmin',
             //director

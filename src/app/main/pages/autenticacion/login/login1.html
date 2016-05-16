@@ -1,10 +1,15 @@
+
+
+
+
+
 <div id="login" layout="row" layout-align="start">
     <div id="login-intro" flex hide show-gt-sm>
         <div class="logo md-accent-bg">
             <span>S</span>
         </div>
         <div class="title">
-              BINVENIDO A SEMILAC UPC!
+            BINVENIDO A SEMILAC UPC!
         </div>
         <div class="description">
             Aca podras hacer seguimiento de todos los proyectos y semilleros en nuestra institucion
@@ -21,7 +26,7 @@
 
             <form name="loginForm" novalidate>
                 <md-input-container class="md-block" md-no-float>
-                    <input type="email" name="email" ng-model="vm.usuario.name" placeholder="Ej: ejemplo@ejemplo.com"
+                    <input type="email" name="email" ng-model="vm.usuario.name" placeholder="Email Ej: ejemplo@ejemplo.com"
                            ng-pattern="/^.+@.+\..+$/" required>
                     <div ng-messages="loginForm.email.$error" role="alert" multiple>
                         <div ng-message="required">
@@ -46,7 +51,7 @@
                 <div class="remember-forgot-password" layout="row" layout-sm="column"
                      layout-align="space-between center">
                     <a ui-sref="app.pages_auth_forgot-password" class="forgot-password md-accent-color">
-                      ¿Se te olvidó tu contraseña?</a>
+                        ¿Se te olvidó tu contraseña?</a>
                 </div>
 
                 <md-button ng-click="vm.iniciarSesion()" type="submit" class="md-raised md-accent submit-button" aria-label="INICIAR SESIÓN"
