@@ -14,19 +14,58 @@
         //Privadas
         var vm = this;
         var estudiantes = Restangular.all('/estudiantes');
+        var programas = Restangular.all('/programas').getList().$object;
         // publicas
+        vm.programas = [];
+        vm.cambiarFechaExpedicionMin = cambiarFechaExpedicionMin;
+        vm.cambiarFechaNacimientoMax = cambiarFechaNacimientoMax;
         vm.registrarse = registrarse;
+        vm.atras = atras;
 
         init();
         function init() {
             vm.estudiante = {}
+            var hoy = new Date();
+            vm.fechaNacimientoMax = new Date(
+                hoy.getFullYear() - 18,
+                hoy.getMonth(),
+                hoy.getDate()
+            );
+            vm.fechaExpedicionMax = hoy;
+            vm.tutor = {};
+            cargarProgramas();
+        }
+
+        function cambiarFechaExpedicionMin() {
+            //La fecha de expedicion de la cedula es por lo menos 18 anios despues del nacimiento.
+            if (vm.tutor.fecha_nacimiento) {
+                vm.fechaExpedicionMin = new Date(
+                    vm.tutor.fecha_nacimiento.getFullYear() + 18,
+                    vm.tutor.fecha_nacimiento.getMonth(),
+                    vm.tutor.fecha_nacimiento.getDate()
+                );
+            }
+        }
+        function cambiarFechaNacimientoMax() {
+            //La fecha de nacimiento debe ser 18 anios menos que la fecha de expedicion de la cedula.
+            if (vm.tutor.fecha_expedicion) {
+                vm.fechaNacimientoMax = new Date(
+                    vm.tutor.fecha_expedicion.getFullYear() - 18,
+                    vm.tutor.fecha_expedicion.getMonth(),
+                    vm.tutor.fecha_expedicion.getDate()
+                );
+            }
+        }
+
+        function cargarProgramas() {
+            vm.programas = programas;
         }
 
         function registrarse() {
             estudiantes.post(vm.estudiante).then(function (d) {
                 message(d);
                 limpiar();
-                atras();
+                setTimeout('atras()', 3000)
             }), function (error) {
                 var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado.';
                 message(mensajeError);
@@ -45,6 +84,7 @@
         function limpiar() {
             init();
         }
+
         function atras() {
             $state.go('app.pages_autenticacion_login');
         }

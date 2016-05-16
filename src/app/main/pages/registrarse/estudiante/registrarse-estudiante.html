@@ -15,45 +15,168 @@
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Nombres</label>
-                        <input ng-model="vm.tutor.nombres" required name="nombre" autofocus>
-                        <div ng-messages="registroForm.nombre.$error">
+                        <input ng-model="vm.estudiante.nombres" required name="nombre" autofocus>
+                        <div ng-messages="!registroForm.$pristine && registroForm.nombre.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
                         </div>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Apellidos</label>
-                        <input ng-model="vm.tutor.apellidos" required name="apellidos">
-                        <div ng-messages="registroForm.apellidos.$error">
+                        <input ng-model="vm.estudiante.apellidos" required name="apellidos">
+                        <div ng-messages="!registroForm.$pristine && registroForm.apellidos.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
                         </div>
                     </md-input-container>
                 </div>
-                <fieldset class="standard">
-                    <legend align="center">Datos de usuario</legend>
-                    <div layout-gt-sm="row">
-                        <md-input-container class="md-block" flex-gt-sm>
-                            <label>Correo institucional</label>
-                            <input type="correo_institucional" name="correo_institucional" ng-model="vm.tutor.usuario.email" placeholder="ejemplo@unicesar.edu.co"
-                                   ng-pattern="/^.+@.+\..+$/" required>
-                            <div ng-messages="correo_institucional.$error" role="alert" multiple>
-                                <div ng-message="required">
-                                    <span>Este campo es requrido</span>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Identificacion</label>
+                        <input type="number" ng-maxlength="11" ng-minlength="11" ng-model="vm.estudiante.identificacion" required name="identificacion">
+                        <div ng-messages="!registroForm.$pristine && registroForm.identificacion.$error">
+                            <div ng-message="required">Este campo es obligatorio.</div>
+                            <div ng-message="minlength">Ese campo debe contener al menos 11 numeros.</div>
+                            <div ng-message="maxlength">Ha ecxedido la longitud de numeros para este campo (min: 11).</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Sexo</label>
+                        <md-select name="sexo" ng-model="vm.estudiante.sexo" required>
+                            <md-option value="F">FEMENINO</md-option>
+                            <md-option value="M">MASCULINO</md-option>
+                            <md-option value="O">OTRO</md-option>
+                        </md-select>
+                        <div ng-messages="!registroForm.$pristine && registroForm.sexo.$error">
+                            <div ng-message="required">Este campo es obligatorio.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                    <style>
+                        .md-datepicker-input-container {
+                            width: 85%;
+                        }
+
+                        .md-datepicker-input {
+                            width: 100%;
+                        }
+                    </style>
+                    <md-datepicker ng-model="vm.estudiante.fecha_expedicion" ng-change="vm.cambiarFechaExpedicionMin()" required name="fecha_expedicion"
+                                   md-placeholder="Fecha de expedición" md-min-date="vm.fechaExpedicionMin" md-max-date="vm.fechaExpedicionMax"
+                                   flex-gt-sm>
+                        <div ng-messages="!registroForm.$pristine && registroForm.fecha_expedicion.$error">
+                            <div ng-message="required">Este campo es obligatorio.</div>
+                        </div>
+                    </md-datepicker>
+                    <md-datepicker ng-model="vm.estudiante.fecha_nacimiento"  required name="fecha_nacimiento"
+                                   ng-change="vm.cambiarFechaNacimientoMax()" md-placeholder="Fecha de nacimiento" md-max-date="vm.fechaNacimientoMax" flex-gt-sm>
+                        <div ng-messages="!registroForm.$pristine && registroForm.fecha_nacimiento.$error">
+                            <div ng-message="required">Este campo es obligatorio.</div>
+                        </div>
+                    </md-datepicker>
+                </div>
+                <br>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Lugar de expedicion</label>
+                        <input ng-model="vm.estudiante.lugar_expedicion" required name="lugar_expedicion">
+                        <div ng-messages="!registroForm.$pristine && registroForm.lugar_expedicion.$error">
+                            <div ng-message="required">Este campo es obligatorio.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Lugar de nacimiento</label>
+                        <input ng-model="vm.estudiante.lugar_nacimiento" required name="lugar_nacimiento">
+                        <div ng-messages="!registroForm.$pristine && registroForm.lugar_nacimiento.$error">
+                            <div ng-message="required">Este campo es obligatorio.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Universiadad</label>
+                        <input ng-model="vm.estudiante.universidad" required name="universidad">
+                        <div ng-messages="!registroForm.$pristine && registroForm.universidad.$error">
+                            <div ng-message="required">Este campo es obligatorio.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Programa</label>
+                        <md-select name="programa" ng-model="vm.estudiante.programa_id" required>
+                            <md-optgroup label="PROGRAMAS">
+                                <md-option ng-value="programa.id" ng-repeat="programa in vm.programas">{{programa.nombre}}</md-option>
+                            </md-optgroup>
+                        </md-select>
+                        <div ng-messages="!registroForm.$pristine && registroForm.programa.$error">
+                            <div ng-message="required">Este campo es obligatorio.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-st-sm>
+                        <label>Semestre</label>
+                        <input type="number" ng-model="vm.estudiante.n_semestre" required name="n_semestre">
+                        <div ng-messages="!registroForm.$pristine && registroForm.n_semestre.$error">
+                            <div ng-message="required">Este campo es obligatorio.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Dirección</label>
+                        <input ng-model="vm.estudiante.direccion" required name="direccion" autofocus>
+                        <div ng-messages="!registroForm.$pristine && registroForm.direccion.$error">
+                            <div ng-message="required">Este campo es obligatorio.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Telefono</label>
+                        <input ng-model="vm.estudiante.telefono" required name="telefono">
+                        <div ng-messages="!registroForm.$pristine && registroForm.telefono.$error">
+                            <div ng-message="required">Este campo es obligatorio.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-md="40">
+                        <label>Estado civil</label>
+                        <md-select name="estado_civil" ng-model="vm.estudiante.estado_civil" required>
+                            <md-option value="Casado">CASADO</md-option>
+                            <md-option value="Divorciado">DIVORCIADO</md-option>
+                            <md-option value="Soltero">SOLTERO</md-option>
+                        </md-select>
+                        <div ng-messages="!registroForm.$pristine && registroForm.estado_civil.$error">
+                            <div ng-message="required">Este campo es obligatorio.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout-xl="row">
+                    <fieldset class="standard">
+                        <legend align="center">Datos de usuario</legend>
+                        <div layout-gt-sm="row">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Correo institucional</label>
+                                <input type="correo_institucional" name="correo_institucional" ng-model="vm.estudiante.usuario.email" placeholder="ejemplo@unicesar.edu.co"
+                                       ng-pattern="/^.+@.+\..+$/" required>
+                                <div ng-messages="!registroForm.$pristine && registroForm.correo_institucional.$error" role="alert" multiple>
+                                    <div ng-message="required">
+                                        <span>Este campo es requrido</span>
+                                    </div>
+                                    <div ng-message="pattern">
+                                        <span>Ingresa una dirección de email válida</span>
+                                    </div>
                                 </div>
-                                <div ng-message="pattern">
-                                    <span>Ingresa una dirección de email válida</span>
+                            </md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <input type="password" name="password" ng-model="vm.estudiante.usuario.pass" placeholder="Contrase&ntilde;a" required>
+                                <div ng-messages="!registroForm.$pristine && registroForm.password.$error" role="alert">
+                                    <div ng-message="required">
+                                        <span>Este campo es requerido</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </md-input-container>
-                        <md-input-container class="md-block" flex-gt-sm>
-                            <input type="password" name="password" ng-model="vm.tutor.usuario.pass" placeholder="Contrase&ntilde;a" required>
-                            <div ng-messages="password.$error" role="alert">
-                                <div ng-message="required">
-                                    <span>Este campo es requerido</span>
-                                </div>
-                            </div>
-                        </md-input-container>
-                    </div>
-                </fieldset>
+                            </md-input-container>
+                        </div>
+                    </fieldset>
+                </div>
                 <div flex layout="row" layout-align="center center">
                     <md-button ng-click="vm.registrarse()" type="submit" class="md-raised md-accent submit-button" aria-label="Guardar" ng-disabled="registroForm.$invalid || registroForm.$pristine">Guardar
                     </md-button>

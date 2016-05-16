@@ -38,7 +38,6 @@
                     vm.tutor.fecha_nacimiento.getMonth(),
                     vm.tutor.fecha_nacimiento.getDate()
                 );
-                console.log(vm.fechaExpedicionMin);
             }
         }
         function cambiarFechaNacimientoMax() {
@@ -49,7 +48,6 @@
                     vm.tutor.fecha_expedicion.getMonth(),
                     vm.tutor.fecha_expedicion.getDate()
                 );
-                console.log(vm.fechaNacimientoMax);
             }
         }
         function limpiar() {
@@ -68,7 +66,7 @@
             tutores.post(vm.tutor).then(function (d) {
                 message(d);
                 limpiar();
-                atras();
+                setTimeout('atras()', 3000)
             }), function (error) {
                 var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado.';
                 message(mensajeError);
