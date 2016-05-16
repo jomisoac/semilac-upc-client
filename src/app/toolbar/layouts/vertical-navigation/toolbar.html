@@ -23,8 +23,8 @@
                         <div class="avatar-wrapper">
                             <img md-menu-align-target class="avatar" src="assets/images/avatars/profile.jpg">
                         </div>
-                        <span ng-if="vm.userRol == 'SUPER_ADMIN'" class="username" hide-xs>{{vm.userRol}}</span>
-                        <span ng-if="vm.userRol != 'SUPER_ADMIN'" class="username" hide-xs>{{vm.userNombre}}</span>
+                        <span ng-if="vm.userRol = 'SUPER_ADMIN'" class="username" hide-xs>{{vm.userRol}}</span>
+                        <span ng-if="vm.userRol != 'SUPER_ADMIN'" class="username" hide-xs>{{vm.fullName}}</span>
                         <md-icon md-font-icon="icon-chevron-down"
                                  class="icon s16" hide-xs></md-icon>
                     </div>
@@ -32,7 +32,7 @@
 
                 <md-menu-content width="3">
                     <md-menu-item class="md-indent" ui-sref="app.perfil_usuario({ id: vm.userId })"
-                                  ng-if="vm.userRol != 'SUPER_ADMIN'">
+                                  ng-show="vm.userRol != 'SUPER_ADMIN'">
                         <md-icon md-font-icon="icon-account" class="icon"></md-icon>
                         <md-button>Mi perfil</md-button>
                     </md-menu-item>

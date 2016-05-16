@@ -38,6 +38,9 @@
                 vm.userId = authService.currentUser().id;
                 vm.userNombre = authService.currentUser().email;
                 vm.userRol = authService.getSelectedRol().selectedRol;
+                if(authService.currentUser().datos){
+                    vm.fullName = authService.currentUser().datos.nombre;
+                }
             }
         };
         /**
