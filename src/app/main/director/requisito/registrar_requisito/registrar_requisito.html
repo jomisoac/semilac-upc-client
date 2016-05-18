@@ -37,14 +37,14 @@
                                     </thead>
                                     <tbody>
                                         <tr ng-repeat="requisito in vm.requisitos">
-                                            <td class="name ng-binding">{{requisito.nom_requisito}}</td>
+                                            <td class="name ng-binding">{{requisito.nombre_requisito}}</td>
                                             <td class="position ng-binding">
-                                    <md-button class="md-fab md-mini" aria-label="Eat cake" ng-click="vm.modificar(requisito);">
+                                    <md-button class="md-fab md-mini" aria-label="Eat cake" ng-click="vm.modalModificar($event, requisito);">
                                         <md-icon md-svg-src="assets/icons/border-color.svg"></md-icon>
                                     </md-button>
                                     </td>
                                     <td class="position ng-binding">
-                                    <md-button class="md-fab md-mini" aria-label="Eat cake" style="background-color:#FE2E2E;" ng-click="vm.eliminar(requisito);">
+                                    <md-button class="md-fab md-mini" aria-label="Eat cake" style="background-color:#FE2E2E;" ng-click="vm.elminar($event, requisito.id);">
                                         <md-icon md-svg-src="assets/icons/close.svg"></md-icon>
                                     </md-button>
                                     </td>
