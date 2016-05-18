@@ -34,12 +34,14 @@
         }
 
         function loadUser(){
+            var usuario = authService.currentUser();
             if(authService.currentUser()) {
-                vm.userId = authService.currentUser().id;
-                vm.userNombre = authService.currentUser().email;
+                vm.userId = usuario.usuario_id;
+                vm.userNombre = usuario.email;
                 vm.userRol = authService.getSelectedRol().selectedRol;
-                if(authService.currentUser().datos){
-                    vm.fullName = authService.currentUser().datos.nombre;
+                if(usuario.datos){
+                    vm.fullName = usuario.datos.nombres + ' ' + usuario.datos.apellidos;
+                    vm.datosId = usuario.datos.id;
                 }
             }
         };

@@ -20,7 +20,7 @@
         cargarDatosUsuario();
         function cargarDatosUsuario(){
             if(usuario.datos){
-                vm.fullName = usuario.datos.nombre
+                vm.fullName = usuario.datos.nombres +' '+ usuario.datos.apellidos
             }
         }
         function cargarRolesUsuario() {

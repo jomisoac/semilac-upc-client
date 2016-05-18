@@ -10,7 +10,7 @@
         // State
         $stateProvider
             .state('app.perfil_usuario', {
-                url: '/perfil',
+                url: '/perfil/:id',
                 views: {
                     'content@app': {
                         templateUrl: 'app/main/pages/autenticacion/perfil/perfil.html',
