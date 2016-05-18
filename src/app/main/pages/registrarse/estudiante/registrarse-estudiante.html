@@ -4,7 +4,7 @@
             <md-button  ng-click="vm.atras()" style="float: left" class="md-icon-button md-primary" aria-label="Settings">
                 <md-icon md-svg-icon="assets/angular-material-assets/img/icons/ic_arrow_back_24px.svg"></md-icon>
             </md-button>
-            <center style="float: inherit"><span class="md-display-1">Registrate como estudiante</span></center>
+            <center style="float: inherit"><span class="md-display-1">Regístrate como estudiante</span></center>
             <br>
             <form name="registroForm">
                 <style>
@@ -30,8 +30,8 @@
                 </div>
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
-                        <label>Identificacion</label>
-                        <input type="number" ng-maxlength="11" ng-minlength="11" ng-model="vm.estudiante.identificacion" required name="identificacion">
+                        <label>Identificación</label>
+                        <input type="number" ng-maxlength="11" ng-minlength="7" ng-model="vm.estudiante.identificacion" required name="identificacion" min="0">
                         <div ng-messages="!registroForm.$pristine && registroForm.identificacion.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
                             <div ng-message="minlength">Ese campo debe contener al menos 11 numeros.</div>
@@ -39,11 +39,11 @@
                         </div>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
-                        <label>Sexo</label>
+                        <label>Género</label>
                         <md-select name="sexo" ng-model="vm.estudiante.sexo" required>
-                            <md-option value="F">FEMENINO</md-option>
-                            <md-option value="M">MASCULINO</md-option>
-                            <md-option value="O">OTRO</md-option>
+                            <md-option value="F">Femenino</md-option>
+                            <md-option value="M">Masculino</md-option>
+                            <md-option value="O">Otro</md-option>
                         </md-select>
                         <div ng-messages="!registroForm.$pristine && registroForm.sexo.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
@@ -91,20 +91,20 @@
                         </div>
                     </md-input-container>
                 </div>
-                <div layout-gt-sm="row">
-                    <md-input-container class="md-block" flex-gt-sm>
-                        <label>Universiadad</label>
-                        <input ng-model="vm.estudiante.universidad" required name="universidad">
-                        <div ng-messages="!registroForm.$pristine && registroForm.universidad.$error">
-                            <div ng-message="required">Este campo es obligatorio.</div>
-                        </div>
-                    </md-input-container>
-                </div>
+                <!--<div layout-gt-sm="row">-->
+                    <!--<md-input-container class="md-block" flex-gt-sm>-->
+                        <!--<label>Universiadad</label>-->
+                        <!--<input ng-model="vm.estudiante.universidad" required name="universidad">-->
+                        <!--<div ng-messages="!registroForm.$pristine && registroForm.universidad.$error">-->
+                            <!--<div ng-message="required">Este campo es obligatorio.</div>-->
+                        <!--</div>-->
+                    <!--</md-input-container>-->
+                <!--</div>-->
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Programa</label>
                         <md-select name="programa" ng-model="vm.estudiante.programa_id" required>
-                            <md-optgroup label="PROGRAMAS">
+                            <md-optgroup label="Programas">
                                 <md-option ng-value="programa.id" ng-repeat="programa in vm.programas">{{programa.nombre}}</md-option>
                             </md-optgroup>
                         </md-select>
@@ -114,7 +114,7 @@
                     </md-input-container>
                     <md-input-container class="md-block" flex-st-sm>
                         <label>Semestre</label>
-                        <input type="number" ng-model="vm.estudiante.n_semestre" required name="n_semestre">
+                        <input type="number" ng-model="vm.estudiante.n_semestre" required name="n_semestre" min="0">
                         <div ng-messages="!registroForm.$pristine && registroForm.n_semestre.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
                         </div>
@@ -129,10 +129,13 @@
                         </div>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
-                        <label>Telefono</label>
-                        <input ng-model="vm.estudiante.telefono" required name="telefono">
-                        <div ng-messages="!registroForm.$pristine && registroForm.telefono.$error">
+                        <label>Celular</label>
+                        <input ng-model="vm.estudiante.telefono" type="number" minlength="10" maxlength="10" min="0" name="celular" ng-pattern="/\b3\B/">
+                        <div ng-messages="!registroForm.$pristine && registroForm.celular.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
+                            <div ng-message="pattern">El numero de celular debe empezar por 3</div>
+                            <div ng-message="minlength">El celular no contiene 10 digitos</div>
+                            <div ng-message="maxlength">El celular que desea registrar excede el límite de diez digitos</div>
                         </div>
                     </md-input-container>
                 </div>
@@ -140,9 +143,9 @@
                     <md-input-container class="md-block" flex-gt-md="40">
                         <label>Estado civil</label>
                         <md-select name="estado_civil" ng-model="vm.estudiante.estado_civil" required>
-                            <md-option value="Casado">CASADO</md-option>
-                            <md-option value="Divorciado">DIVORCIADO</md-option>
-                            <md-option value="Soltero">SOLTERO</md-option>
+                            <md-option value="Casado">Casado</md-option>
+                            <md-option value="Divorciado">Divorciado</md-option>
+                            <md-option value="Soltero">Soltero</md-option>
                         </md-select>
                         <div ng-messages="!registroForm.$pristine && registroForm.estado_civil.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
@@ -180,7 +183,7 @@
                 <div flex layout="row" layout-align="center center">
                     <md-button ng-click="vm.registrarse()" type="submit" class="md-raised md-accent submit-button" aria-label="Guardar" ng-disabled="registroForm.$invalid || registroForm.$pristine">Guardar
                     </md-button>
-                    <md-button ng-click="vm.limpiar()" class="md-raised md-accent submit-button" aria-label="Cancelar">Cancelar
+                    <md-button ng-click="vm.atras()" class="md-raised md-accent submit-button" aria-label="Cancelar">Cancelar
                     </md-button>
                 </div>
             </form>

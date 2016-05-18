@@ -6,7 +6,7 @@
         .controller('RegistrarseTutorController', RegistrarseTutorController);
 
     /** @ngInject */
-    function RegistrarseTutorController(Restangular, $mdToast, $state) {
+    function RegistrarseTutorController(Restangular, $mdToast, $state, $timeout) {
         //Declaracion de variables y funciones en orden alfabetico
         //Privadas
         var vm = this;
@@ -66,7 +66,7 @@
             tutores.post(vm.tutor).then(function (d) {
                 message(d);
                 limpiar();
-                setTimeout('atras()', 3000)
+                $timeout(atras, 4000)
             }), function (error) {
                 var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado.';
                 message(mensajeError);

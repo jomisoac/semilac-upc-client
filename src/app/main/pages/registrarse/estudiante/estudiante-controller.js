@@ -9,7 +9,7 @@
         .module('app.pages.registrarse.estudiante')
         .controller('RegistrarseEstudianteController', RegistrarseEstudianteController);
 
-    function RegistrarseEstudianteController(Restangular, $mdToast, $state) {
+    function RegistrarseEstudianteController(Restangular, $mdToast, $state, $timeout) {
         //Declaracion de variables y funciones en orden alfabetico
         //Privadas
         var vm = this;
@@ -65,7 +65,7 @@
             estudiantes.post(vm.estudiante).then(function (d) {
                 message(d);
                 limpiar();
-                setTimeout('atras()', 3000)
+                $timeout(atras, 4000)
             }), function (error) {
                 var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado.';
                 message(mensajeError);
