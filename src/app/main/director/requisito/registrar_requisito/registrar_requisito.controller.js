@@ -26,11 +26,15 @@
             vm.requisitos = requisitos.getList().$object;
         }
 
-        function guardar() {
+        function guardar(form) {
             requisitos.post(vm.requisito).then(function (d) {
                 message(d);
                 vm.requisito = '';
                 init();
+                if(form){
+                    form.$setPristine();
+                    form.$setUntouched();
+                }
             }), function (error) {
                 var mensajeError = error.status == 401 ? error.data.mensajeError : 'A ocurrido un error inesperado';
                 message(mensajeError);

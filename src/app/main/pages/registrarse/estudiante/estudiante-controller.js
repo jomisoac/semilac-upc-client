@@ -61,10 +61,14 @@
             vm.programas = programas;
         }
 
-        function registrarse() {
+        function registrarse(form) {
             estudiantes.post(vm.estudiante).then(function (d) {
                 message(d);
                 limpiar();
+                if(form){
+                    form.$setPristine();
+                    form.$setUntouched();
+                }
                 $timeout(atras, 4000)
             }), function (error) {
                 var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado.';

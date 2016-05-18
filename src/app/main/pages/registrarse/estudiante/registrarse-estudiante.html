@@ -15,14 +15,14 @@
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Nombres</label>
-                        <input ng-model="vm.estudiante.nombres" required name="nombre" autofocus>
+                        <input ng-model="vm.estudiante.nombres" required name="nombre" autofocus ng-model-options="{ updateOn: 'blur' }">
                         <div ng-messages="!registroForm.$pristine && registroForm.nombre.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
                         </div>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Apellidos</label>
-                        <input ng-model="vm.estudiante.apellidos" required name="apellidos">
+                        <input ng-model="vm.estudiante.apellidos" required name="apellidos" ng-model-options="{ updateOn: 'blur' }">
                         <div ng-messages="!registroForm.$pristine && registroForm.apellidos.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
                         </div>
@@ -31,7 +31,7 @@
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Identificación</label>
-                        <input type="number" ng-maxlength="11" ng-minlength="7" ng-model="vm.estudiante.identificacion" required name="identificacion" min="0">
+                        <input type="number" ng-maxlength="11" ng-minlength="7" ng-model="vm.estudiante.identificacion" required name="identificacion" min="0" ng-model-options="{ updateOn: 'blur' }">
                         <div ng-messages="!registroForm.$pristine && registroForm.identificacion.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
                             <div ng-message="minlength">Ese campo debe contener al menos 11 numeros.</div>
@@ -78,14 +78,14 @@
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Lugar de expedicion</label>
-                        <input ng-model="vm.estudiante.lugar_expedicion" required name="lugar_expedicion">
+                        <input ng-model="vm.estudiante.lugar_expedicion" required name="lugar_expedicion" ng-model-options="{ updateOn: 'blur' }">
                         <div ng-messages="!registroForm.$pristine && registroForm.lugar_expedicion.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
                         </div>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Lugar de nacimiento</label>
-                        <input ng-model="vm.estudiante.lugar_nacimiento" required name="lugar_nacimiento">
+                        <input ng-model="vm.estudiante.lugar_nacimiento" required name="lugar_nacimiento" ng-model-options="{ updateOn: 'blur' }">
                         <div ng-messages="!registroForm.$pristine && registroForm.lugar_nacimiento.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
                         </div>
@@ -103,7 +103,7 @@
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Programa</label>
-                        <md-select name="programa" ng-model="vm.estudiante.programa_id" required>
+                        <md-select name="programa" ng-model="vm.estudiante.programa_id" required >
                             <md-optgroup label="Programas">
                                 <md-option ng-value="programa.id" ng-repeat="programa in vm.programas">{{programa.nombre}}</md-option>
                             </md-optgroup>
@@ -114,7 +114,7 @@
                     </md-input-container>
                     <md-input-container class="md-block" flex-st-sm>
                         <label>Semestre</label>
-                        <input type="number" ng-model="vm.estudiante.n_semestre" required name="n_semestre" min="0">
+                        <input type="number" ng-model="vm.estudiante.n_semestre" required name="n_semestre" min="0" ng-model-options="{ updateOn: 'blur' }">
                         <div ng-messages="!registroForm.$pristine && registroForm.n_semestre.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
                         </div>
@@ -123,14 +123,14 @@
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Dirección</label>
-                        <input ng-model="vm.estudiante.direccion" required name="direccion" autofocus>
+                        <input ng-model="vm.estudiante.direccion" required name="direccion" autofocus ng-model-options="{ updateOn: 'blur' }">
                         <div ng-messages="!registroForm.$pristine && registroForm.direccion.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
                         </div>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Celular</label>
-                        <input ng-model="vm.estudiante.telefono" type="number" minlength="10" maxlength="10" min="0" name="celular" ng-pattern="/\b3\B/">
+                        <input ng-model="vm.estudiante.telefono" type="number" minlength="10" maxlength="10" min="0" name="celular" ng-pattern="/\b3\B/" ng-model-options="{ updateOn: 'blur' }">
                         <div ng-messages="!registroForm.$pristine && registroForm.celular.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
                             <div ng-message="pattern">El numero de celular debe empezar por 3</div>
@@ -181,7 +181,7 @@
                     </fieldset>
                 </div>
                 <div flex layout="row" layout-align="center center">
-                    <md-button ng-click="vm.registrarse()" type="submit" class="md-raised md-accent submit-button" aria-label="Guardar" ng-disabled="registroForm.$invalid || registroForm.$pristine">Guardar
+                    <md-button ng-click="vm.registrarse(registroForm)" type="submit" class="md-raised md-accent submit-button" aria-label="Guardar" ng-disabled="registroForm.$invalid || registroForm.$pristine">Guardar
                     </md-button>
                     <md-button ng-click="vm.atras()" class="md-raised md-accent submit-button" aria-label="Cancelar">Cancelar
                     </md-button>
