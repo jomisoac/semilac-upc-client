@@ -19,11 +19,11 @@
         }
 
         this.storeSelectRol = function (selectRol) {
-            sessionStorage.setItem('selectedRol',JSON.stringify(selectRol));
+            sessionStorage.setItem('selectedRol',selectRol);
         }
 
         this.getSelectedRol = function () {
-            return JSON.parse(sessionStorage.getItem('selectedRol'));
+            return sessionStorage.getItem('selectedRol');
         }
 
         this.stateRoles = function (roles) {

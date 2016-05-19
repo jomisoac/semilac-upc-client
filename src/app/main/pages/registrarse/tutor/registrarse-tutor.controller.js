@@ -64,13 +64,17 @@
         
         function registrarse(form) {
             tutores.post(vm.tutor).then(function (d) {
-                message(d);
-                limpiar();
-                if(form){
-                    form.$setPristine();
-                    form.$setUntouched();
+                if(d.ok != 'false'){
+                    message(d);
+                    limpiar();
+                    if(form){
+                        form.$setPristine();
+                        form.$setUntouched();
+                    }
+                    $timeout(atras, 4000)
+                }else{
+                    message(d.mensaje);
                 }
-                $timeout(atras, 4000)
             }), function (error) {
                 var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado.';
                 message(mensajeError);

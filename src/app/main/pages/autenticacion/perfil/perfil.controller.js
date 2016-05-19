@@ -12,7 +12,6 @@
         cargarDatosPerfil();
         function cargarDatosPerfil() {
             vm.datos = perfilUsuario.get($stateParams.id).$object;
-            console.log(vm.datos)
         }
         
 

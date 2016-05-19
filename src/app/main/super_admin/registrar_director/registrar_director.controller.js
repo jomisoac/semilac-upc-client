@@ -15,18 +15,27 @@
         vm.guardar = guardar;
         vm.limpiar = limpiar;
         
-        function guardar(){
+        function guardar(form){
             director.post(vm.director).then(function (d) {
-                message(d);
-                vm.director = '';
+                if(d.ok != 'false'){
+                    message(d);
+                    limpiar(form);
+                    $timeout(atras, 4000)
+                }else{
+                    message(d.mensaje);
+                }
             }), function (error) {
                 var mensajeError = error.status == 401 ? error.data.mensajeError : 'A ocurrido un error inesperado';
                 message(mensajeError);
             }
         };
 
-        function limpiar() {
+        function limpiar(form) {
             vm.director = '';
+            if(form){
+                form.$setPristine();
+                form.$setUntouched();
+            }
         }
 
         function message(body) {

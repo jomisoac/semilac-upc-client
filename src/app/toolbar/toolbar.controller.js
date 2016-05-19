@@ -35,10 +35,10 @@
 
         function loadUser(){
             var usuario = authService.currentUser();
-            if(authService.currentUser()) {
+            if(usuario) {
                 vm.userId = usuario.usuario_id;
                 vm.userNombre = usuario.email;
-                vm.userRol = authService.getSelectedRol().selectedRol;
+                vm.userRol = authService.getSelectedRol();
                 if(usuario.datos){
                     vm.fullName = usuario.datos.nombres + ' ' + usuario.datos.apellidos;
                     vm.datosId = usuario.datos.id;
