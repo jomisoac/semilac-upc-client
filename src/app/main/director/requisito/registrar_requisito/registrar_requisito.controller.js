@@ -75,8 +75,8 @@
 
         function eliminar($event, requisito_id) {
             var confirm = $mdDialog.confirm()
-                .title('Seguro quieres eliminar este requisito?')
-                .textContent('Sera eliminado permanentemente.')
+                .title('¿Seguro quieres eliminar este requisito?')
+                .textContent('Será eliminado permanentemente.')
                 .ariaLabel('Eliminar')
                 .targetEvent($event)
                 .clickOutsideToClose(true)
