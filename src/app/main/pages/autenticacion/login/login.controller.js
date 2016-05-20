@@ -29,7 +29,7 @@
             }
 
             function error(error) {
-                vm.mensajeError = error.status == 401 ? error.data.mensajeError : 'A ocurrido un error inesperado';
+                vm.mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado';
                 var mensaje = vm.mensajeError;
                 $mdToast.show({
                     template: '<md-toast id="language-message" layout="column" layout-align="center start"><div class="md-toast-content">' + mensaje + '</div></md-toast>',

@@ -17,6 +17,12 @@
         var usuario = authService.currentUser();
 
         cargarRolesUsuario();
+        cargarDatosUsuario();
+        function cargarDatosUsuario(){
+            if(usuario.datos){
+                vm.fullName = usuario.datos.nombres +' '+ usuario.datos.apellidos
+            }
+        }
         function cargarRolesUsuario() {
             if(usuario.roles.length == 1){
                 redirectRol(usuario.roles);

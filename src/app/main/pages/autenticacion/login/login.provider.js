@@ -10,7 +10,7 @@
         service.getSelectedRol = getSelectedRol;
 
         function getSelectedRol() {
-            return JSON.parse(sessionStorage.getItem('selectedRol'));
+            return sessionStorage.getItem('selectedRol');
         }
 
         function checkUser(roles) {

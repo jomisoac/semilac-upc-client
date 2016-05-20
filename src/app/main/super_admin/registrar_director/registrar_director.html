@@ -9,15 +9,15 @@
                             <div layout-gt-sm="row">
                                 <md-input-container class="md-block" flex-gt-sm>
                                     <label>Nombres</label>
-                                    <input ng-model="vm.director.nombres" required name="nombre" autofocus>
-                                    <div ng-messages="registroForm.nombre.$error">
+                                    <input ng-model="vm.director.nombres" required name="nombre" autofocus ng-model-options="{ updateOn: 'blur' }">
+                                    <div ng-messages="!registroForm.$pristine && registroForm.nombre.$error">
                                         <div ng-message="required">Este campo es obligatorio.</div>
                                     </div>
                                 </md-input-container>
                                 <md-input-container class="md-block" flex-gt-sm>
                                     <label>Apellidos</label>
-                                    <input ng-model="vm.director.apellidos" required name="apellidos">
-                                    <div ng-messages="registroForm.apellidos.$error">
+                                    <input ng-model="vm.director.apellidos" required name="apellidos" ng-model-options="{ updateOn: 'blur' }">
+                                    <div ng-messages="!registroForm.$pristine && registroForm.apellidos.$error">
                                         <div ng-message="required">Este campo es obligatorio.</div>
                                     </div>
                                 </md-input-container>
@@ -25,15 +25,15 @@
                             <div layout-gt-sm="row">
                                 <md-input-container class="md-block" flex-gt-sm>
                                     <label>Identificacion</label>
-                                    <input ng-model="vm.director.identificacion" required name="identificacion">
-                                    <div ng-messages="registroForm.identificacion.$error">
+                                    <input type="number" min="0" ng-model="vm.director.identificacion" required name="identificacion" ng-model-options="{ updateOn: 'blur' }">
+                                    <div ng-messages="!registroForm.$pristine && registroForm.identificacion.$error">
                                         <div ng-message="required">Este campo es obligatorio.</div>
                                     </div>
                                 </md-input-container>
                                 <md-input-container class="md-block" flex-gt-sm>
                                     <label>Fecha de ingreso</label>
-                                    <input ng-model="vm.director.fechaIngreso" type="date" required name="fecha_ingreso">
-                                    <div ng-messages="registroForm.fecha_ingreso.$error">
+                                    <input ng-model="vm.director.fechaIngreso" type="date" required name="fecha_ingreso" ng-model-options="{ updateOn: 'blur' }">
+                                    <div ng-messages="!registroForm.$pristine && registroForm.fecha_ingreso.$error">
                                         <div ng-message="required">Este campo es obligatorio.</div>
                                     </div>
                                 </md-input-container>
@@ -46,8 +46,8 @@
                                         <input type="email" name="email"
                                                ng-model="vm.director.usuario.email"
                                                placeholder="ejemplo@unicesar.edu.co"
-                                               ng-pattern="/^.+@.+\..+$/" required>
-                                        <div ng-messages="registroForm.email.$error" role="alert" multiple>
+                                               ng-pattern="/^.+@.+\..+$/" required ng-model-options="{ updateOn: 'blur' }">
+                                        <div ng-messages="!registroForm.$pristine && registroForm.email.$error" role="alert" multiple>
                                             <div ng-message="required">
                                                 <span>Este campo es requrido</span>
                                             </div>
@@ -58,8 +58,8 @@
                                     </md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
                                         <input type="password" name="password" ng-model="vm.director.usuario.pass"
-                                               placeholder="Contrase&ntilde;a" required>
-                                        <div ng-messages="registroForm.password.$error" role="alert">
+                                               placeholder="Contrase&ntilde;a" required ng-model-options="{ updateOn: 'blur' }">
+                                        <div ng-messages="!registroForm.$pristine && registroForm.password.$error" role="alert">
                                             <div ng-message="required">
                                                 <span>Este campo es requerido</span>
                                             </div>
@@ -68,12 +68,12 @@
                                 </div>
                             </fieldset>
                             <div flex layout="row" layout-align="center center">
-                                <md-button ng-click="vm.guardar()" type="submit"
+                                <md-button ng-click="vm.guardar(registroForm)" type="submit"
                                            class="md-raised md-accent submit-button" aria-label="Aceptar"
                                            ng-disabled="registroForm.$invalid || registroForm.$pristine">Guardar
 
                                 </md-button>
-                                <md-button ng-click="vm.limpiar()" type="submit"
+                                <md-button ng-click="vm.limpiar(registroForm)" type="submit"
                                            class="md-raised md-accent submit-button" aria-label="Cancelar"
                                            >Limpiar datos
                                 </md-button>

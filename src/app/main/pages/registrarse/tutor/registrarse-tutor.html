@@ -4,7 +4,7 @@
             <md-button  ng-click="vm.atras()" style="float: left" class="md-icon-button md-primary" aria-label="Settings">
                 <md-icon md-svg-icon="assets/angular-material-assets/img/icons/ic_arrow_back_24px.svg"></md-icon>
             </md-button>
-            <center style="float: inherit"><span class="md-display-1">Registrate como tutor</span></center>
+            <center style="float: inherit"><span class="md-display-1">Regístrate como tutor</span></center>
             <br>
             <form name="registroForm">
                 <style>
@@ -15,14 +15,14 @@
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Nombres</label>
-                        <input ng-model="vm.tutor.nombres" required name="nombre" autofocus>
+                        <input ng-model="vm.tutor.nombres" required name="nombre" autofocus ng-model-options="{ updateOn: 'blur' }">
                         <div ng-messages="registroForm.nombre.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
                         </div>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Apellidos</label>
-                        <input ng-model="vm.tutor.apellidos" required name="apellidos">
+                        <input ng-model="vm.tutor.apellidos" required name="apellidos" ng-model-options="{ updateOn: 'blur' }">
                         <div ng-messages="registroForm.apellidos.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
                         </div>
@@ -41,7 +41,7 @@
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Identificación</label>
-                        <input ng-model="vm.tutor.identificacion" type="number" required name="identificacion" minlength="7" maxlength="10" min="0">
+                        <input ng-model="vm.tutor.identificacion" type="number" required name="identificacion" minlength="7" maxlength="10" min="0" ng-model-options="{ updateOn: 'blur' }">
                         <div ng-messages="registroForm.identificacion.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
                         </div>
@@ -75,14 +75,14 @@
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Dirección de residencia</label>
-                        <input ng-model="vm.tutor.direccion" required name="direccion">
+                        <input ng-model="vm.tutor.direccion" required name="direccion" ng-model-options="{ updateOn: 'blur' }">
                         <div ng-messages="registroForm.direccion.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
                         </div>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Celular</label>
-                        <input ng-model="vm.tutor.celular" type="number" minlength="10" maxlength="10" min="0" name="celular" ng-pattern="/\b3\B/"
+                        <input ng-model="vm.tutor.celular" type="number" minlength="10" maxlength="10" min="0" name="celular" ng-pattern="/\b3\B/" ng-model-options="{ updateOn: 'blur' }"
                                required>
                         <div ng-messages="registroForm.celular.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
@@ -91,7 +91,7 @@
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Correo personal</label>
                         <input ng-model="vm.tutor.email_personal" type="email" placeholder="ejemplo@ejemplo.com" ng-pattern="/^.+@.+\..+$/" required
-                               name="email">
+                               name="email" ng-model-options="{ updateOn: 'blur' }">
                         <div ng-messages="email.$error" role="alert" multiple>
                             <div ng-message="required">
                                 <span>Este campo es requrido</span>
@@ -108,7 +108,7 @@
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>Correo institucional</label>
                             <input type="correo_institucional" name="correo_institucional" ng-model="vm.tutor.usuario.email" placeholder="ejemplo@unicesar.edu.co"
-                                   ng-pattern="/^.+@.+\..+$/" required>
+                                   ng-pattern="/^.+@.+\..+$/" required ng-model-options="{ updateOn: 'blur' }">
                             <div ng-messages="correo_institucional.$error" role="alert" multiple>
                                 <div ng-message="required">
                                     <span>Este campo es requrido</span>
@@ -119,7 +119,8 @@
                             </div>
                         </md-input-container>
                         <md-input-container class="md-block" flex-gt-sm>
-                            <input type="password" name="password" ng-model="vm.tutor.usuario.pass" placeholder="Contrase&ntilde;a" required>
+                            <input type="password" name="password" ng-model="vm.tutor.usuario.pass" placeholder="Contrase&ntilde;a" required
+                                   ng-model-options="{ updateOn: 'blur' }">
                             <div ng-messages="password.$error" role="alert">
                                 <div ng-message="required">
                                     <span>Este campo es requerido</span>
@@ -129,9 +130,9 @@
                     </div>
                 </fieldset>
                 <div flex layout="row" layout-align="center center">
-                    <md-button ng-click="vm.registrarse()" type="submit" class="md-raised md-accent submit-button" aria-label="Guardar" ng-disabled="registroForm.$invalid || registroForm.$pristine">Guardar
+                    <md-button ng-click="vm.registrarse(registroForm)" type="submit" class="md-raised md-accent submit-button" aria-label="Guardar" ng-disabled="registroForm.$invalid || registroForm.$pristine">Guardar
                     </md-button>
-                    <md-button ng-click="vm.limpiar()" class="md-raised md-accent submit-button" aria-label="Cancelar">Cancelar
+                    <md-button ng-click="vm.atras()" class="md-raised md-accent submit-button" aria-label="Cancelar">Cancelar
                     </md-button>
                 </div>
             </form>

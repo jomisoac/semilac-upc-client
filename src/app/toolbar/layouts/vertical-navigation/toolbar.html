@@ -5,7 +5,7 @@
             <md-icon md-font-icon="icon-menu" class="icon"></md-icon>
         </md-button>
 
-        <ms-search-bar></ms-search-bar>
+        <!--<ms-search-bar></ms-search-bar>-->
 
         <div class="toolbar-separator"></div>
 
@@ -24,7 +24,7 @@
                             <img md-menu-align-target class="avatar" src="assets/images/avatars/profile.jpg">
                         </div>
                         <span ng-if="vm.userRol == 'SUPER_ADMIN'" class="username" hide-xs>{{vm.userRol}}</span>
-                        <span ng-if="vm.userRol != 'SUPER_ADMIN'" class="username" hide-xs>{{vm.userNombre}}</span>
+                        <span ng-if="vm.userRol != 'SUPER_ADMIN'" class="username" hide-xs>{{vm.fullName}}</span>
                         <md-icon md-font-icon="icon-chevron-down"
                                  class="icon s16" hide-xs></md-icon>
                     </div>

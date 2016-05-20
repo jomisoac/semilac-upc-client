@@ -5,7 +5,7 @@
             <md-button class="language-button"
                        md-menu-origin md-menu-align-target>
                 <div layout="row" layout-align="center center">
-                    <span class="iso">CREA TU CUENTA COMO:</span>
+                    <span class="iso">Crea tu cuenta como:</span>
                 </div>
             </md-button>
         </div>
@@ -17,7 +17,7 @@
                     <div class="avatar-wrapper">
                         <img md-menu-align-target class="avatar" src="assets/images/avatars/profile.jpg">
                     </div>
-                    <span class="username" hide-xs>TUTOR</span>
+                    <span class="username" hide-xs>Tutor</span>
                 </div>
                 </md-button>
             </div>
@@ -29,7 +29,7 @@
                     <div class="avatar-wrapper">
                         <img md-menu-align-target class="avatar" src="assets/images/avatars/profile.jpg">
                     </div>
-                    <span class="username" hide-xs>ESTUDIANTE</span>
+                    <span class="username" hide-xs>Estudiante</span>
                 </div>
                 </md-button>
             </div>
@@ -42,10 +42,10 @@
             <span>S</span>
         </div>
         <div class="title">
-            BINVENIDO A SEMILAC UPC!
+            ¡Bienvenido a Semilac-UPC!
         </div>
         <div class="description">
-            Aca podras hacer seguimiento de todos los proyectos y semilleros en nuestra institucion
+            Acá podrás hacer seguimiento de todos los proyectos y semilleros en nuestra institución.
         </div>
     </div>
 
@@ -55,12 +55,12 @@
                 <span>S</span>
             </div>
 
-            <div class="title">Inicia sesion con tu cuenta</div>
+            <div class="title">Inicia sesión con tu cuenta</div>
 
             <form name="loginForm" novalidate>
                 <md-input-container class="md-block" md-no-float>
                     <input type="email" name="email" ng-model="vm.usuario.name"
-                           placeholder="Email Ej: ejemplo@ejemplo.com"
+                           placeholder="Ej: ejemplo@ejemplo.com"
                            ng-pattern="/^.+@.+\..+$/" required>
                     <div ng-messages="loginForm.email.$error" role="alert" multiple>
                         <div ng-message="required">
@@ -82,11 +82,11 @@
                     </div>
                 </md-input-container>
 
-                <div class="remember-forgot-password" layout="row" layout-sm="column"
-                     layout-align="space-between center">
-                    <a ui-sref="app.pages_auth_forgot-password" class="forgot-password md-accent-color">
-                        ¿Se te olvidó tu contraseña?</a>
-                </div>
+                <!--<div class="remember-forgot-password" layout="row" layout-sm="column"-->
+                     <!--layout-align="space-between center">-->
+                    <!--<a ui-sref="app.pages_auth_forgot-password" class="forgot-password md-accent-color">-->
+                        <!--¿Se te olvidó tu contraseña?</a>-->
+                <!--</div>-->
 
                 <md-button ng-click="vm.iniciarSesion()" type="submit" class="md-raised md-accent submit-button"
                            aria-label="INICIAR SESIÓN"
