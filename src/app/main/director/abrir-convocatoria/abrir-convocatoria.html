@@ -9,28 +9,27 @@
                 <form name="userForm" >
                     <div layout-gt-sm="row" layout-align="center center">
 
-                        </md-input-container class="md-block" flex-gt-sm>
+
                         <md-datepicker ng-model="vm.convocatoria.fechainicial" required name="fechainicial"
                                        md-placeholder="Fecha inicial">
-                            <div ng-messages="userForm.fechainicial.$error">
+                        </md-datepicker>
+                            <div class="validation-messages" ng-messages="userForm.fechainicial.$error">
                                 <div ng-message="required">Este campo es requerido</div>
                             </div>
-                        </md-datepicker>
 
-
-                        </md-input-container class="md-block" flex-gt-sm>
                         <md-datepicker ng-model="vm.convocatoria.fechafinal" required name="fechafinal" md-placeholder="Fecha final">
+                        </md-datepicker>
                             <div ng-messages="userForm.fechafinal.$error">
                                 <div ng-message="required">Este campo es requerido</div>
                             </div>
-                        </md-datepicker>
+
                     </div>
 
                     <div layout-gt-sm="row">
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>Asunto</label>
-                            <textarea ng-model="vm.convocatoria.asunto" required name="asunto" rows="5" md-select-on-focus
-                                      autofocus flex="100"></textarea>
+                            <textarea ng-model="vm.convocatoria.asunto" required id="asunto" name="asunto"  rows="4" md-select-on-focus
+                                      autofocus></textarea>
                             <div ng-messages="userForm.asunto.$error">
                                 <div ng-message="required">Este campo es requerido</div>
                             </div>
@@ -39,7 +38,7 @@
 
                     <div layout-gt-sm="row">
                         <div layout-gt-sm="row" layout-align="center center">
-                            <input type="file" file-model = "vm.convocatoria.acta" required name="acta" class="md-raised md-primary">
+                            <input type="file"  required id="files" uploader-model = "vm.convocatoria.acta" name="acta" class="md-raised md-primary">
                             <div ng-messages="userForm.acta.$error">
                                 <div ng-message="required">Este campo es requerido</div>
                             </div>
