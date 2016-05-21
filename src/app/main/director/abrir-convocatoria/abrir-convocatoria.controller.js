@@ -16,6 +16,7 @@
 
         function guardar() {            
             vm.convocatoria.usuario_id = JSON.parse(sessionStorage.usuario).id;
+            console.log(vm.convocatoria.acta);
             convocatoria.post(vm.convocatoria).then(function (d) {
                 message(d);
                 vm.convocatoria = '';
