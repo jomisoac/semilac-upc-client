@@ -1,21 +1,21 @@
-<md-dialog aria-label="Mango (Fruit)" ng-cloak>
+<md-dialog aria-label="Tutores registrados" ng-cloak>
     <form>
         <md-toolbar>
             <div class="md-toolbar-tools">
                 <h2>Tutores registrados</h2>
                 <span flex></span>
-                <md-button class="md-icon-button" ng-click="cancel()">
+                <md-button class="md-icon-button" ng-click="vm.cancel()">
                     <md-icon md-svg-src="assets/angular-material-assets/img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
                 </md-button>
             </div>
         </md-toolbar>
         <md-dialog-content>
             <div class="md-dialog-content">
-                <md-radio-group ng-model="selectedIndex">
-                    <div ng-repeat='person in contacts' class="row">
+                <md-radio-group ng-model="vm.selectedIndex">
+                    <div ng-repeat='tutor in vm.tutores' class="row">
                         <div flex layout='row' layout-padding layout-align="start center">
-                            <md-radio-button flex ng-value="person.id" class="md-primary">
-                                {{person.fullName}}
+                            <md-radio-button flex ng-value="tutor.id" class="md-primary">
+                                {{vm.getNombreCompleto(tutor)}}
                             </md-radio-button>
                         </div>
                     </div>
@@ -33,11 +33,11 @@
                 More on Wikipedia
             </md-button>
             <span flex></span>-->
-            <md-button ng-click="answer('not useful')">
-                Not Useful
+            <md-button ng-click="vm.cancel()">
+                Cancelar
             </md-button>
-            <md-button ng-click="answer('useful')" style="margin-right:20px;">
-                Useful
+            <md-button ng-click="vm.aceptar()" style="margin-right:20px;">
+                Aceptar
             </md-button>
         </md-dialog-actions>
     </form>

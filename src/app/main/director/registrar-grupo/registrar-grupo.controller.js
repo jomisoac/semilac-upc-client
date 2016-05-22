@@ -47,16 +47,17 @@
             //var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && vm.customFullscreen;
             var useFullScreen = false;
             $mdDialog.show({
-                controller: DialogController,
-                templateUrl: 'app/main/director/registrar-grupo/dialog1.tmpl.html',
+                controller: DialogTutoresController,
+                controllerAs: 'vm',
+                templateUrl: 'app/main/director/registrar-grupo/dialog-tutores.tmpl.html',
                 parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose: true,
                 fullscreen: useFullScreen
             })
                 .then(function (answer) {
-                    console.log(answer);
-                    vm.grupo.lider = answer;
+                    vm.grupo.tutor_id = answer.id;
+                    vm.grupo.lider = answer.nombres + " " + answer.apellidos;
                     vm.status = 'You said the information was "' + answer + '".';
                 }, function () {
                     vm.status = 'You cancelled the dialog.';
