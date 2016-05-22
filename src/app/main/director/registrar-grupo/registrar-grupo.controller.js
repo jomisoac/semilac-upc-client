@@ -7,11 +7,12 @@
 
 
     /** @ngInject */
-    function RegistrarGrupoController(Restangular, $mdToast) {
+    function RegistrarGrupoController(Restangular, $mdToast, $mdDialog, $mdMedia) {
         var vm = this;
         vm.grupo = {};
+        vm.status = '  ';
+        //vm.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
         var grupo = Restangular.all('/grupo');
-
 
         vm.guardar = guardar;
         vm.limpiar = limpiar;
@@ -33,6 +34,7 @@
         function limpiar() {
             vm.director = {};
         }
+
         function message(body) {
             $mdToast.show({
                 template: '<md-toast id="language-message" layout="column" layout-align="center start"><div class="md-toast-content">' + body + '</div></md-toast>',
@@ -41,5 +43,24 @@
                 parent: '#content'
             });
         }
+        vm.showAdvanced = function (ev) {
+            //var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && vm.customFullscreen;
+            var useFullScreen = false;
+            $mdDialog.show({
+                controller: DialogController,
+                templateUrl: 'app/main/director/registrar-grupo/dialog1.tmpl.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose: true,
+                fullscreen: useFullScreen
+            })
+                .then(function (answer) {
+                    console.log(answer);
+                    vm.grupo.lider = answer;
+                    vm.status = 'You said the information was "' + answer + '".';
+                }, function () {
+                    vm.status = 'You cancelled the dialog.';
+                });
+        };
     }
 })();

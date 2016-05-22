@@ -23,13 +23,14 @@
                                 </md-input-container>
                             </div>
                             <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
+                                <md-input-container class="md-icon-float md-block" flex-gt-sm>
                                     <label>Líder</label>
-                                    <input ng-model="vm.grupo.lider" required name="lider">
-                                    <div ng-messages="registroForm.lider.$error">
-                                        <div ng-message="required">Este campo es obligatorio.</div>
-                                    </div>
+                                    <md-icon md-svg-src="assets/angular-material-assets/img/icons/account-search.svg" class="md-primary md-raised" ng-click="vm.showAdvanced($event)" style="cursor: pointer;"></md-icon>
+                                    <input ng-model="vm.grupo.lider" type="text" name="lider" disabled required>
                                 </md-input-container>
+                                <!--<md-button class="md-primary md-raised" ng-click="vm.showAdvanced($event)" flex="100" flex-gt-md="auto">
+                                    Custom Dialog
+                                </md-button>-->
                                 <md-input-container class="md-block" flex-gt-sm>
                                     <label>Clasificación</label>
                                     <md-select id="clasificacion" name="clasificacion" ng-model="vm.grupo.clasificacion" required>
