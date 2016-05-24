@@ -51,28 +51,36 @@
                     </md-input-container>
                 </div>
                 <div layout-gt-sm="row">
-                    <style>
-                        .md-datepicker-input-container {
-                            width: 85%;
-                        }
-
-                        .md-datepicker-input {
-                            width: 100%;
-                        }
-                    </style>
-                    <md-datepicker ng-model="vm.estudiante.fecha_expedicion" ng-change="vm.cambiarFechaExpedicionMin()" required name="fecha_expedicion"
-                                   md-placeholder="Fecha de expedición" md-min-date="vm.fechaExpedicionMin" md-max-date="vm.fechaExpedicionMax"
-                                   flex-gt-sm>
-                        <div ng-messages="!registroForm.$pristine && registroForm.fecha_expedicion.$error">
-                            <div ng-message="required">Este campo es obligatorio.</div>
+                    <mdp-date-picker ng-change="vm.cambiarFechaExpedicionMin()"
+                                     ng-model="vm.estudiante.fecha_expedicion"
+                                     mdp-min-date="vm.fechaExpedicionMin"
+                                     mdp-max-date="vm.fechaExpedicionMax"
+                                     mdp-open-on-click required
+                                     name="fecha_expedicion"
+                                     mdp-placeholder="Fecha de expedición"
+                                     mdp-format="DD/MM/YYYY"
+                                     ng-model="currentDate"
+                                     flex-gt-sm>
+                        <div ng-messages="demoForm.fecha_expedicion.$error">
+                            <div ng-message="required">Este campo es requerido</div>
+                            <div ng-message="format">Formato invalido</div>
                         </div>
-                    </md-datepicker>
-                    <md-datepicker ng-model="vm.estudiante.fecha_nacimiento"  required name="fecha_nacimiento"
-                                   ng-change="vm.cambiarFechaNacimientoMax()" md-placeholder="Fecha de nacimiento" md-max-date="vm.fechaNacimientoMax" flex-gt-sm>
-                        <div ng-messages="!registroForm.$pristine && registroForm.fecha_nacimiento.$error">
-                            <div ng-message="required">Este campo es obligatorio.</div>
+                    </mdp-date-picker>
+                    <mdp-date-picker ng-change="vm.cambiarFechaNacimientoMax()"
+                                     ng-model="vm.estudiante.fecha_nacimiento"
+                                     mdp-min-date="vm.fechaNacimientoMin"
+                                     mdp-max-date="vm.fechaNacimientoMax"
+                                     mdp-open-on-click required
+                                     name="fecha_nacimiento"
+                                     mdp-placeholder="Fecha de nacimiento"
+                                     mdp-format="DD/MM/YYYY"
+                                     ng-model="currentDate"
+                                     flex-gt-sm>
+                        <div ng-messages="demoForm.fecha_nacimiento.$error">
+                            <div ng-message="required">Este campo es requerido</div>
+                            <div ng-message="format">Formato invalido</div>
                         </div>
-                    </md-datepicker>
+                    </mdp-date-picker>
                 </div>
                 <br>
                 <div layout-gt-sm="row">

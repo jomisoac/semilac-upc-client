@@ -9,10 +9,15 @@
         .module('fuse', [
             // Core
             'app.core',
+
+            //commons
             //jwt
             'angular-jwt',
             //restangular
             'restangular',
+            // material datapickper
+            'mdPickers',
+            //end commons
             // Navigation
             'app.navigation',
             // Toolbar

@@ -12,16 +12,20 @@
         var jwt = sessionStorage.getItem('jwt');
       // config restangular
         RestangularProvider.setBaseUrl(api);
-        // RestangularProvider.setDefaultHeaders({Authorization : 'Bearer '+ jwt});
-        
+        RestangularProvider.setDefaultHeaders({Authorization : 'Bearer '+ jwt});
+        //
         $locationProvider.html5Mode(true);
 
-        // $urlRouterProvider.otherwise( function($injector) {
-        //     var $state = $injector.get("$state");
-        //     $state.go('/autenticacion/login');
+        $urlRouterProvider.otherwise(function($injector) {
+            var $state = $injector.get('$state');
+            return $state.go('app.pages_autenticacion_login');
+        });
+        // $urlRouterProvider.otherwise(function($injector) {
+        //     var $state = $injector.get('$state');
+        //     return $state.go('app.pages_autenticacion_login');
         // });
 
-        $urlRouterProvider.otherwise('/autenticacion/login');
+        // $urlRouterProvider.otherwise('/autenticacion/login');
 
         /**
          * Layout Style Switcher
