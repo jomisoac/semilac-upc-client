@@ -24,7 +24,6 @@
 
         init();
         function init() {
-            vm.estudiante = {}
             var hoy = new Date();
             vm.fechaNacimientoMax = new Date(
                 hoy.getFullYear() - 18,
@@ -32,27 +31,27 @@
                 hoy.getDate()
             );
             vm.fechaExpedicionMax = hoy;
-            vm.tutor = {};
+            vm.estudiante = {};
             cargarProgramas();
         }
 
         function cambiarFechaExpedicionMin() {
             //La fecha de expedicion de la cedula es por lo menos 18 anios despues del nacimiento.
-            if (vm.tutor.fecha_nacimiento) {
+            if (vm.estudiante.fecha_nacimiento) {
                 vm.fechaExpedicionMin = new Date(
-                    vm.tutor.fecha_nacimiento.getFullYear() + 18,
-                    vm.tutor.fecha_nacimiento.getMonth(),
-                    vm.tutor.fecha_nacimiento.getDate()
+                    vm.estudiante.fecha_nacimiento.getFullYear() + 18,
+                    vm.estudiante.fecha_nacimiento.getMonth(),
+                    vm.estudiante.fecha_nacimiento.getDate()
                 );
             }
         }
         function cambiarFechaNacimientoMax() {
             //La fecha de nacimiento debe ser 18 anios menos que la fecha de expedicion de la cedula.
-            if (vm.tutor.fecha_expedicion) {
+            if (vm.estudiante.fecha_expedicion) {
                 vm.fechaNacimientoMax = new Date(
-                    vm.tutor.fecha_expedicion.getFullYear() - 18,
-                    vm.tutor.fecha_expedicion.getMonth(),
-                    vm.tutor.fecha_expedicion.getDate()
+                    vm.estudiante.fecha_expedicion.getFullYear() - 18,
+                    vm.estudiante.fecha_expedicion.getMonth(),
+                    vm.estudiante.fecha_expedicion.getDate()
                 );
             }
         }
