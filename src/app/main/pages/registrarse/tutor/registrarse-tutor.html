@@ -16,9 +16,9 @@
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Nombres</label>
-                        <input ng-model="vm.tutor.nombres" required name="nombre" autofocus
+                        <input ng-model="vm.tutor.nombres" required name="nombres" autofocus
                                ng-model-options="{ updateOn: 'blur' }">
-                        <div ng-messages="registroForm.nombre.$error">
+                        <div ng-messages="registroForm.nombres.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
                         </div>
                     </md-input-container>
@@ -94,6 +94,16 @@
                         </div>
                     </mdp-date-picker>
                 </div>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Enlace del CvLAC</label>
+                        <input ng-model="vm.tutor.cvlac" required name="cvlac"
+                               ng-model-options="{ updateOn: 'blur' }">
+                        <div ng-messages="registroForm.cvlac.$error">
+                            <div ng-message="required">Este campo es obligatorio.</div>
+                        </div>
+                    </md-input-container>
+                </div>
                 <br>
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
@@ -123,9 +133,9 @@
                         <input ng-model="vm.tutor.email_personal" type="email" placeholder="ejemplo@ejemplo.com"
                                ng-pattern="/^.+@.+\..+$/" required
                                name="email" ng-model-options="{ updateOn: 'blur' }">
-                        <div ng-messages="registroForm.email.$error" role="alert" multiple>
+                        <div ng-messages="registroForm.email_personal.$error" role="alert" multiple>
                             <div ng-message="required">
-                                <span>Este campo es requrido</span>
+                                <span>Este campo es requerido</span>
                             </div>
                             <div ng-message="pattern">
                                 <span>Ingresa una dirección de email valida</span>
@@ -143,7 +153,7 @@
                                    ng-pattern="/^.+@.+\..+$/" required ng-model-options="{ updateOn: 'blur' }">
                             <div ng-messages="registroForm.email.$error" role="alert" multiple>
                                 <div ng-message="required">
-                                    <span>Este campo es requrido</span>
+                                    <span>Este campo es requerido</span>
                                 </div>
                                 <div ng-message="pattern">
                                     <span>Ingresa una dirección de email válida</span>
@@ -154,9 +164,9 @@
                             <input type="password" name="password" ng-model="vm.tutor.usuario.pass"
                                    ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($‌​)$-$_]{8,15}$/"
                                    placeholder="Contrase&ntilde;a" ng-model-options="{ updateOn: 'blur' }" required>
-                            <div ng-messages="registroForm.$pristine && registroForm.password.$error" role="alert">
-                                <div ng-message="required" class="message"><span>Este campo es obligatorio.</span></div>
-                                <div ng-message="pattern" class="message"><span>Este campo debe tener como minimo 8 carácteres, una letra mayuscula y un carácter especial</span></div>
+                            <div ng-messages="registroForm.$pristine && registroForm.pass.$error" role="alert">
+                                <div ng-message="required"><span>Este campo es obligatorio.</span></div>
+                                <div ng-message="pattern"><span>Este campo debe tener como minimo 8 carácteres, una letra mayuscula y un carácter especial</span>
                                 </div>
                             </div>
                         </md-input-container>

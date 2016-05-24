@@ -37,7 +37,7 @@
 
         msNavigationServiceProvider.saveItem('tutor.gestionar_tutor.consultar', {
             title: 'Consultar tutor',
-            state: '',
+            state: 'app.consultar-tutor',
             hidden: function(){
                 return authProvider.checkUser(['TUTOR']);
             }
