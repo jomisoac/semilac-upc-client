@@ -175,10 +175,19 @@
                                 </div>
                             </md-input-container>
                             <md-input-container class="md-block" flex-gt-sm>
-                                <input type="password" name="password" ng-model="vm.estudiante.usuario.pass" placeholder="Contrase&ntilde;a" required>
+                                <input type="password" name="password"
+                                       ng-model="vm.estudiante.usuario.pass"
+                                       placeholder="Contrase&ntilde;a"
+                                       ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($‌​)$-$_]{8,15}$/"
+                                       required>
                                 <div ng-messages="!registroForm.$pristine && registroForm.password.$error" role="alert">
                                     <div ng-message="required">
                                         <span>Este campo es requerido</span>
+                                    </div>
+                                    <div ng-message="pattern" class="message">
+                                        <span>
+                                            Este campo debe tener como minimo 8 carácteres, una letra mayuscula y un carácter especial
+                                        </span>
                                     </div>
                                 </div>
                             </md-input-container>

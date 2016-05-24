@@ -152,11 +152,11 @@
                         </md-input-container>
                         <md-input-container class="md-block" flex-gt-sm>
                             <input type="password" name="password" ng-model="vm.tutor.usuario.pass"
-                                   ng-pattern=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($‌​)$-$_]{8,15}$/
+                                   ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($‌​)$-$_]{8,15}$/"
                                    placeholder="Contrase&ntilde;a" ng-model-options="{ updateOn: 'blur' }" required>
                             <div ng-messages="registroForm.$pristine && registroForm.password.$error" role="alert">
                                 <div ng-message="required" class="message"><span>Este campo es obligatorio.</span></div>
-                                <div ng-message="pattern" class="message"><span>Este campo debe tener como minimo 8 carácteres, una letra mayuscula y un carácter especial</span>
+                                <div ng-message="pattern" class="message"><span>Este campo debe tener como minimo 8 carácteres, una letra mayuscula y un carácter especial</span></div>
                                 </div>
                             </div>
                         </md-input-container>
