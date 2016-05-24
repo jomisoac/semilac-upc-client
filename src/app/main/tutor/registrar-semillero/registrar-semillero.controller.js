@@ -6,7 +6,7 @@
             .controller('RegistrarSemilleroController', RegistrarSemilleroController);
 
     /** @ngInject */
-    function RegistrarSemilleroController(Restangular, $mdToast) {
+    function RegistrarSemilleroController(Restangular, $mdToast, authService) {
         //console.log("Entró a RegistrarSemilleroController");
         var vm = this;
         var semilleros = Restangular.all('/semilleros');
@@ -14,7 +14,6 @@
         var grupos = Restangular.all('/grupo').getList().$object;
         vm.registrar = registrar;
         vm.limpiar = limpiar;
-
 
         init();
         function init() {
@@ -31,7 +30,9 @@
         function cargarProgramas() {
             vm.programas = programas;
         }
+        
         function registrar() {
+            vm.semillero.tutor_id = authService.currentUser().datos.id;
             semilleros.post(vm.semillero).then(function (d) {
                 message(d);
                 vm.semillero = '';
