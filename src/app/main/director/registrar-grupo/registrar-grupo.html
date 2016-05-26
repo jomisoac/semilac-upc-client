@@ -45,6 +45,17 @@
                                     </div>
                                 </md-input-container>
                             </div>
+                            <div layout-gt-sm="row">
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Enlace del GrupLAC</label>
+                                    <input type="url" ng-model="vm.grupo.gruplac" name="gruplac">
+                                    <div ng-messages="registroForm.gruplac.$error" role="alert">
+                                        <div ng-message="url" class="message">
+                                            <span>Este campo debe ser una URL válida.</span>
+                                        </div>
+                                    </div>
+                                </md-input-container>
+                            </div>
                             <div flex layout="row" layout-align="center center">
                                 <md-button ng-click="vm.guardar()" type="submit" class="md-raised md-accent submit-button" aria-label="Aceptar" ng-disabled="registroForm.$invalid || registroForm.$pristine">Guardar
 

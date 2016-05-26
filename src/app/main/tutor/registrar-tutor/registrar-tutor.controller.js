@@ -29,6 +29,7 @@
             );
             vm.fechaExpedicionMax = hoy;
             vm.tutor = {};
+            cargarTutores();
         }
         function cambiarFechaExpedicionMin() {
             //La fecha de expedicion de la cedula es por lo menos 18 anios despues del nacimiento.
@@ -52,6 +53,7 @@
                 console.log(vm.fechaNacimientoMax);
             }
         }
+
         function limpiar() {
             activate();
         }
@@ -72,6 +74,11 @@
                 var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado.';
                 message(mensajeError);
             }
+        }
+
+
+        function cargarTutores() {
+           vm.tutores= tutores.getList().$object;
         }
 
         //Inicializar los datos.

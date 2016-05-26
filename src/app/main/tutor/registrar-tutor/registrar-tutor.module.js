@@ -21,5 +21,19 @@
                     onlyAccess: ['TUTOR', 'SUPER_ADMIN']
                 }
             });
+
+        $stateProvider
+            .state('app.consultar-tutor', {
+                url: '/consultar-tutor',
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/main/tutor/registrar-tutor/consulta-tutor.html',
+                        controller: 'RegistrarTutorController as vm'
+                    }
+                },
+                data: {
+                    onlyAccess: ['TUTOR', 'SUPER_ADMIN']
+                }
+            });
     }
 })();
