@@ -5,6 +5,7 @@
                 <div flex-sm="100" flex-gt-sm="90" flex-gt-md="90" flex-gt-lg="50" class="md-whiteframe-z2">
                     <md-content class="md-padding">
                         <center><span class="md-display-1">Registrar Semillero</span></center>
+                        <br>
                         <form name="registroForm">
                             <style>
                                 .layout-gt-sm-row {
@@ -12,7 +13,7 @@
                                 }
                             </style>
                             <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
+                                <md-input-container class="md-block" flex="95">
                                     <label>Programa</label>
                                     <md-select name="programa" ng-model="vm.semillero.programa_id" required >
                                         <md-optgroup label="Programas">
@@ -25,7 +26,7 @@
                                 </md-input-container>
                             </div>
                             <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
+                                <md-input-container class="md-block" flex="95">
                                     <label>Grupo de Investigación al que se adscribe:</label>
                                     <md-select name="grupo" ng-model="vm.semillero.grupo_id" required >
                                         <md-optgroup label="Grupos">
@@ -38,7 +39,7 @@
                                 </md-input-container>
                             </div>
                             <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
+                                <md-input-container class="md-block" flex="95">
                                     <label>Nombre del semillero</label>
                                     <input ng-model="vm.semillero.nombre" required name="nombre">
                                     <div ng-messages="registroForm.nombre.$error">
@@ -47,7 +48,7 @@
                                 </md-input-container>
                             </div>
                             <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
+                                <md-input-container class="md-block" flex="95">
                                     <label>Lineas de investigación</label>
                                     <input ng-model="vm.semillero.nombre_linea" required name="nombre_linea">
                                     <div ng-messages="registroForm.nombre_linea.$error">
@@ -56,7 +57,7 @@
                                 </md-input-container>
                             </div>
                             <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
+                                <md-input-container class="md-block" flex="95">
                                     <label>Objetivo linea</label>
                                     <input ng-model="vm.semillero.objetivo_linea" required name="objetivo_linea">
                                     <div ng-messages="registroForm.objetivo_linea.$error">
@@ -65,7 +66,7 @@
                                 </md-input-container>
                             </div>
                             <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
+                                <md-input-container class="md-block" flex="95">
                                     <label>Logros de la linea</label>
                                     <input ng-model="vm.semillero.logro_linea" required name="logro_linea">
                                     <div ng-messages="registroForm.logro_linea.$error">
@@ -74,7 +75,7 @@
                                 </md-input-container>
                             </div>
                             <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
+                                <md-input-container class="md-block" flex="95">
                                     <label>Efectos de la linea</label>
                                     <input ng-model="vm.semillero.efecto_linea" required name="efecto_linea">
                                     <div ng-messages="registroForm.efecto_linea.$error">
@@ -83,7 +84,7 @@
                                 </md-input-container>
                             </div>
                             <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
+                                <md-input-container class="md-block" flex="95">
                                     <label>Mision del semillero</label>
                                     <input ng-model="vm.semillero.mision" required name="mision">
                                     <div ng-messages="registroForm.mision.$error">
@@ -92,7 +93,7 @@
                                 </md-input-container>
                             </div>
                             <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
+                                <md-input-container class="md-block" flex="95">
                                     <label>Vision del semillero</label>
                                     <input ng-model="vm.semillero.vision" required name="vision">
                                     <div ng-messages="registroForm.vision.$error">
@@ -101,7 +102,7 @@
                                 </md-input-container>
                             </div>
                             <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
+                                <md-input-container class="md-block" flex="95">
                                     <label>Objetivo general del semillero</label>
                                     <input ng-model="vm.semillero.objetivo_general" required name="objetivo_general">
                                     <div ng-messages="registroForm.objetivo_general.$error">
@@ -109,23 +110,28 @@
                                     </div>
                                 </md-input-container>
                             </div>
+                            <label>Objetivos especificos del semillero</label>
                             <div layout-gt-sm="row">
-                                <label>Objetivos especificos del semillero</label>
-                                <md-input-container class="md-block" flex-gt-sm>
+                                
+                                <md-input-container class="md-block" flex="95">
                                     <label>1.</label>
                                     <input ng-model="vm.semillero.objetivo_uno" required name="objetivo_uno">
                                     <div ng-messages="registroForm.objetivo_uno.$error">
                                         <div ng-message="required">Este campo es obligatorio.</div>
                                     </div>
-                                </md-input-container><br>
-                                <md-input-container class="md-block" flex-gt-sm>
+                                </md-input-container>
+                            </div>
+                            <div layout-gt-sm="row">
+                                <md-input-container class="md-block" flex="95">
                                     <label>2.</label>
                                     <input ng-model="vm.semillero.objetivo_dos" required name="objetivo_dos">
                                     <div ng-messages="registroForm.objetivo_dos.$error">
                                         <div ng-message="required">Este campo es obligatorio.</div>
                                     </div>
-                                </md-input-container><br>
-                                <md-input-container class="md-block" flex-gt-sm>
+                                </md-input-container>
+                            </div>
+                            <div layout-gt-sm="row">
+                                <md-input-container class="md-block" flex="95">
                                     <label>3.</label>
                                     <input ng-model="vm.semillero.objetivo_tres" required name="objetivo_tres">
                                     <div ng-messages="registroForm.objetivo_tres.$error">
@@ -133,23 +139,27 @@
                                     </div>
                                 </md-input-container>
                             </div>
+                             <label>Estrategis de formación y consolidación</label><br>
                             <div layout-gt-sm="row">
-                                <label>Estrategis de formación y consolidación</label>
-                                <md-input-container class="md-block" flex-gt-sm>
+                                <md-input-container class="md-block" flex="95">
                                     <label>1.</label>
                                     <input ng-model="vm.semillero.estrategia_uno" required name="estrategia_uno">
                                     <div ng-messages="registroForm.estrategia_uno.$error">
                                         <div ng-message="required">Este campo es obligatorio.</div>
                                     </div>
-                                </md-input-container><br>
-                                <md-input-container class="md-block" flex-gt-sm>
+                                </md-input-container>
+                            </div>
+                            <div layout-gt-sm="row">
+                                <md-input-container class="md-block" flex="95">
                                     <label>2.</label>
                                     <input ng-model="vm.semillero.estrategia_dos" required name="estrategia_dos">
                                     <div ng-messages="registroForm.estrategia_dos.$error">
                                         <div ng-message="required">Este campo es obligatorio.</div>
                                     </div>
-                                </md-input-container><br>
-                                <md-input-container class="md-block" flex-gt-sm>
+                                </md-input-container>
+                            </div>
+                            <div layout-gt-sm="row">
+                                <md-input-container class="md-block" flex="95">
                                     <label>3.</label>
                                     <input ng-model="vm.semillero.estrategia_tres" required name="estrategia_tres">
                                     <div ng-messages="registroForm.estrategia_tres.$error">
@@ -157,7 +167,7 @@
                                     </div>
                                 </md-input-container>
                             </div>
-                           
+
                             <div flex layout="row" layout-align="center center">
                                 <md-button ng-click="vm.registrar()" type="submit" class="md-raised md-accent submit-button" aria-label="Aceptar" ng-disabled="registroForm.$invalid || registroForm.$pristine">Aceptar
                                 </md-button>
