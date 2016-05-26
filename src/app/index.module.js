@@ -25,7 +25,10 @@
             //director
             'app.director',
             // tuto
-            'app.tutor'
-
+            'app.tutor',
+            //estudiante
+            'app.estudiante',
+            //datatables
+            'datatables'
         ]);
 })();
