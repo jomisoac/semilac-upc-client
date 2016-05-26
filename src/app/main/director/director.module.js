@@ -10,27 +10,20 @@
     function config(msNavigationServiceProvider, authProvider) {
         // Navigation
         msNavigationServiceProvider.saveItem('director', {
-            title : 'DIRECTOR',
-            group : true,
+            title: 'DIRECTOR',
+            group: true,
             weight: 1,
-            hidden: function(){
+            hidden: function () {
                 return authProvider.checkUser(['DIRECTOR']);
             }
         });
 
-        msNavigationServiceProvider.saveItem('director.gestionar_requisito', {
-            title : 'Gestionar requisitos',
-            icon  : 'icon-tile-four',
-            weight: 1,
-            hidden: function(){
-                return authProvider.checkUser(['DIRECTOR']);
-            }
-        });
-
-        msNavigationServiceProvider.saveItem('director.gestionar_requisito.registrar', {
-            title: 'Registrar requisito',
+        msNavigationServiceProvider.saveItem('director.gestionar_requisitos', {
+            title: 'Gestionar requisitos',
             state: 'app.registrar_requisito',
-            hidden: function(){
+            icon: 'icon-tile-four',
+            weight: 1,
+            hidden: function () {
                 return authProvider.checkUser(['DIRECTOR']);
             }
         });
@@ -43,24 +36,17 @@
              'param1': 'page'
              },*/
             weight: 1,
-            hidden: function(){
+            hidden: function () {
                 return authProvider.checkUser(['DIRECTOR']);
             }
         });
 
-        msNavigationServiceProvider.saveItem('director.gestionar-grupo', {
-            title : 'Gestionar grupos',
-            icon  : 'icon-tile-four',
-            weight: 1,
-            hidden: function(){
-                return authProvider.checkUser(['DIRECTOR']);
-            }
-        });
-
-        msNavigationServiceProvider.saveItem('director.gestionar-grupo.registrar', {
-            title: 'Registrar grupo',
+        msNavigationServiceProvider.saveItem('director.registrar-grupo', {
+            title: 'Registrar grupo de investigación',
             state: 'app.registrar-grupo',
-            hidden: function(){
+            icon: 'icon-tile-four',
+            weight: 1,
+            hidden: function () {
                 return authProvider.checkUser(['DIRECTOR']);
             }
         });

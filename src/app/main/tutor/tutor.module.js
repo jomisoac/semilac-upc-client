@@ -3,7 +3,9 @@
 
     angular
         .module('app.tutor', [
-            'app.tutor.registrarTutor'
+            'app.tutor.registrarTutor',
+            'app.tutor.registrarSemillero',
+            'app.tutor.registrarInvitacion'
         ])
         .config(config);
 
@@ -36,7 +38,27 @@
 
         msNavigationServiceProvider.saveItem('tutor.gestionar_tutor.consultar', {
             title: 'Consultar tutor',
-            state: '',
+            state: 'app.consultar-tutor',
+            hidden: function(){
+                return authProvider.checkUser(['TUTOR']);
+            }
+        });
+        
+        msNavigationServiceProvider.saveItem('tutor.registrar-semillero', {
+            title: 'Semilleros de investigacion',
+            icon: 'icon-tile-four',
+            state: 'app.registrar_semillero',
+            weight: 1,
+            hidden: function(){
+                return authProvider.checkUser(['TUTOR']);
+            }
+        });
+
+        msNavigationServiceProvider.saveItem('tutor.registrar-invitacion', {
+            title: 'Invitaciones',
+            icon: 'icon-tile-four',
+            state: 'app.registrar_invitacion',
+            weight: 1,
             hidden: function(){
                 return authProvider.checkUser(['TUTOR']);
             }

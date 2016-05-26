@@ -16,9 +16,9 @@
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Nombres</label>
-                        <input ng-model="vm.tutor.nombres" required name="nombre" autofocus
+                        <input ng-model="vm.tutor.nombres" required name="nombres" autofocus
                                ng-model-options="{ updateOn: 'blur' }">
-                        <div ng-messages="registroForm.nombre.$error">
+                        <div ng-messages="registroForm.nombres.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
                         </div>
                     </md-input-container>
@@ -66,41 +66,55 @@
                     </md-input-container>
                 </div>
                 <div layout-gt-sm="row">
-                    <style>
-                        .md-datepicker-input-container {
-                            width: 85%;
-                        }
-
-                        .md-datepicker-input {
-                            width: 100%;
-                        }
-                    </style>
-                    <md-datepicker ng-model="vm.tutor.fecha_expedicion" ng-change="vm.cambiarFechaNacimientoMax()"
-                                   required name="fecha_expedicion"
-                                   md-placeholder="Fecha de expedición" md-min-date="vm.fechaExpedicionMin"
-                                   md-max-date="vm.fechaExpedicionMax"
-                                   flex-gt-sm>
-                        <div ng-messages="userForm.fecha_expedicion.$error">
-                            <div ng-message="required">Este campo es obligatorio.</div>
+                    <mdp-date-picker ng-change="vm.cambiarFechaNacimientoMax()"
+                                     ng-model="vm.tutor.fecha_expedicion"
+                                     mdp-min-date="vm.fechaExpedicionMin"
+                                     mdp-max-date="vm.fechaExpedicionMax"
+                                     mdp-open-on-click required
+                                     name="fecha_expedicion"
+                                     mdp-placeholder="Fecha de expedición"
+                                     mdp-format="DD/MM/YYYY"
+                                     flex-gt-sm>
+                        <div ng-messages="demoForm.fecha_expedicion.$error">
+                            <div ng-message="required">Este campo es requerido</div>
+                            <div ng-message="format">Formato invalido</div>
                         </div>
-                    </md-datepicker>
-                    <md-datepicker ng-model="vm.tutor.fecha_nacimiento" ng-change="vm.cambiarFechaExpedicionMin()"
-                                   required name="fecha_nacimiento"
-                                   md-placeholder="Fecha de nacimiento" md-max-date="vm.fechaNacimientoMax" flex-gt-sm>
-                        <div ng-messages="userForm.fecha_nacimiento.$error">
-                            <div ng-message="required">Este campo es obligatorio.</div>
+                    </mdp-date-picker>
+                    <mdp-date-picker ng-change="vm.cambiarFechaExpedicionMin()"
+                                     ng-model="vm.tutor.fecha_nacimiento"
+                                     mdp-max-date="vm.fechaNacimientoMax"
+                                     mdp-open-on-click required
+                                     name="fecha_nacimiento"
+                                     mdp-placeholder="Fecha de nacimiento"
+                                     mdp-format="DD/MM/YYYY"
+                                     flex-gt-sm>
+                        <div ng-messages="demoForm.fecha_nacimiento.$error">
+                            <div ng-message="required">Este campo es requerido</div>
+                            <div ng-message="format">Formato invalido</div>
                         </div>
-                    </md-datepicker>
+                    </mdp-date-picker>
+                </div>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Enlace del CvLAC</label>
+                        <input ng-model="vm.tutor.cvlac" required name="cvlac" type="url"
+                               ng-model-options="{ updateOn: 'blur' }">
+                        <div ng-messages="registroForm.cvlac.$error"  role="alert">
+                            <div ng-message="url" class="message">
+                                <span>Este campo debe ser una URL válida.</span>
+                            </div>
+                        </div>
+                    </md-input-container>
                 </div>
                 <br>
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Dirección de residencia</label>
-                        <input ng-model="vm.tutor.direccion" required name="direccion"
+                        <input ng-model="vm.tutor.direccion"  name="direccion"
                                ng-model-options="{ updateOn: 'blur' }">
-                        <div ng-messages="registroForm.direccion.$error">
+                       <!-- <div ng-messages="registroForm.direccion.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
-                        </div>
+                        </div>-->
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Celular</label>
@@ -111,22 +125,23 @@
                             <div ng-message="required">Este campo es obligatorio.</div>
                             <div ng-message="pattern">El numero de celular debe empezar por 3</div>
                             <div ng-message="minlength">El celular no contiene 10 digitos</div>
-                            <div ng-message="maxlength">El celular que desea registrar excede el límite de diez digitos  </div>
+                            <div ng-message="maxlength">El celular que desea registrar excede el límite de diez
+                                digitos
+                            </div>
                         </div>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Correo personal</label>
                         <input ng-model="vm.tutor.email_personal" type="email" placeholder="ejemplo@ejemplo.com"
-                               ng-pattern="/^.+@.+\..+$/" required
-                               name="email" ng-model-options="{ updateOn: 'blur' }">
-                        <div ng-messages="registroForm.email.$error" role="alert" multiple>
+                               ng-pattern="/^.+@.+\..+$/" name="email" ng-model-options="{ updateOn: 'blur' }">
+                        <!--<div ng-messages="registroForm.email_personal.$error" role="alert" multiple>
                             <div ng-message="required">
-                                <span>Este campo es requrido</span>
+                                <span>Este campo es requerido</span>
                             </div>
                             <div ng-message="pattern">
                                 <span>Ingresa una dirección de email valida</span>
                             </div>
-                        </div>
+                        </div>-->
                     </md-input-container>
                 </div>
                 <fieldset class="standard">
@@ -134,11 +149,12 @@
                     <div layout-gt-sm="row">
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>Correo institucional</label>
-                            <input type="email" name="email"  ng-model="vm.tutor.usuario.email"placeholder="ejemplo@unicesar.edu.co"
+                            <input type="email" name="email" ng-model="vm.tutor.usuario.email"
+                                   placeholder="ejemplo@unicesar.edu.co"
                                    ng-pattern="/^.+@.+\..+$/" required ng-model-options="{ updateOn: 'blur' }">
                             <div ng-messages="registroForm.email.$error" role="alert" multiple>
                                 <div ng-message="required">
-                                    <span>Este campo es requrido</span>
+                                    <span>Este campo es requerido</span>
                                 </div>
                                 <div ng-message="pattern">
                                     <span>Ingresa una dirección de email válida</span>
@@ -147,12 +163,12 @@
                         </md-input-container>
                         <md-input-container class="md-block" flex-gt-sm>
                             <input type="password" name="password" ng-model="vm.tutor.usuario.pass"
-                                   ng-pattern=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($‌​)$-$_]{8,15}$/
+                                   ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($‌​)$-$_]{8,15}$/"
                                    placeholder="Contrase&ntilde;a" ng-model-options="{ updateOn: 'blur' }" required>
-                            <div ng-messages="registroForm.password.$error" role="alert">
-                                    <div ng-message="required" class="my-message"><span>Este campo es obligatorio.</span></div>
-                                    <div ng-message="pattern" class="my-message"><span>Este campo debe tener como minimo 8 carácteres, una letra mayuscula y un carácter especial</span></div>
-
+                            <div ng-messages="registroForm.$pristine && registroForm.pass.$error" role="alert">
+                                <div ng-message="required"><span>Este campo es obligatorio.</span></div>
+                                <div ng-message="pattern"><span>Este campo debe tener como minimo 8 carácteres, una letra mayuscula y un carácter especial</span>
+                                </div>
                             </div>
                         </md-input-container>
                     </div>

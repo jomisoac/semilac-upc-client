@@ -21,12 +21,16 @@
             vm.grupo.usuario_id = JSON.parse(sessionStorage.usuario).usuario_id;
             grupo.post(vm.grupo).then(
                 function (d) {
-                    message(d);
-                    vm.grupo = {};
+                    if (d.estado == 'true') {
+                        message(d.mensaje)
+                        vm.grupo = {};
+                    } else {
+                        message(d.mensaje)
+                    }
                 },
                 function (error) {
                     var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado.';
-                    message(mensajeError);
+
                 }
             );
         }
