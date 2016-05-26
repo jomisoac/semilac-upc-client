@@ -97,10 +97,12 @@
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Enlace del CvLAC</label>
-                        <input ng-model="vm.tutor.cvlac" required name="cvlac"
+                        <input ng-model="vm.tutor.cvlac" required name="cvlac" type="url"
                                ng-model-options="{ updateOn: 'blur' }">
-                        <div ng-messages="registroForm.cvlac.$error">
-                            <div ng-message="required">Este campo es obligatorio.</div>
+                        <div ng-messages="registroForm.cvlac.$error"  role="alert">
+                            <div ng-message="url" class="message">
+                                <span>Este campo debe ser una URL válida.</span>
+                            </div>
                         </div>
                     </md-input-container>
                 </div>
@@ -108,11 +110,11 @@
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Dirección de residencia</label>
-                        <input ng-model="vm.tutor.direccion" required name="direccion"
+                        <input ng-model="vm.tutor.direccion"  name="direccion"
                                ng-model-options="{ updateOn: 'blur' }">
-                        <div ng-messages="registroForm.direccion.$error">
+                       <!-- <div ng-messages="registroForm.direccion.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
-                        </div>
+                        </div>-->
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Celular</label>
@@ -131,16 +133,15 @@
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Correo personal</label>
                         <input ng-model="vm.tutor.email_personal" type="email" placeholder="ejemplo@ejemplo.com"
-                               ng-pattern="/^.+@.+\..+$/" required
-                               name="email" ng-model-options="{ updateOn: 'blur' }">
-                        <div ng-messages="registroForm.email_personal.$error" role="alert" multiple>
+                               ng-pattern="/^.+@.+\..+$/" name="email" ng-model-options="{ updateOn: 'blur' }">
+                        <!--<div ng-messages="registroForm.email_personal.$error" role="alert" multiple>
                             <div ng-message="required">
                                 <span>Este campo es requerido</span>
                             </div>
                             <div ng-message="pattern">
                                 <span>Ingresa una dirección de email valida</span>
                             </div>
-                        </div>
+                        </div>-->
                     </md-input-container>
                 </div>
                 <fieldset class="standard">
