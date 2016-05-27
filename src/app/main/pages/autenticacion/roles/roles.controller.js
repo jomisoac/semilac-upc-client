@@ -44,7 +44,7 @@
                     $state.go('app.registrar_requisito');
                 } else if (rol[i].nombre == 'TUTOR') {
                     authService.storeSelectRol('TUTOR');
-                    $state.go('app.registrar_tutor');
+                    $state.go('app.registrar_semillero');
                 } else if (rol[i].nombre == 'LIDER') {
                     authService.storeSelectRol('LIDER');
                     // $state.go('app.centrales_turnos');
@@ -66,6 +66,7 @@
                 $state.go('app.registrar_requisito');
             } else if (rol == 'TUTOR') {
                 authService.storeSelectRol(rol);
+                $state.go('app.registrar_semillero');
                 
             } else if (rol == 'LIDER') {
                 authService.storeSelectRol(rol);
