@@ -7,7 +7,7 @@
 
 
     /** @ngInject */
-    function AbrirConvocatoriaController(Restangular, $mdToast, $state, $stateParams, $timeout) {
+    function AbrirConvocatoriaController(Restangular, $mdToast, $state, $stateParams, $timeout, authService) {
         var vm = this;
         vm.convocatoria = {};
         var convocatoria = Restangular.all('/convocatorias');
@@ -17,6 +17,7 @@
         function guardar() {
             vm.convocatoria.usuario_id = JSON.parse(sessionStorage.usuario).id;
             console.log(vm.convocatoria.acta);
+            vm.convocatoria.usuario_id = authService.currentUser().usuario_id
             convocatoria.post(vm.convocatoria)
                 .then(
                     function (d) {

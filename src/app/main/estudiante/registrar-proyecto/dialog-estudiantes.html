@@ -1,0 +1,34 @@
+<md-dialog aria-label="Estudiantes disponibles" ng-cloak>
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Estudiantes disponibles</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="vm.cancel()">
+                    <md-icon md-svg-src="assets/angular-material-assets/img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <md-radio-group ng-model="vm.selectedIndex">
+                    <div ng-repeat='estudiante in vm.estudiantes | filter: filtro' class="row">
+                        <div flex layout='row' layout-padding layout-align="start center">
+                            <md-radio-button flex ng-value="estudiante.id" class="md-primary">
+                                {{vm.getNombreCompleto(estudiante)}}
+                            </md-radio-button>
+                        </div>
+                    </div>
+                </md-radio-group>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-click="vm.cancel()">
+                Cancelar
+            </md-button>
+            <md-button ng-click="vm.aceptar()" style="margin-right:20px;">
+                Aceptar
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

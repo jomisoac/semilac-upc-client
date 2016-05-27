@@ -21,12 +21,5 @@
                     onlyAccess: ['ESTUDIANTE']
                 }
             });
-
-        $translateProvider.translations('en', {
-            id: 'id',
-            firstName: 'firstName',
-            lastName: 'lastName'
-        });
-        $translateProvider.preferredLanguage('en');
     }
 })();

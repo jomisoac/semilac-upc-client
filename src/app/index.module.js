@@ -29,11 +29,13 @@
             'app.superadmin',
             //director
             'app.director',
-            // tuto
+             // tuto
             'app.tutor',
             //estudiante
             'app.estudiante',
             //datatables
-            'datatables'
+            'datatables',
+            'datatables.bootstrap',
+            'datatables.buttons',
         ]);
 })();

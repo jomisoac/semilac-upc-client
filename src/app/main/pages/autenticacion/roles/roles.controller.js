@@ -50,7 +50,7 @@
                     // $state.go('app.centrales_turnos');
                 } else if (rol[i].nombre == 'ESTUDIANTE') {
                     authService.storeSelectRol('ESTUDIANTE');
-                    $state.go('app.enviar_solicitud_semillero');
+                    $state.go('app.registrar_proyecto');
                 }
             }
         }
