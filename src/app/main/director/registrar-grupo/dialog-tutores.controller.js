@@ -30,7 +30,7 @@ function DialogTutoresController($mdDialog, Restangular) {
     }
 
     function cargarTutores() {
-        vm.tutores = tutores.getList().$object;
+        vm.tutores = tutores.getList().$object;       
     }
 
     function getNombreCompleto(persona) {

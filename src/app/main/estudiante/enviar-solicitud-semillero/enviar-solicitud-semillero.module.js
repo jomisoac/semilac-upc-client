@@ -2,11 +2,11 @@
     'use strict';
 
     angular
-        .module('app.estudiante.enviarSolicitudSemillero', ['pascalprecht.translate'])
+        .module('app.estudiante.enviarSolicitudSemillero', [])
         .config(config);
 
     /** @ngInject */
-    function config($stateProvider,$translateProvider) {
+    function config($stateProvider) {
         // State
         $stateProvider
             .state('app.enviar_solicitud_semillero', {

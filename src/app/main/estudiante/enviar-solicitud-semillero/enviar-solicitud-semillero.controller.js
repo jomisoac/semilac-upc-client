@@ -7,10 +7,13 @@
 
 
     /** @ngInject */
-    function EnviarSolicitudSemillero(Restangular, $mdToast, DTOptionsBuilder, DTColumnBuilder) {
+    function EnviarSolicitudSemillero(Restangular, $mdToast, DTOptionsBuilder,authService) {
         var vm = this;
-        vm.solicitud = {};
-        var solicitud = Restangular.all('/solicitud-semilleros');
+        vm.semillero = {};
+        vm.semilleros = [];
+        vm.tutores = [];
+
+        var solicitudes = Restangular.all('/solicitud-semilleros');
         vm.dtOptions = DTOptionsBuilder
             .fromSource()
             .withLanguage({
@@ -37,13 +40,58 @@
                 }
             })
             // Add Bootstrap compatibility
-            .withBootstrap();
+            .withBootstrap();          
+
+        
 
         vm.guardar = guardar;
+        vm.buscarTutor = buscarTutor;
+        vm.enviar=enviar;
 
         function guardar() {
 
         }
+        
+        function enviar(semillero) {
+            var solicitud = {
+                'estudiante_id': authService.currentUser().datos.id,
+                'semillero_id': semillero.id
+            };
+
+            solicitudes.post(solicitud).then(
+                function (d) {
+                        message(d.mensaje);
+                        solicitud = {};
+                },
+                function (error) {
+                    var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado.';
+
+                }
+            );
+        }
+
+        cargarSemilleros();
+        cargarTutores();
+
+
+        function cargarSemilleros() {
+            vm.semilleros = Restangular.all('/semilleros').getList().$object;           
+        }
+
+        function cargarTutores() {
+            vm.tutores = Restangular.all('/tutores').getList().$object;
+        }
+
+        function buscarTutor(tutor_id){
+            var nombre = '';
+            vm.tutores.forEach(function (item) {
+               if(item.id == tutor_id){
+                   nombre = item.nombres;
+               }
+            });
+            return nombre;
+        }
+
 
         function message(body) {
             $mdToast.show({

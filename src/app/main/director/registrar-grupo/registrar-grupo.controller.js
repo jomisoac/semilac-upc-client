@@ -10,7 +10,8 @@
     function RegistrarGrupoController(Restangular, $mdToast, $mdDialog, $mdMedia) {
         var vm = this;
         vm.grupo = {};
-        vm.status = '  ';
+        vm.status = '';
+        vm.estado = "enviar";
         //vm.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
         var grupo = Restangular.all('/grupo');
 
