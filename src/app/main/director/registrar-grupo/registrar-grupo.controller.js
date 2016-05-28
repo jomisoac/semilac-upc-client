@@ -18,6 +18,8 @@
 
         function guardar(){
             vm.grupo.usuario_id = JSON.parse(sessionStorage.usuario).id;
+            console.log( vm.grupo.usuario_id);
+            console.log(vm.grupo);
             grupo.post(vm.grupo).then(function (d) {
                 message(d);
                 vm.grupo = '';
@@ -28,7 +30,7 @@
         }
 
         function limpiar() {
-            vm.director = '';
+            vm.grupo = '';
         }
         function message(body) {
             $mdToast.show({

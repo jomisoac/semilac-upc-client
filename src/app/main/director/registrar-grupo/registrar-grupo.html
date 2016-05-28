@@ -32,8 +32,13 @@
                                 </md-input-container>
                                 <md-input-container class="md-block" flex-gt-sm>
                                     <label>Clasificación</label>
-                                    <input ng-model="vm.grupo.clasificacion"  required name="clasificacion">
-                                    <div ng-messages="registroForm.clasificacion.$error">
+                                    <md-select name="myModel" ng-model="vm.grupo.clasificacion" name="clasificacion" required >
+                                        <md-option value="A">A</md-option>
+                                        <md-option value="B">B</md-option>
+                                        <md-option value="C">C</md-option>
+                                        <md-option value="D">D</md-option>
+                                    </md-select>
+                                    <div ng-messages="registroForm.lider.$error">
                                         <div ng-message="required">Este campo es obligatorio.</div>
                                     </div>
                                 </md-input-container>
