@@ -16,6 +16,7 @@
         vm.iniciarSesion = iniciarSesion;
         vm.registrarTutor = registrarTutor;
         vm.registrarEstudiante = registrarEstudiante;
+        vm.consultarRequisitos=consultarRequisitos;
 
         if (authService.currentUser())
             redirectRoles();
@@ -51,6 +52,11 @@
         function registrarEstudiante() {
             $state.go('app.registrarse-estudiante');
         }
+
+        function consultarRequisitos() {
+            $state.go('app.consultar-requisitos');
+        }
+
 
     }
 })();
