@@ -31,14 +31,15 @@
                                             <thead>
                                             <tr>
                                                 <th>Programa</th>
-                                                <th>Apellidos y Nombres</th>
+                                                <th>Apellidos  y  Nombres</th>
                                                 <th>Invitar</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <tr ng-repeat="invitacion in vm.invitaciones">
                                                 <td class="name ng-binding">{{invitacion.programa}}</td>
-                                                <td class="name ng-binding">{{invitacion.nombres $$ invitacion.apellidos}}</td>
+                                                <td class="name ng-binding">{{invitacion.nombres}}</td>
+                                                <td class="name ng-binding">{{invitacion.apellidos}}</td>
                                                 <td class="position ng-binding">
                                                        <md-button ng-click="vm.registrar()" type="submit" class="md-raised md-accent submit-button" aria-label="Enviar"
                                                                   ng-disabled="registroForm.$invalid || registroForm.$pristine">Enviar

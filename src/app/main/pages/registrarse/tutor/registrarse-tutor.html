@@ -10,7 +10,7 @@
             <form name="registroForm">
                 <style>
                     .layout-gt-sm-row {
-                        margin: -5px;
+                        margin: -15px 0px -30px 0px !important;
                     }
                 </style>
                 <div layout-gt-sm="row">
@@ -134,14 +134,6 @@
                         <label>Correo personal</label>
                         <input ng-model="vm.tutor.email_personal" type="email" placeholder="ejemplo@ejemplo.com"
                                ng-pattern="/^.+@.+\..+$/" name="email" ng-model-options="{ updateOn: 'blur' }">
-                        <!--<div ng-messages="registroForm.email_personal.$error" role="alert" multiple>
-                            <div ng-message="required">
-                                <span>Este campo es requerido</span>
-                            </div>
-                            <div ng-message="pattern">
-                                <span>Ingresa una dirección de email valida</span>
-                            </div>
-                        </div>-->
                     </md-input-container>
                 </div>
                 <fieldset class="standard">
@@ -164,7 +156,7 @@
                         <md-input-container class="md-block" flex-gt-sm>
                             <input type="password" name="password" ng-model="vm.tutor.usuario.pass"
                                    ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($‌​)$-$_]{8,15}$/"
-                                   placeholder="Contrase&ntilde;a" ng-model-options="{ updateOn: 'blur' }" required>
+                                   placeholder="Contrase&ntilde;a" required>
                             <div ng-messages="registroForm.$pristine && registroForm.pass.$error" role="alert">
                                 <div ng-message="required"><span>Este campo es obligatorio.</span></div>
                                 <div ng-message="pattern"><span>Este campo debe tener como minimo 8 carácteres, una letra mayuscula y un carácter especial</span>
