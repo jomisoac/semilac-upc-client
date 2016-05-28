@@ -14,6 +14,7 @@
         var grupos = Restangular.all('/grupo').getList().$object;
         vm.registrar = registrar;
         vm.limpiar = limpiar;
+        
 
         init();
         function init() {

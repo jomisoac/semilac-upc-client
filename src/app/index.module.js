@@ -25,6 +25,8 @@
             //autenticacion
             'app.pages.autenticacion',
             'app.pages.registrarse',
+            //consultas publicas
+            'app.pages.consultas-publicas',
             //superadmin
             'app.superadmin',
             //director
