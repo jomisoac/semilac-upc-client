@@ -54,14 +54,14 @@
             }
         });
 
-        // msNavigationServiceProvider.saveItem('tutor.registrar-invitacion', {
-        //     title: 'Invitaciones',
-        //     icon: 'icon-tile-four',
-        //     state: 'app.registrar_invitacion',
-        //     weight: 1,
-        //     hidden: function(){
-        //         return authProvider.checkUser(['TUTOR']);
-        //     }
-        // });
+         msNavigationServiceProvider.saveItem('tutor.registrar-invitacion', {
+             title: 'Invitaciones',
+             icon: 'icon-tile-four',
+             state: 'app.registrar_invitacion',
+             weight: 1,
+             hidden: function(){
+                 return authProvider.checkUser(['TUTOR']);
+          }
+         });
     }
 })();
