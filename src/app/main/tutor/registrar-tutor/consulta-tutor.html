@@ -1,0 +1,40 @@
+<md-input-container class="md-block">
+    <div class="simple-table-container md-whiteframe-4dp">
+        <div class="table-title">Lista de Tutores</div>
+        <div class="ms-responsive-table-wrapper">
+            <table class="simple" ms-responsive-table="">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Celular</th>
+                    <th>Correo Institucional</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="tutor in vm.tutores">
+                    <td class="name ng-binding">{{tutor.id}}</td>
+                    <td class="name ng-binding">{{tutor.nombres}}</td>
+                    <td class="name ng-binding">{{tutor.apellidos}}</td>
+                    <td class="name ng-binding">{{tutor.celular}}</td>
+                    <td class="name ng-binding">{{tutor.email}}</td>
+                    <td class="position ng-binding">
+                        <md-button class="md-fab md-mini" aria-label="Eat cake"
+                                   ng-click="vm.modalModificar($event, tutor);">
+                            <md-icon md-svg-src="assets/icons/border-color.svg"></md-icon>
+                        </md-button>
+                    </td>
+                    <td class="position ng-binding">
+                        <md-button class="md-fab md-mini" aria-label="Eat cake"
+                                   style="background-color:#FE2E2E;"
+                                   ng-click="vm.elminar($event, tutor.id);">
+                            <md-icon md-svg-src="assets/icons/close.svg"></md-icon>
+                        </md-button>
+                    </td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</md-input-container>

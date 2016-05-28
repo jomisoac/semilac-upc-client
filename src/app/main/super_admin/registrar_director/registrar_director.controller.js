@@ -6,9 +6,8 @@
         .module('app.superadmin.registrarDirector')
         .controller('registrarDirectorController', registrarDirectorController);   
            
-    function registrarDirectorController(Restangular, $mdToast) {
+    function registrarDirectorController(Restangular, $mdToast, $timeout) {
         var vm = this;
-        //var vm = this;
         vm.director = {};
         var director = Restangular.all('/director');
         
@@ -20,7 +19,7 @@
                 if(d.ok != 'false'){
                     message(d);
                     limpiar(form);
-                    $timeout(atras, 4000)
+                    //$timeout(atras, 4000)
                 }else{
                     message(d.mensaje);
                 }
@@ -31,7 +30,8 @@
         };
 
         function limpiar(form) {
-            vm.director = '';
+            vm.director.usuario = {};
+            vm.director = {};
             if(form){
                 form.$setPristine();
                 form.$setUntouched();

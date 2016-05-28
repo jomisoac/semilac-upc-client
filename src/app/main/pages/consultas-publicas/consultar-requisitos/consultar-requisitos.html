@@ -1,0 +1,40 @@
+<br>
+<center>
+    <div layout="column" ng-cloak class="md-inline-form" style="width:80%;">
+        <md-content layout-padding>
+            <div class="borde">
+                <md-button ng-click="vm.atras()" style="float: left" class="md-icon-button md-primary"
+                           aria-label="Settings">
+                    <md-icon md-svg-icon="assets/angular-material-assets/img/icons/ic_arrow_back_24px.svg"></md-icon>
+                </md-button>
+                <span class="md-display-1">Registrar Requisitos</span>
+                <br>
+                <form name="registroForm" novalidate>
+                    <md-input-container class="md-block">
+                        <div class="simple-table-container md-whiteframe-4dp">
+                            <div class="table-title">Lista de requisitos</div>
+                            <div class="ms-responsive-table-wrapper">
+                                <table class="simple" ms-responsive-table="">
+                                    <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Requisito</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="requisito in vm.requisitos">
+                                        <td width="5%" class="name ng-binding">{{ $index+1 }}</td>
+                                        <td width="95%" class="name ng-binding">{{requisito.nombre_requisito}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </md-input-container>
+                </form>
+            </div>
+        </md-content>
+    </div>
+</center>
+
+
