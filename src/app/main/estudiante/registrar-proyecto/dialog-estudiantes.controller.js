@@ -1,31 +1,69 @@
-function DialogEstudiantesController($mdDialog, Restangular) {
+function DialogEstudiantesController($mdDialog, Restangular, authService, DTOptionsBuilder) {
+    // variables
     var vm = this;
     var estudiantes;
-    vm.aceptar = aceptar;
-    vm.answer = function (answer) {
-        answer = vm.selectedUser();
-        $mdDialog.hide(answer);
-    };
-    vm.cancel = function () {
-        $mdDialog.cancel();
-    };
-    vm.getNombreCompleto = getNombreCompleto;
-    vm.hide = function () {
-        $mdDialog.hide();
-    };
     vm.selectedIndex = 1;
-    vm.selectedUser = selectedUser;
     vm.estudiantes = [];
 
-    activate();
+    // funciones
+    vm.aceptar = aceptar;
+    vm.answer = answer;
+    vm.cancel = cancel;
+    vm.hide = hide;
+    vm.getNombreCompleto = getNombreCompleto;
+    vm.getNombrePrograma = getNombrePrograma;
+    vm.selectedUser = selectedUser;
+
+    // config table
+    vm.dtOptions = DTOptionsBuilder
+        .fromSource()
+        .withLanguage({
+            "sEmptyTable": "No hay datos disponibles en la tabla",
+            "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ registros",
+            "sInfoEmpty": "Mostrando 0 a 0 de 0 registros",
+            "sInfoFiltered": "(filtrado desde _MAX_ registros)",
+            "sInfoPostFix": "",
+            "sInfoThousands": ",",
+            "sLengthMenu": "Mostrar _MENU_ registros",
+            "sLoadingRecords": "Cargando...",
+            "sProcessing": "Procesando...",
+            "sSearch": "Buscar:",
+            "sZeroRecords": "No se encontraron registros que coincidar con la busqueda",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "oAria": {
+                "sSortAscending": ": activar para ordenar las columnas ascendente",
+                "sSortDescending": ": activar para ordenar las columnas descendente"
+            }
+        })
+        // Add Bootstrap compatibility
+        .withBootstrap();
+
+    function answer(answer) {
+        // answer = vm.selectedUser();
+        $mdDialog.hide(answer);
+    }
+
+    function cancel() {
+        $mdDialog.cancel();
+    }
+
+    function hide() {
+        $mdDialog.hide();
+    }
 
     function aceptar() {
         var answer = vm.selectedUser();
         $mdDialog.hide(answer);
     }
-    
+
+    activate();
     function activate() {
-        estudiantes = Restangular.all('/estudiantes/disponibles');
+        estudiantes = Restangular.all('/estudiantes/disponibles/' + authService.currentUser().datos.id);
         cargarEstudiantes();
     }
 
@@ -36,8 +74,12 @@ function DialogEstudiantesController($mdDialog, Restangular) {
     function getNombreCompleto(persona) {
         return persona.nombres + " " + persona.apellidos;
     }
-    
-    function selectedUser() {
-        return vm.estudiantes[vm.selectedIndex - 1];
+
+    function getNombrePrograma(persona) {
+
+        return persona.programa.nombre;
+    }
+    function selectedUser(persona) {
+        $mdDialog.hide(persona);
     }
 }
