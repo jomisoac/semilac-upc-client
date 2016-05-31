@@ -2,8 +2,8 @@
     'use strict';
 
     angular
-        .module('app.tutor.registrarLineaInvestigacion')
-        .controller('RegistrarLineaInvestigacionController', RegistrarLineaInvestigacionController);
+            .module('app.tutor.registrarLineaInvestigacion')
+            .controller('RegistrarLineaInvestigacionController', RegistrarLineaInvestigacionController);
 
     /** @ngInject */
     function RegistrarLineaInvestigacionController(Restangular, $mdToast, authService) {
@@ -16,7 +16,7 @@
 
         init();
         function init() {
-            vm.linea= {};
+            vm.linea = {};
             vm.lineas = [];
             cargarGrupos();
         }
