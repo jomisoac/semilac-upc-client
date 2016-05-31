@@ -7,11 +7,12 @@
 
 
     /** @ngInject */
-    function EnviarSolicitudSemillero(Restangular, $mdToast, DTOptionsBuilder,authService) {
+    function EnviarSolicitudSemillero(Restangular, $mdToast, DTOptionsBuilder, authService) {
         var vm = this;
         vm.semillero = {};
         vm.semilleros = [];
         vm.tutores = [];
+
 
         var solicitudes = Restangular.all('/solicitud-semilleros');
         vm.dtOptions = DTOptionsBuilder
@@ -40,34 +41,38 @@
                 }
             })
             // Add Bootstrap compatibility
-            .withBootstrap();          
+            .withBootstrap();
 
-        
 
-        vm.guardar = guardar;
+
         vm.buscarTutor = buscarTutor;
-        vm.enviar=enviar;
-
-        function guardar() {
-
-        }
+        vm.enviar = enviar;
         
-        function enviar(semillero) {
+        
+        
+
+        function enviar(semillero,nombre) {
+
+          console.log('hola');
+            
+            
+
             var solicitud = {
                 'estudiante_id': authService.currentUser().datos.id,
                 'semillero_id': semillero.id
             };
 
-            solicitudes.post(solicitud).then(
+
+            /*solicitudes.post(solicitud).then(
                 function (d) {
-                        message(d.mensaje);
-                        solicitud = {};
+                    message(d.mensaje);
+                    solicitud = {};                    
                 },
                 function (error) {
                     var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado.';
 
                 }
-            );
+            );*/
         }
 
         cargarSemilleros();
@@ -75,19 +80,19 @@
 
 
         function cargarSemilleros() {
-            vm.semilleros = Restangular.all('/semilleros').getList().$object;           
+            vm.semilleros = Restangular.all('/semilleros').getList().$object;
         }
 
         function cargarTutores() {
             vm.tutores = Restangular.all('/tutores').getList().$object;
         }
 
-        function buscarTutor(tutor_id){
+        function buscarTutor(tutor_id) {
             var nombre = '';
             vm.tutores.forEach(function (item) {
-               if(item.id == tutor_id){
-                   nombre = item.nombres;
-               }
+                if (item.id == tutor_id) {
+                    nombre = item.nombres;
+                }
             });
             return nombre;
         }
