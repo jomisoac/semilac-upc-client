@@ -9,26 +9,26 @@
     function RegistrarLineaInvestigacionController(Restangular, $mdToast, authService) {
         //console.log("RegistrarInvitacionController");
         var vm = this;
-        var invitaciones = Restangular.all('/invitaciones');
-        vm.registrar = registrar;
+        var lineas = Restangular.all('/lineas');
+        var grupos = Restangular.all('/grupo').getList().$object;
+        vm.guardar = guardar;
         vm.limpiar = limpiar;
 
         init();
         function init() {
-            vm.invitacion= {};
-            vm.invitaciones = [];
-            semilleros();
+            vm.linea= {};
+            vm.lineas = [];
+            cargarGrupos();
         }
 
-        function  semilleros() {
-            vm.semilleros = semilleros;
+        function  cargarGrupos() {
+            vm.grupos = grupos;
         }
 
-        function registrar() {
-            vm.invitaciones.tutor_id = authService.currentUser().datos.id;
-            invitaciones.post(vm.invitacion).then(function (d) {
+        function guardar() {
+            lineas.post(vm.linea).then(function (d) {
                 message(d);
-                vm.invitacion = '';
+                vm.linea = '';
             }), function (error) {
                 var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado.';
                 message(mensajeError);
