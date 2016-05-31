@@ -4,7 +4,8 @@
     angular
         .module('app.tutor', [
             'app.tutor.registrarSemillero',
-            'app.tutor.registrarInvitacion'
+            'app.tutor.registrarInvitacion',
+            'app.tutor.registrarLineaInvestigacion'
         ])
         .config(config);
 
@@ -33,6 +34,16 @@
              title: 'Invitaciones',
              icon: 'icon-tile-four',
              state: 'app.registrar_invitacion',
+             weight: 1,
+             hidden: function(){
+                 return authProvider.checkUser(['TUTOR']);
+          }
+         });
+         
+          msNavigationServiceProvider.saveItem('tutor.linea-investigacion', {
+             title: 'Lineas de investigación',
+             icon: 'icon-tile-four',
+             state: 'app.registrar_linea_investigacion',
              weight: 1,
              hidden: function(){
                  return authProvider.checkUser(['TUTOR']);
