@@ -9,28 +9,27 @@
                             <div layout-gt-sm="row">
                                 <md-input-container class="md-block" flex-gt-sm>
                                     <label>Nombre del proyecto</label>
-                                    <input ng-model="vm.proyecto.nombre" required name="nombre">
+                                    <input ng-model="vm.proyectoN.nombre" required name="nombre">
                                     <div ng-messages="registroForm.nombre.$error">
                                         <div ng-message="required">Este campo es obligatorio.</div>
                                     </div>
                                 </md-input-container>
                             </div>
                             <div layout-gt-sm="row">
-                                <md-input-container class="md-icon-float md-block" flex="50">
+                                <md-input-container class="md-icon-float md-block" flex="50" ng-click="vm.showCompaneros($event)">
                                     <label>Elegir un compañero</label>
                                     <md-icon md-svg-src="assets/angular-material-assets/img/icons/account-search.svg"
                                              class="md-primary md-raised"
-                                             ng-click="vm.showCompaneros($event)"
                                              style="cursor: pointer;" id="ico-lider">
                                     </md-icon>
-                                    <input ng-model="vm.grupo.lider" type="text" name="lider" id="lider" disabled required>
+                                    <input ng-model="vm.nombres" type="text" name="lider" id="lider" readonly required>
                                     <div ng-messages="registroForm.lider.$error">
                                         <div ng-message="required">Este campo es obligatorio.</div>
                                     </div>
                                 </md-input-container>
                             </div>
                             <div flex layout="row" layout-align="center center">
-                                <md-button ng-click="vm.guardar()" type="submit" class="md-raised md-accent submit-button" aria-label="Aceptar" ng-disabled="registroForm.$invalid || registroForm.$pristine">Guardar
+                                <md-button ng-click="vm.guardar(registroForm)" type="submit" class="md-raised md-accent submit-button" aria-label="Aceptar" ng-disabled="registroForm.$invalid || registroForm.$pristine">Guardar
 
                                 </md-button>
                                 <md-button type="reset" class="md-raised md-accent submit-button" aria-label="Cancelar">Limpiar datos
