@@ -12,7 +12,23 @@
         vm.convocatoria = {};
         var convocatoria = Restangular.all('/convocatorias');
 
+        vm.fechaValida = fechaValida;
         vm.guardar = guardar;
+        
+        function fechaValida() {
+            if(vm.convocatoria.fechainicial.getFullYear() <= vm.convocatoria.fechafinal.getFullYear()){
+                if(vm.convocatoria.fechainicial.getMonth() <= vm.convocatoria.fechafinal.getMonth() ){
+                    if(vm.convocatoria.fechainicial.getDate() < vm.convocatoria.fechafinal.getDate()){
+                    }else{
+                        alert("la fecha final debe ser mayo que la fecha inicial...");
+                    }
+                }else{
+                    alert("la fecha final debe ser mayo que la fecha inicial...");
+                }
+            }else{
+                alert("la fecha final debe ser mayo que la fecha inicial...");
+            }
+        }
 
         function guardar() {
             vm.convocatoria.usuario_id = JSON.parse(sessionStorage.usuario).id;
