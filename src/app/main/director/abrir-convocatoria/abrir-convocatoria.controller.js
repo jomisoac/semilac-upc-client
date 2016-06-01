@@ -11,7 +11,7 @@
         //Variables privadas
         var vm = this;
         var convocatoria = Restangular.all('/convocatorias');
-
+        var hoy = new Date();
         //Variables y funciones públicas
         vm.cambioFechaFinal = cambioFechaFinal;
         vm.cambioFechaInicial = cambioFechaInicial;
@@ -20,7 +20,6 @@
         //Declaración de funciones
         function activate() {
             vm.convocatoria = {};
-            var hoy = new Date();
             //La fecha inicial mínima siempre será el día actual...
             //...porque no se puede abrir convocatorias para días que ya pasaron.
             vm.fechaInicialMin = hoy;
@@ -80,6 +79,7 @@
                     message(mensajeError);
                 }
                 );
+            activate();
         }
 
         function message(body) {

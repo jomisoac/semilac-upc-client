@@ -2,8 +2,8 @@
     'use strict';
 
     angular
-            .module('app.tutor.registrarSemillero')
-            .controller('RegistrarSemilleroController', RegistrarSemilleroController);
+        .module('app.tutor.registrarSemillero')
+        .controller('RegistrarSemilleroController', RegistrarSemilleroController);
 
     /** @ngInject */
     function RegistrarSemilleroController(Restangular, $mdToast, authService) {
@@ -14,7 +14,7 @@
         var grupos = Restangular.all('/grupo').getList().$object;
         vm.registrar = registrar;
         vm.limpiar = limpiar;
-        
+
 
         init();
         function init() {
@@ -23,7 +23,7 @@
             cargarProgramas();
             cargarGrupos();
         }
-        
+
         function cargarGrupos() {
             vm.grupos = grupos;
         }
@@ -31,12 +31,12 @@
         function cargarProgramas() {
             vm.programas = programas;
         }
-        
-        function registrar() {
+
+        function registrar(form) {
             vm.semillero.tutor_id = authService.currentUser().datos.id;
             semilleros.post(vm.semillero).then(function (d) {
                 message(d);
-                vm.semillero = '';
+                limpiar(form);
             }), function (error) {
                 var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado.';
                 message(mensajeError);
@@ -51,9 +51,13 @@
                 parent: '#content'
             });
         }
-        
-        function limpiar() {
-            init();
+
+        function limpiar(form) {
+            vm.semillero = {};
+            if (form) {
+                form.$setPristine();
+                form.$setUntouched();
+            }
         }
     }
 })();

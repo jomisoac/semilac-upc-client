@@ -15,18 +15,18 @@
         var vm = this;
         var estudiantes = Restangular.all('/estudiantes');
         var programas = Restangular.all('/programas').getList().$object;
-        // publicas
+
+        //Públicas
         vm.programas = [];
         vm.cambiarFechaExpedicionMin = cambiarFechaExpedicionMin;
         vm.cambiarFechaNacimientoMax = cambiarFechaNacimientoMax;
         vm.registrarse = registrarse;
         vm.atras = atras;
 
-        init();
         function init() {
             var hoy = new Date();
             vm.fechaNacimientoMax = new Date(
-                hoy.getFullYear() - 18,
+                hoy.getFullYear() - 15,
                 hoy.getMonth(),
                 hoy.getDate()
             );
@@ -36,20 +36,21 @@
         }
 
         function cambiarFechaExpedicionMin() {
-            //La fecha de expedicion de la cedula es por lo menos 18 anios despues del nacimiento.
+            //La fecha de expedicion de la TI es por lo menos 7 años despues del nacimiento.
             if (vm.estudiante.fecha_nacimiento) {
                 vm.fechaExpedicionMin = new Date(
-                    vm.estudiante.fecha_nacimiento.getFullYear() + 18,
+                    vm.estudiante.fecha_nacimiento.getFullYear() + 7,
                     vm.estudiante.fecha_nacimiento.getMonth(),
                     vm.estudiante.fecha_nacimiento.getDate()
                 );
             }
         }
+
         function cambiarFechaNacimientoMax() {
-            //La fecha de nacimiento debe ser 18 anios menos que la fecha de expedicion de la cedula.
+            //La fecha de nacimiento debe ser 7 años menos que la fecha de expedicion de la TI.
             if (vm.estudiante.fecha_expedicion) {
                 vm.fechaNacimientoMax = new Date(
-                    vm.estudiante.fecha_expedicion.getFullYear() - 18,
+                    vm.estudiante.fecha_expedicion.getFullYear() - 7,
                     vm.estudiante.fecha_expedicion.getMonth(),
                     vm.estudiante.fecha_expedicion.getDate()
                 );
@@ -62,15 +63,15 @@
 
         function registrarse(form) {
             estudiantes.post(vm.estudiante).then(function (d) {
-                if(d.ok != 'false'){
+                if (d.ok != 'false') {
                     message(d);
                     limpiar();
-                    if(form){
+                    if (form) {
                         form.$setPristine();
                         form.$setUntouched();
                     }
                     $timeout(atras, 4000)
-                }else{
+                } else {
                     message(d.mensaje);
                 }
             }), function (error) {
@@ -95,5 +96,7 @@
         function atras() {
             $state.go('app.pages_autenticacion_login');
         }
+
+        init();
     }
 })();

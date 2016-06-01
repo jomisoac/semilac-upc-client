@@ -43,10 +43,10 @@
 
                         </div>
                     </div>
-                    <div layout-gt-sm="row" layout-align="center center">
-                        <md-button type="submit" class="md-raised md-primary" ng-click="vm.guardar()" ng-disabled="userForm.$invalid || userForm.$pristine">Guardar
+                    <div flex layout="row" layout-align="center center">
+                        <md-button type="submit" class="md-raised md-accent" ng-click="vm.guardar()" ng-disabled="userForm.$invalid || userForm.$pristine">Guardar
                         </md-button>
-                        <md-button type="button" class="md-raised md-warn" ng-click="vm.cancelar()" ng-disabled="userForm.$invalid || userForm.$pristine">Cancelar
+                        <md-button type="reset" class="md-raised md-accent" ng-disabled="userForm.$invalid || userForm.$pristine">Cancelar
                         </md-button>
                     </div>
                 </form>
