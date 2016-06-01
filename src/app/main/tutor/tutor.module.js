@@ -4,7 +4,7 @@
     angular
         .module('app.tutor', [
             'app.tutor.registrarSemillero',
-            'app.tutor.registrarInvitacion',
+            'app.tutor.enviarSemilleroSolicitaEstudiante'
             'app.tutor.registrarLineaInvestigacion'
         ])
         .config(config);
@@ -30,16 +30,16 @@
             }
         });
 
-         msNavigationServiceProvider.saveItem('tutor.registrar-invitacion', {
-             title: 'Invitaciones',
+         msNavigationServiceProvider.saveItem('tutor.enviar-semillero-solicita-estudiante', {
+             title: 'Enviar Solicitud',
              icon: 'icon-tile-four',
-             state: 'app.registrar_invitacion',
+             state: 'app.enviar-semillero-solicita-estudiante',
              weight: 1,
              hidden: function(){
                  return authProvider.checkUser(['TUTOR']);
           }
          });
-         
+
           msNavigationServiceProvider.saveItem('tutor.linea-investigacion', {
              title: 'Lineas de investigación',
              icon: 'icon-tile-four',

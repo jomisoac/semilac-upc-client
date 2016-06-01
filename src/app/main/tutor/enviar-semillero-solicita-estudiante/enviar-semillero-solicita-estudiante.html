@@ -1,0 +1,22 @@
+<md-content layout-padding>
+    <div>
+        <table class="table table-striped" datatable="" dt-options="vm.dtOptions">
+            <thead>
+            <tr>
+                <th>Nombre del Semillero</th>
+                <th>Estudiante</th>
+                <th>Solicitud</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="semillero in vm.semilleros">
+                <td>{{ semillero.nombre }}</td>
+                <td>{{ vm.buscarEstudiante(semillero.estudiante_id) }}</td>
+                <td>
+                    <button type="button" uploader-model = "vm.estado" class="btn btn-primary" ng-click="vm.enviar(semillero)">enviar</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</md-content>
