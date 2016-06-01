@@ -11,8 +11,10 @@
         var vm = this;
         vm.semillero = {};
         vm.semilleros = [];
+        var estudiantes;
         vm.estudiantes = [];
-        vm.programas = [];
+        vm.getNombreCompleto = getNombreCompleto;
+        vm.getNombrePrograma = getNombrePrograma;
 
         var solicitudes = Restangular.all('/semillero-solicita-estudiante');
         vm.dtOptions = DTOptionsBuilder
@@ -44,14 +46,11 @@
             .withBootstrap();
 
 
-        var programas = Restangular.all('/programas').getList().$object;
+
         vm.guardar = guardar;
         vm.buscarEstudiante = buscarEstudiante;
         vm.enviar=enviar;
 
-        function cargarProgramas() {
-            vm.programas = programas;
-        }
 
         function guardar() {
 
@@ -77,7 +76,7 @@
 
         cargarSemilleros();
         cargarEstudiantes();
-        cargarProgramas();
+
 
         function cargarSemilleros() {
             vm.semilleros = Restangular.all('/semilleros').getList().$object;
@@ -97,6 +96,14 @@
             return nombre;
         }
 
+        function getNombreCompleto(persona) {
+            return persona.nombres + " " + persona.apellidos;
+        }
+
+        function getNombrePrograma(persona) {
+
+            return persona.programa.nombre;
+        }
 
         function message(body) {
             $mdToast.show({
