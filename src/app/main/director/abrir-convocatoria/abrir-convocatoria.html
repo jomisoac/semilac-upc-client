@@ -6,70 +6,50 @@
                     <span class="md-display-1">Abrir convocatoria</span>
                 </center>
                 <br>
-                <form name="userForm" >
+                <form name="userForm">
                     <div layout-gt-sm="row" layout-align="center center">
-
-
-                        <md-datepicker
-                                ng-model="vm.convocatoria.fechainicial"
-                                name="fechainicial"
-                                md-placeholder="Fecha inicial"
-                                mdp-open-on-click
-                                mdp-required
-                                mdp-format="DD/MM/YYYY"
-                                >
-                        </md-datepicker>
-                            <div class="validation-messages" ng-messages="userForm.fechainicial.$error">
+                        <mdp-date-picker ng-model="vm.convocatoria.fechainicial" ng-change="vm.cambioFechaInicial()" name="fechainicial" mdp-placeholder="Fecha inicial"
+                            mdp-min-date="vm.fechaInicialMin" mdp-max-date="vm.fechaInicialMax" mdp-open-on-click mdp-format="DD/MM/YYYY"
+                            flex-gt-sm required>
+                            <div ng-messages="demoForm.fechainicial.$error">
                                 <div ng-message="required">Este campo es requerido</div>
                                 <div ng-message="format">Formato invalido</div>
                             </div>
-
-                        <md-datepicker
-                                ng-change="vm.fechaValida()"
-                                ng-model="vm.convocatoria.fechafinal"
-                                name="fechafinal"
-                                md-placeholder="Fecha final">
-                        </md-datepicker>
-                            <div ng-messages="userForm.fechafinal.$error">
+                        </mdp-date-picker>
+                        <mdp-date-picker ng-model="vm.convocatoria.fechafinal" ng-change="vm.cambioFechaFinal()" name="fechafinal" mdp-placeholder="Fecha final"
+                            mdp-min-date="vm.fechaFinalMin" mdp-max-date="vm.fechaFinalMax" mdp-open-on-click mdp-format="DD/MM/YYYY"
+                            flex-gt-sm required>
+                            <div ng-messages="demoForm.fechafinal.$error">
                                 <div ng-message="required">Este campo es requerido</div>
+                                <div ng-message="format">Formato invalido</div>
                             </div>
-
+                        </mdp-date-picker>
                     </div>
-
                     <div layout-gt-sm="row">
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>Asunto</label>
-                            <textarea ng-model="vm.convocatoria.asunto" required id="asunto" name="asunto"  rows="4" md-select-on-focus
-                                      autofocus></textarea>
+                            <textarea ng-model="vm.convocatoria.asunto" required id="asunto" name="asunto" rows="4" md-select-on-focus autofocus></textarea>
                             <div ng-messages="userForm.asunto.$error">
                                 <div ng-message="required">Este campo es requerido</div>
                             </div>
                         </md-input-container>
                     </div>
-
                     <div layout-gt-sm="row">
                         <div layout-gt-sm="row" layout-align="center center">
-                            <input type="file"  required id="files" uploader-model = "vm.convocatoria.acta" name="acta" class="md-raised md-primary">
+                            <input type="file" required id="files" uploader-model="vm.convocatoria.acta" name="acta" class="md-raised md-primary">
                             <div ng-messages="userForm.acta.$error">
                                 <div ng-message="required">Este campo es requerido</div>
                             </div>
 
                         </div>
                     </div>
-
                     <div layout-gt-sm="row" layout-align="center center">
-
-                        <md-button type="submit" class="md-raised md-primary" ng-click="vm.guardar()"
-                                   ng-disabled="userForm.$invalid || userForm.$pristine">Guardar
+                        <md-button type="submit" class="md-raised md-primary" ng-click="vm.guardar()" ng-disabled="userForm.$invalid || userForm.$pristine">Guardar
                         </md-button>
-                        <md-button type="button" class="md-raised md-warn" ng-click="vm.cancelar()"
-                                   ng-disabled="userForm.$invalid || userForm.$pristine">Cancelar
+                        <md-button type="button" class="md-raised md-warn" ng-click="vm.cancelar()" ng-disabled="userForm.$invalid || userForm.$pristine">Cancelar
                         </md-button>
-
                     </div>
-
                 </form>
-
             </div>
         </md-content>
     </div>
