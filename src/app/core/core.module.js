@@ -12,7 +12,6 @@
                 'ngResource',
                 'ngSanitize',
                 'ngMaterial',
-                'pascalprecht.translate',
                 'ui.router',
                 'permission', 'permission.ui',
 

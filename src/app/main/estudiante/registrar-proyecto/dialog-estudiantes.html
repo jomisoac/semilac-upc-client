@@ -17,27 +17,41 @@
             <!--</md-input-container>-->
         <!--</div>-->
         <div class="md-dialog-content">
-            <table datatable="ng" class="table table-striped" dt-options="vm.dtOptions">
-                <thead>
-                <tr>
-                    <th>Nombre del estudiante</th>
-                    <th>Programa</th>
-                    <th>Escoger</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat='estudiante in vm.estudiantes'>
-                    <td>{{ vm.getNombreCompleto(estudiante) }}</td>
-                    <td>{{ vm.getNombrePrograma(estudiante) }}</td>
-                    <td>
-                        <md-button class="md-icon-button" ng-click="vm.selectedUser(estudiante)">
-                            <md-icon md-svg-src="assets/angular-material-assets/img/icons/cursor-pointer.svg"
-                                     aria-label="Close dialog"></md-icon>
-                        </md-button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+            <div class="white-bg md-whiteframe-1dp">
+                <table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions">
+                    <thead>
+                    <tr>
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Nombre del estudiante</span>
+                            </div>
+                        </th>
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Programa</span>
+                            </div>
+                        </th>
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Escoger</span>
+                            </div>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat='estudiante in vm.estudiantes'>
+                        <td>{{ vm.getNombreCompleto(estudiante) }}</td>
+                        <td>{{ vm.getNombrePrograma(estudiante) }}</td>
+                        <td>
+                            <md-button class="md-icon-button" ng-click="vm.selectedUser(estudiante)">
+                                <md-icon md-svg-src="assets/angular-material-assets/img/icons/cursor-pointer.svg"
+                                         aria-label="Close dialog"></md-icon>
+                            </md-button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
             <!--<md-radio-group ng-model="vm.selectedIndex">-->
             <!--<div ng-repeat='estudiante in vm.estudiantes | filter: filtro' class="row">-->
             <!--<div flex layout='row' layout-padding layout-align="start center">-->

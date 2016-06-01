@@ -10,14 +10,25 @@
                     <div layout-gt-sm="row" layout-align="center center">
 
 
-                        <md-datepicker ng-model="vm.convocatoria.fechainicial" required name="fechainicial"
-                                       md-placeholder="Fecha inicial">
+                        <md-datepicker
+                                ng-model="vm.convocatoria.fechainicial"
+                                name="fechainicial"
+                                md-placeholder="Fecha inicial"
+                                mdp-open-on-click
+                                mdp-required
+                                mdp-format="DD/MM/YYYY"
+                                >
                         </md-datepicker>
                             <div class="validation-messages" ng-messages="userForm.fechainicial.$error">
                                 <div ng-message="required">Este campo es requerido</div>
+                                <div ng-message="format">Formato invalido</div>
                             </div>
 
-                        <md-datepicker ng-model="vm.convocatoria.fechafinal" required name="fechafinal" md-placeholder="Fecha final">
+                        <md-datepicker
+                                ng-change="vm.fechaValida()"
+                                ng-model="vm.convocatoria.fechafinal"
+                                name="fechafinal"
+                                md-placeholder="Fecha final">
                         </md-datepicker>
                             <div ng-messages="userForm.fechafinal.$error">
                                 <div ng-message="required">Este campo es requerido</div>

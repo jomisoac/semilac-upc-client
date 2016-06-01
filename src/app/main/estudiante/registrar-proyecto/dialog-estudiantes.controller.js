@@ -14,35 +14,62 @@ function DialogEstudiantesController($mdDialog, Restangular, authService, DTOpti
     vm.getNombrePrograma = getNombrePrograma;
     vm.selectedUser = selectedUser;
 
-    // config table
-    vm.dtOptions = DTOptionsBuilder
-        .fromSource()
-        .withLanguage({
-            "sEmptyTable": "No hay datos disponibles en la tabla",
-            "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ registros",
-            "sInfoEmpty": "Mostrando 0 a 0 de 0 registros",
-            "sInfoFiltered": "(filtrado desde _MAX_ registros)",
-            "sInfoPostFix": "",
-            "sInfoThousands": ",",
-            "sLengthMenu": "Mostrar _MENU_ registros",
-            "sLoadingRecords": "Cargando...",
-            "sProcessing": "Procesando...",
-            "sSearch": "Buscar:",
-            "sZeroRecords": "No se encontraron registros que coincidar con la busqueda",
-            "oPaginate": {
-                "sFirst": "Primero",
-                "sLast": "Último",
-                "sNext": "Siguiente",
-                "sPrevious": "Anterior"
+    vm.dtOptions = {
+        dom: '<"top"f>rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
+        pagingType: 'simple',
+        autoWidth: false,
+        responsive: true,
+        language: {
+            sEmptyTable: "No hay datos disponibles en la tabla",
+            sInfo: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+            sInfoEmpty: "Mostrando 0 a 0 de 0 registros",
+            sInfoFiltered: "(filtrado desde _MAX_ registros)",
+            sInfoPostFix: "",
+            sInfoThousands: ",",
+            sLengthMenu: "Mostrar _MENU_ registros",
+            sLoadingRecords: "Cargando...",
+            sProcessing: "Procesando...",
+            sSearch: "Buscar:",
+            sZeroRecords: "No se encontraron registros que coincidar con la busqueda",
+            oPaginate: {
+                sFirst: "Primero",
+                sLast: "Último",
+                sNext: "Siguiente",
+                sPrevious: "Anterior"
             },
-            "oAria": {
-                "sSortAscending": ": activar para ordenar las columnas ascendente",
-                "sSortDescending": ": activar para ordenar las columnas descendente"
+            oAria: {
+                sSortAscending: ": activar para ordenar las columnas ascendente",
+                sSortDescending: ": activar para ordenar las columnas descendente"
             }
-        })
-        // Add Bootstrap compatibility
-        .withBootstrap();
+        }
+    };
 
+    // config table
+    // vm.dtOptions = DTOptionsBuilder
+    //     .fromSource()
+    //     .withLanguage({
+    //         "sEmptyTable": "No hay datos disponibles en la tabla",
+    //         "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ registros",
+    //         "sInfoEmpty": "Mostrando 0 a 0 de 0 registros",
+    //         "sInfoFiltered": "(filtrado desde _MAX_ registros)",
+    //         "sInfoPostFix": "",
+    //         "sInfoThousands": ",",
+    //         "sLengthMenu": "Mostrar _MENU_ registros",
+    //         "sLoadingRecords": "Cargando...",
+    //         "sProcessing": "Procesando...",
+    //         "sSearch": "Buscar:",
+    //         "sZeroRecords": "No se encontraron registros que coincidar con la busqueda",
+    //         "oPaginate": {
+    //             "sFirst": "Primero",
+    //             "sLast": "Último",
+    //             "sNext": "Siguiente",
+    //             "sPrevious": "Anterior"
+    //         },
+    //         "oAria": {
+    //             "sSortAscending": ": activar para ordenar las columnas ascendente",
+    //             "sSortDescending": ": activar para ordenar las columnas descendente"
+    //         }
+    //     })
     function answer(answer) {
         // answer = vm.selectedUser();
         $mdDialog.hide(answer);
@@ -79,6 +106,7 @@ function DialogEstudiantesController($mdDialog, Restangular, authService, DTOpti
 
         return persona.programa.nombre;
     }
+
     function selectedUser(persona) {
         $mdDialog.hide(persona);
     }
