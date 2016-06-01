@@ -12,6 +12,7 @@
         vm.semillero = {};
         vm.semilleros = [];
         vm.estudiantes = [];
+        vm.programas = [];
 
         var solicitudes = Restangular.all('/semillero-solicita-estudiante');
         vm.dtOptions = DTOptionsBuilder
@@ -43,10 +44,14 @@
             .withBootstrap();
 
 
-
+        var programas = Restangular.all('/programas').getList().$object;
         vm.guardar = guardar;
         vm.buscarEstudiante = buscarEstudiante;
         vm.enviar=enviar;
+
+        function cargarProgramas() {
+            vm.programas = programas;
+        }
 
         function guardar() {
 
@@ -72,7 +77,7 @@
 
         cargarSemilleros();
         cargarEstudiantes();
-
+        cargarProgramas();
 
         function cargarSemilleros() {
             vm.semilleros = Restangular.all('/semilleros').getList().$object;

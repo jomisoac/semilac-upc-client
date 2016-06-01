@@ -4,7 +4,7 @@
     angular
         .module('app.tutor', [
             'app.tutor.registrarSemillero',
-            'app.tutor.enviarSemilleroSolicitaEstudiante'
+            'app.tutor.enviarSemilleroSolicitaEstudiante',
             'app.tutor.registrarLineaInvestigacion'
         ])
         .config(config);
