@@ -1,0 +1,18 @@
+<md-content layout-padding>
+    <div>
+        <table class="table table-striped" datatable="ng" dt-options="vm.dtOptions">
+            <thead>
+            <tr>
+                <th>Nombre del Semillero</th>
+                <th>Tutor</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="semillero in vm.semilleros">
+                <td>{{ semillero.nombre }}</td>
+                <td>{{ vm.buscarTutor(semillero.tutor_id) }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</md-content>
