@@ -3,30 +3,44 @@
     <div layout="column" ng-cloak class="md-inline-form" style="width:80%;">
         <md-content layout-padding>
             <div class="borde">
-                <md-button ng-click="vm.atras()" style="float: left" class="md-icon-button md-primary" aria-label="Settings">
+                <md-button ng-click="vm.atras()" style="float: left" class="md-icon-button md-primary"
+                           aria-label="Settings">
                     <md-icon md-svg-icon="assets/angular-material-assets/img/icons/ic_arrow_back_24px.svg"></md-icon>
-                </md-button><br>
+                </md-button>
+                <br>
 
                 <form name="registroForm" novalidate>
 
                     <md-input-container class="md-block">
                         <div class="simple-table-container md-whiteframe-4dp">
-                            <div class="table-title">Para conseguir el aval institucional, los semilleros deben cumplir con los siguientes requisitos.</div>
+                            <div class="table-title">Para conseguir el aval institucional, los semilleros deben cumplir
+                                con los siguientes requisitos.
+                            </div>
                             <div class="ms-responsive-table-wrapper">
-                                <table class="simple" ms-responsive-table="">
-                                    <thead>
+                                <div class="white-bg md-whiteframe-1dp">
+                                    <table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions">
+                                        <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>Requisito</th>
+                                            <th class="secondary-text">
+                                                <div class="table-header">
+                                                    <span class="column-title">#</span>
+                                                </div>
+                                            </th>
+                                            <th class="secondary-text">
+                                                <div class="table-header">
+                                                    <span class="column-title">Requisito</span>
+                                                </div>
+                                            </th>
                                         </tr>
-                                    </thead>
-                                    <tbody>
+                                        </thead>
+                                        <tbody>
                                         <tr ng-repeat="requisito in vm.requisitos">
                                             <td width="5%" class="name ng-binding">{{ $index+1 }}</td>
                                             <td width="95%" class="name ng-binding">{{requisito.nombre_requisito}}</td>
                                         </tr>
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </md-input-container>
