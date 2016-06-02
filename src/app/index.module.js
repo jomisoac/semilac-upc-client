@@ -35,9 +35,7 @@
             'app.tutor',
             //estudiante
             'app.estudiante',
-            'datatables',          
-            'datatables.bootstrap',
-            'datatables.buttons'
+            'datatables',
 
         ]);
 })();

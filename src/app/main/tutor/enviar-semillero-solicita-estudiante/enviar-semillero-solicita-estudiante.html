@@ -12,13 +12,26 @@
             </div>
         </md-input-container>
         </div>
-    <div>
-        <table class="dataTable row-border hover" datatable="" dt-options="vm.dtOptions">
+
+    <div class="white-bg md-whiteframe-1dp">
+        <table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions">
             <thead>
             <tr>
-                <th>Programas</th>
-                <th>Nombre del estudiante</th>
-                <th>Solicitud</th>
+                <th class="secondary-text">
+                    <div class="table-header">
+                        <span class="column-title">Programa</span>
+                    </div>
+                </th>
+                <th class="secondary-text">
+                    <div class="table-header">
+                        <span class="column-title">Nombre del estudiante</span>
+                    </div>
+                </th>
+                <th class="secondary-text">
+                    <div class="table-header">
+                        <span class="column-title">Solicitar</span>
+                    </div>
+                </th>
             </tr>
             </thead>
             <tbody>
@@ -26,16 +39,9 @@
                 <td>{{ vm.getNombreCompleto(estudiante) }}</td>
                 <td>{{ vm.getNombrePrograma(estudiante) }}</td>
                 <td>
-                <button type="button" uploader-model = "vm.activo" class="btn btn-primary" ng-click="vm.enviar(semillero)">enviar</button>
+                    <button type="button" uploader-model = "vm.activo" class="btn btn-primary" ng-click="vm.enviar(semillero)">enviar</button>
                 </td>
             </tr>
-           <!-- <tr ng-repeat="programa in vm.programas">
-                <td>{{ programa.nombre }}</td>
-                <td>{{ vm.buscarEstudiante(programa.estudiante_id) }}</td>
-                <td>
-                    <button type="button" uploader-model = "vm.estado" class="btn btn-primary" ng-click="vm.enviar(semillero)">enviar</button>
-                </td>
-            </tr>--->
             </tbody>
         </table>
     </div>

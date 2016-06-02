@@ -1,19 +1,33 @@
 <md-content layout-padding>
-    <div>
-        <table class="table table-striped" datatable="ng" dt-options="vm.dtOptions">
+    <div class="white-bg md-whiteframe-1dp">
+        <table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions">
             <thead>
             <tr>
-                <th>Nombre del Semillero</th>
-                <th>Tutor</th>
-                <th>Solicitud</th>
+                <th class="secondary-text">
+                    <div class="table-header">
+                        <span class="column-title">Nombre semillero</span>
+                    </div>
+                </th>
+                <th class="secondary-text">
+                    <div class="table-header">
+                        <span class="column-title">Tutor</span>
+                    </div>
+                </th>
+                <th class="secondary-text">
+                    <div class="table-header">
+                        <span class="column-title">Solicitar</span>
+                    </div>
+                </th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="semillero in vm.semilleros" >
+            <tr ng-repeat="semillero in vm.semilleros">
                 <td>{{ semillero.nombre }}</td>
                 <td>{{ vm.buscarTutor(semillero.tutor_id) }}</td>
                 <td>
-                    <button type="button"   uploader-model class="btn btn-primary" ng-click="vm.enviar(semillero)">Enviar</button>
+                    <button type="button" uploader-model class="btn btn-primary" ng-click="vm.enviar(semillero)">
+                        Enviar
+                    </button>
                 </td>
             </tr>
             </tbody>
