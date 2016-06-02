@@ -2,12 +2,12 @@
     'use strict';
 
     angular
-        .module('app.tutor.enviarSemilleroSolicitaEstudiante')
-        .controller('EnviarSemilleroSolicitaEstudiante', EnviarSemilleroSolicitaEstudiante);
+        .module('app.tutor.semilleroSolicitaEstudiante')
+        .controller('SemilleroSolicitaEstudiante', SemilleroSolicitaEstudiante);
 
 
     /** @ngInject */
-    function EnviarSemilleroSolicitaEstudiante(Restangular, $mdToast, DTOptionsBuilder,authService) {
+    function SemilleroSolicitaEstudiante(Restangular, $mdToast, DTOptionsBuilder,authService) {
         var vm = this;
         vm.semillero = {};
         vm.semilleros = [];
@@ -48,14 +48,9 @@
         };
 
 
-        vm.guardar = guardar;
+
         vm.buscarEstudiante = buscarEstudiante;
         vm.enviar=enviar;
-
-
-        function guardar() {
-
-        }
 
         function enviar(semillero) {
             var solicitud = {
