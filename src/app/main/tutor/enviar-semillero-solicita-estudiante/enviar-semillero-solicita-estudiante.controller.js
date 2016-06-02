@@ -16,7 +16,7 @@
         vm.getNombreCompleto = getNombreCompleto;
         vm.getNombrePrograma = getNombrePrograma;
 
-        var solicitudes = Restangular.all('/semillero-solicita-estudiante');
+        var solicitudes = Restangular.all('/solicitud-semilleros');
         vm.dtOptions = {
             dom: '<"top"f>rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
             pagingType: 'simple',
@@ -84,7 +84,7 @@
         }
 
         function cargarEstudiantes() {
-            vm.estudiantes = Restangular.all('/estudiantes').getList().$object;
+            vm.estudiantes = Restangular.all('/estudiantes/disponibles').getList().$object;
         }
 
         function buscarEstudiante(estudiante_id){
