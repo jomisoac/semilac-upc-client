@@ -63,7 +63,7 @@
             };
 
 
-            /*solicitudes.post(solicitud).then(
+            solicitudes.post(solicitud).then(
                 function (d) {
                     message(d.mensaje);
                     solicitud = {};                    
@@ -72,7 +72,7 @@
                     var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado.';
 
                 }
-            );*/
+            );
         }
 
         cargarSemilleros();
