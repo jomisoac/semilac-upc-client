@@ -25,9 +25,9 @@
                 <td>{{ semillero.nombre }}</td>
                 <td>{{ vm.buscarTutor(semillero.tutor_id) }}</td>
                 <td>
-                    <button type="button" uploader-model class="btn btn-primary" ng-click="vm.enviar(semillero)">
-                        Enviar
-                    </button>
+                    <md-button ng-click="vm.enviar(semillero)"  class="md-raised md-accent submit-button" aria-label="Aceptar"
+                               >Aceptar
+                    </md-button>
                 </td>
             </tr>
             </tbody>

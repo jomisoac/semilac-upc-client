@@ -25,10 +25,10 @@
             vm.grupos = grupos;
         }
 
-        function guardar() {
+        function guardar(form) {
             lineas.post(vm.linea).then(function (d) {
                 message(d);
-                vm.linea = '';
+                limpiar(form);
             }), function (error) {
                 var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado.';
                 message(mensajeError);
@@ -43,9 +43,12 @@
                 parent: '#content'
             });
         }
-
-        function limpiar() {
-            init();
+        function limpiar(form) {
+            vm.linea = {};
+            if (form) {
+                form.$setPristine();
+                form.$setUntouched();
+            }
         }
     }
 })();
