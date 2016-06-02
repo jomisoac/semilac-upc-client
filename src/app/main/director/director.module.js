@@ -4,7 +4,8 @@
         .module('app.director', [
             'app.director.requisitos',
             'app.director.abrirConvocatoria',
-            'app.director.registrarGrupo'
+            'app.director.registrarGrupo',
+            'app.director.consultar_semilleros'
         ])
         .config(config);
     function config(msNavigationServiceProvider, authProvider) {
@@ -44,6 +45,16 @@
         msNavigationServiceProvider.saveItem('director.registrar-grupo', {
             title: 'Registrar grupo de investigación',
             state: 'app.registrar-grupo',
+            icon: 'icon-tile-four',
+            weight: 1,
+            hidden: function () {
+                return authProvider.checkUser(['DIRECTOR']);
+            }
+        });
+
+        msNavigationServiceProvider.saveItem('director.consultar_semilleros', {
+            title: 'Semilleros solicitando aval',
+            state: 'app.consultar_semilleros',
             icon: 'icon-tile-four',
             weight: 1,
             hidden: function () {
