@@ -44,21 +44,22 @@
         }
 
         function guardar() {
-            vm.convocatoria.usuario_id = JSON.parse(sessionStorage.usuario).id;
-            console.log(vm.convocatoria.acta);
+            //vm.convocatoria.usuario_id = JSON.parse(sessionStorage.usuario).id;
+            var acta = vm.convocatoria.acta;
+            console.log(acta);
             vm.convocatoria.usuario_id = authService.currentUser().usuario_id
             convocatoria.post(vm.convocatoria)
-                .then(
-                function (d) {
-                    if (vm.convocatoria.acta) {
+                .then(function (data) {
+                    console.log(acta);
+                    if (acta) {
                         var formData = new FormData();
-                        formData.append("acta", vm.convocatoria.acta);
-                        Restangular.all('/convocatorias/' + d.convocatoria.id + '/acta')
+                        formData.append("acta", acta);
+                        Restangular.all('/convocatorias/' + data.convocatoria.id + '/acta')
                             .withHttpConfig({ transformRequest: angular.identity })
                             .customPOST(formData, undefined, undefined,
                             { 'Content-Type': undefined })
                             .then(function (respuestaActa) {
-                                message(d.mensaje);
+                                message(data.mensaje);
                                 $timeout(function () {
                                     $state.transitionTo($state.current, $stateParams, {
                                         reload: true,
@@ -66,19 +67,15 @@
                                         notify: true
                                     });
                                 }, 3000);
-                            },
-                            function (error) {
+                            }, function (error) {
                                 var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado.';
                                 message(mensajeError);
-                            }
-                            );
+                            });
                     }
-                },
-                function (error) {
+                }, function (error) {
                     var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado.';
                     message(mensajeError);
-                }
-                );
+                });
             activate();
         }
 
