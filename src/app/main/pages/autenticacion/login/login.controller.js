@@ -24,7 +24,9 @@
         function iniciarSesion() {
             vm.mensajeError = '';
             login.post(vm.usuario).then(success, error);
+
             function success(p) {
+                
                 var usuario = authService.storeUser(p.token);
                 redirectRoles();
             }

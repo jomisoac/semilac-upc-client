@@ -11,9 +11,9 @@
         var vm = this;
         vm.semillero = {};
         vm.semilleros = [];
-        vm.tutores = [];
-
-
+        vm.solicitud_semilleros = [];
+        vm.respuesta = 'enviar';
+        
         var solicitudes = Restangular.all('/solicitud-semilleros');
         vm.dtOptions = {
             dom: '<"top"f>rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
@@ -45,23 +45,16 @@
             }
         };
 
-        vm.buscarTutor = buscarTutor;
         vm.enviar = enviar;
-        
-        
+        vm.nombreTutor = nombreTutor;
         
 
-        function enviar(semillero,nombre) {
-
-          console.log('hola');
-            
-            
+        function enviar(semillero) {
 
             var solicitud = {
                 'estudiante_id': authService.currentUser().datos.id,
                 'semillero_id': semillero.id
             };
-
 
             solicitudes.post(solicitud).then(
                 function (d) {
@@ -76,27 +69,34 @@
         }
 
         cargarSemilleros();
-        cargarTutores();
+        
+        function cargarSolicitudes() {
+            
+            vm.solicitud_semilleros = Restangular.all('/estudiantes/solicitudes-semilleros').getList().$object;
 
-
-        function cargarSemilleros() {
-            vm.semilleros = Restangular.all('/semilleros').getList().$object;
-        }
-
-        function cargarTutores() {
-            vm.tutores = Restangular.all('/tutores').getList().$object;
-        }
-
-        function buscarTutor(tutor_id) {
-            var nombre = '';
-            vm.tutores.forEach(function (item) {
-                if (item.id == tutor_id) {
-                    nombre = item.nombres;
+            vm.solicitud_semilleros.forEach(function (solicitud) {
+                if(solicitud.respuesta == 'en espera'){
+                    
+                }else {
+                    if(solicitud.respuesta == 'rechazada'){
+                        vm.respuesta = 'rechazada';
+                    }else{
+                        if(solicitud.respuesta == 'aceptada'){
+                            vm.respuesta = 'aceptada';
+                        }
+                    }
                 }
             });
-            return nombre;
+        }
+        
+        function cargarSemilleros() {
+            vm.semilleros = Restangular.all('/semilleros/tutores').getList().$object;
+            cargarSolicitudes();
         }
 
+        function nombreTutor(semillero) {
+            return semillero.tutor.nombres;
+        }
 
         function message(body) {
             $mdToast.show({

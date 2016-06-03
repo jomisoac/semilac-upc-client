@@ -10,7 +10,7 @@
         // State
         $stateProvider
             .state('app.enviar_solicitud_semillero', {
-                url: '/solicitud-semilleros',
+                url: '/estudiantes/solicitudes-semilleros',
                 views: {
                     'content@app': {
                         templateUrl: 'app/main/estudiante/enviar-solicitud-semillero/enviar-solicitud-semillero.html',

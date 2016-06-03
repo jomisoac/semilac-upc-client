@@ -23,10 +23,10 @@
             <tbody>
             <tr ng-repeat="semillero in vm.semilleros">
                 <td>{{ semillero.nombre }}</td>
-                <td>{{ vm.buscarTutor(semillero.tutor_id) }}</td>
+                <td>{{ vm.nombreTutor(semillero) }}</td>
                 <td>
                     <md-button ng-click="vm.enviar(semillero)"  class="md-raised md-accent submit-button" aria-label="Aceptar"
-                               >Aceptar
+                               >{{vm.respuesta}}
                     </md-button>
                 </td>
             </tr>
