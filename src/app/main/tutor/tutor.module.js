@@ -4,7 +4,7 @@
     angular
         .module('app.tutor', [
             'app.tutor.registrarSemillero',
-            'app.tutor.enviarSemilleroSolicitaEstudiante',
+            'app.tutor.semilleroSolicitaEstudiante',
             'app.tutor.registrarLineaInvestigacion'
         ])
         .config(config);
@@ -30,10 +30,10 @@
             }
         });
 
-         msNavigationServiceProvider.saveItem('tutor.enviar-semillero-solicita-estudiante', {
+         msNavigationServiceProvider.saveItem('tutor.semillero-solicita-estudiante', {
              title: 'Enviar Solicitud',
              icon: 'icon-tile-four',
-             state: 'app.enviar-semillero-solicita-estudiante',
+             state: 'app.semillero-solicita-estudiante',
              weight: 1,
              hidden: function(){
                  return authProvider.checkUser(['TUTOR']);

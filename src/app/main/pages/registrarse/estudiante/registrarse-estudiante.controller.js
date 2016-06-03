@@ -14,7 +14,7 @@
         //Privadas
         var vm = this;
         var estudiantes = Restangular.all('/estudiantes');
-        var programas = Restangular.all('/programas').getList().$object;
+        var programas = Restangular.all('/programas');
 
         //Públicas
         vm.programas = [];
@@ -58,7 +58,9 @@
         }
 
         function cargarProgramas() {
-            vm.programas = programas;
+            programas.getList().then(function (response) {
+                vm.programas = response;
+            });
         }
 
         function registrarse(form) {
