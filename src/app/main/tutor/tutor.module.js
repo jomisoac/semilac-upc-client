@@ -49,5 +49,15 @@
                  return authProvider.checkUser(['TUTOR']);
           }
          });
+         
+          msNavigationServiceProvider.saveItem('tutor.solicitud-aval-convocatoria', {
+             title: 'Convocatorias',
+             icon: 'icon-tile-four',
+             state: 'app.solicitud-aval-convocatoria',
+             weight: 1,
+             hidden: function(){
+                 return authProvider.checkUser(['TUTOR']);
+          }
+         });
     }
 })();
