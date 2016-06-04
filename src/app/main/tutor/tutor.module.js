@@ -32,7 +32,7 @@
         });
 
          msNavigationServiceProvider.saveItem('tutor.semillero-solicita-estudiante', {
-             title: 'Enviar Solicitud',
+             title: 'Enviar solicitud de semillero',
              icon: 'icon-tile-four',
              state: 'app.semillero-solicita-estudiante',
              weight: 1,

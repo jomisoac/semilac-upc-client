@@ -7,16 +7,19 @@
 
 
     /** @ngInject */
-    function SemilleroSolicitaEstudiante(Restangular, $mdToast, DTOptionsBuilder,authService) {
+    function SemilleroSolicitaEstudiante(Restangular, $mdToast, DTOptionsBuilder, authService) {
         var vm = this;
         vm.semillero = {};
         vm.semilleros = [];
-        var estudiantes;
+        var estudiante;
         vm.estudiantes = [];
+        vm.solicitud_semilleros = [];
+        vm.respuesta = 'enviar';
+
         vm.getNombreCompleto = getNombreCompleto;
         vm.getNombrePrograma = getNombrePrograma;
 
-        var solicitudes = Restangular.all('/solicitud-semilleros');
+        var solicitudes = Restangular.all('/semillero_solicita_estudiante');
         vm.dtOptions = {
             dom: '<"top"f>rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
             pagingType: 'simple',
@@ -47,21 +50,19 @@
             }
         };
 
+        vm.enviar = enviar;
 
-
-        vm.buscarEstudiante = buscarEstudiante;
-        vm.enviar=enviar;
-
-        function enviar(semillero) {
+        function enviar(estudiante) {
             var solicitud = {
                 'estudiante_id': authService.currentUser().datos.id,
-                'semillero_id': semillero.id
+                'semillero_id': vm.semillero_id_seleccionado
             };
-
             solicitudes.post(solicitud).then(
                 function (d) {
                     message(d.mensaje);
                     solicitud = {};
+                    estudiante.enviado = true;
+                    estudiante.mensaje = "Enviado";
                 },
                 function (error) {
                     var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado.';
@@ -78,22 +79,31 @@
             vm.semilleros = Restangular.all('/semilleros').getList().$object;
         }
 
+        function cargarSolicitudes() {
+
+            vm.solicitud_semilleros = Restangular.all('/tutor/solicitudes-semilleros').getList().$object;
+
+            vm.solicitud_semilleros.forEach(function (solicitud) {
+                if (solicitud.respuesta == 'en espera') {
+
+                } else {
+                    if (solicitud.respuesta == 'rechazada') {
+                        vm.respuesta = 'rechazada';
+                    } else {
+                        if (solicitud.respuesta == 'aceptada') {
+                            vm.respuesta = 'aceptada';
+                        }
+                    }
+                }
+            });
+        }
+
         function cargarEstudiantes() {
             vm.estudiantes = Restangular.all('/estudiantes/disponibles').getList().$object;
         }
 
-        function buscarEstudiante(estudiante_id){
-            var nombre = '';
-            vm.estudiantes.forEach(function (item) {
-                if(item.id == estudiante_id_id){
-                    nombre = item.nombres;
-                }
-            });
-            return nombre;
-        }
-
         function getNombreCompleto(persona) {
-            return persona.nombres + " " + persona.apellidos;
+            return persona.apellidos + " " + persona.nombres;
         }
 
         function getNombrePrograma(persona) {
