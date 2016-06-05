@@ -7,16 +7,12 @@
 
 
     /** @ngInject */
-    function SolicitudesMisGrupos(Restangular, $mdToast, DTOptionsBuilder,authService) {
+    function SolicitudesMisGrupos(Restangular, $mdToast, DTOptionsBuilder, authService) {
         var vm = this;
-        vm.semillero = {};
-        vm.semilleros = [];
-        var estudiantes;
-        vm.estudiantes = [];
-        vm.getNombreCompleto = getNombreCompleto;
-        vm.getNombrePrograma = getNombrePrograma;
 
-        var solicitudes = Restangular.all('/solicitud-semilleros');
+        vm.responder = responder;
+
+        var solicitudes = Restangular.all('/solicitudes-mis-grupos/' + authService.currentUser().datos.id);
         vm.dtOptions = {
             dom: '<"top"f>rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
             pagingType: 'simple',
@@ -47,58 +43,26 @@
             }
         };
 
+        vm.solicitudes = {};
 
+        cargarSolicitudes();
 
-        vm.buscarEstudiante = buscarEstudiante;
-        vm.enviar=enviar;
+        function cargarSolicitudes() {
+            vm.solicitudes = Restangular.all('/solicitudes-mis-grupos/' + authService.currentUser().datos.id).getList().$object;
+        }
 
-        function enviar(semillero) {
-            var solicitud = {
-                'estudiante_id': authService.currentUser().datos.id,
-                'semillero_id': semillero.id
-            };
-
-            solicitudes.post(solicitud).then(
-                function (d) {
-                    message(d.mensaje);
-                    solicitud = {};
+        function responder(solicitud, respuesta) {
+            solicitud.respuesta = respuesta;
+            Restangular.all('solicitudes-mis-grupos/' + solicitud.id).customPUT(solicitud).then(
+                function (data) {
+                    message(data);
+                    cargarSolicitudes();
                 },
                 function (error) {
                     var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado.';
-
+                    message(mensajeError);
                 }
             );
-        }
-
-        cargarSemilleros();
-        cargarEstudiantes();
-
-
-        function cargarSemilleros() {
-            vm.semilleros = Restangular.all('/semilleros').getList().$object;
-        }
-
-        function cargarEstudiantes() {
-            vm.estudiantes = Restangular.all('/estudiantes/disponibles').getList().$object;
-        }
-
-        function buscarEstudiante(estudiante_id){
-            var nombre = '';
-            vm.estudiantes.forEach(function (item) {
-                if(item.id == estudiante_id_id){
-                    nombre = item.nombres;
-                }
-            });
-            return nombre;
-        }
-
-        function getNombreCompleto(persona) {
-            return persona.nombres + " " + persona.apellidos;
-        }
-
-        function getNombrePrograma(persona) {
-
-            return persona.programa.nombre;
         }
 
         function message(body) {

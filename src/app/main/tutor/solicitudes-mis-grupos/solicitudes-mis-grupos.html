@@ -1,50 +1,35 @@
 <md-content layout-padding>
-    <div layout-gt-sm="row">
-        <md-input-container class="md-block" flex="50">
-            <label>Semilleros</label>
-            <md-select name="semillero" ng-model="vm.tutor.semillero_id" required>
-                <md-optgroup label="Semilleros">
-                    <md-option ng-value="semillero.id" ng-repeat="semillero in vm.semilleros">{{semillero.nombre}}</md-option>
-                </md-optgroup>
-            </md-select>
-            <div ng-messages="!registroForm.$pristine && registroForm.programa.$error">
-                <div ng-message="required">Este campo es obligatorio.</div>
-            </div>
-        </md-input-container>
-        </div>
-
     <div class="white-bg md-whiteframe-1dp">
         <table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions">
             <thead>
-            <tr>
-                <th class="secondary-text">
-                    <div class="table-header">
-                        <span class="column-title">Semillero</span>
-                    </div>
-                </th>
-                <th class="secondary-text">
-                    <div class="table-header">
-                        <span class="column-title">Grupo</span>
-                    </div>
-                </th>
-                <th class="secondary-text">
-                    <div class="table-header">
-                        <span class="column-title">Revisar</span>
-                    </div>
-                </th>
-            </tr>
+                <tr>
+                    <th class="secondary-text">
+                        <div class="table-header">
+                            <span class="column-title">Semillero</span>
+                        </div>
+                    </th>
+                    <th class="secondary-text">
+                        <div class="table-header">
+                            <span class="column-title">Grupo</span>
+                        </div>
+                    </th>
+                    <th class="secondary-text">
+                        <div class="table-header">
+                            <span>Acciones</span>
+                        </div>
+                    </th>
+                </tr>
             </thead>
             <tbody>
-            <tr ng-repeat='estudiante in vm.estudiantes'>
-                <td>{{ vm.getNombreCompleto(estudiante) }}</td>
-                <td>{{ vm.getNombrePrograma(estudiante) }}</td>
-                <td>
-                    <button type="button" uploader-model = "vm.activo" class="btn btn-primary" ng-click="vm.enviar(semillero)">enviar</button>
-                </td>
-            </tr>
+                <tr ng-repeat='solicitud in vm.solicitudes'>
+                    <td>{{ solicitud.semillero.nombre }}</td>
+                    <td>{{ solicitud.grupo.nombre }}</td>
+                    <td>
+                        <md-button class="md-accent md-raised md-hue-1" ng-click="vm.responder(solicitud, 'aceptada')">Aceptar</md-button>
+                        <md-button class="md-raised md-warn" ng-click="vm.responder(solicitud, 'rechazada')">Rechazar</md-button>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
 </md-content>
-
-
