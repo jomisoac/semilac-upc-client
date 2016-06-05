@@ -8,7 +8,8 @@
     angular
         .module('app.estudiante', [
             'app.estudiante.registrarProyecto',
-            'app.estudiante.enviarSolicitudSemillero'
+            'app.estudiante.enviarSolicitudSemillero',
+            'app.estudiante.aceptarSolicitudesSemilleros'
         ])
         .config(config);
     function config(msNavigationServiceProvider, authProvider) {
@@ -43,5 +44,18 @@
                 return authProvider.checkUser(['ESTUDIANTE']);
             }
         });
+        msNavigationServiceProvider.saveItem('estudiante.aceptar-solicitudes-semilleros', {
+            title: 'Solicitudes',
+            icon: 'icon-tile-four',
+            state: 'app.aceptar_solicitudes_semilleros',
+            /*stateParams: {
+             'param1': 'page'
+             },*/
+            weight: 1,
+            hidden: function(){
+                return authProvider.checkUser(['ESTUDIANTE']);
+            }
+        });
+        
     }
 })();
