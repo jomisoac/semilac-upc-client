@@ -60,5 +60,23 @@
                  return authProvider.checkUser(['TUTOR']);
           }
          });
+          msNavigationServiceProvider.saveItem('tutor.solicitudes-mis-grupos', {
+             title: 'Mis grupos de investigación',
+             icon: 'icon-tile-four',
+             weight: 1,
+             hidden: function(){
+                 return authProvider.checkUser(['TUTOR']);
+          }
+         }); 
+         
+          msNavigationServiceProvider.saveItem('tutor.solicitudes-mis-grupos.solicitudes', {
+             title: 'Solicitudes',
+             icon: 'icon-tile-four',
+             state: 'app.solicitudes-mis-grupos',
+             weight: 1,
+             hidden: function(){
+                 return authProvider.checkUser(['TUTOR']);
+          }
+         });                  
     }
 })();

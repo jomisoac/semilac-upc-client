@@ -1,0 +1,35 @@
+<md-content layout-padding>
+    <div class="white-bg md-whiteframe-1dp">
+        <table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions">
+            <thead>
+                <tr>
+                    <th class="secondary-text">
+                        <div class="table-header">
+                            <span class="column-title">Semillero</span>
+                        </div>
+                    </th>
+                    <th class="secondary-text">
+                        <div class="table-header">
+                            <span class="column-title">Grupo</span>
+                        </div>
+                    </th>
+                    <th class="secondary-text">
+                        <div class="table-header">
+                            <span>Acciones</span>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat='solicitud in vm.solicitudes'>
+                    <td>{{ solicitud.semillero.nombre }}</td>
+                    <td>{{ solicitud.grupo.nombre }}</td>
+                    <td>
+                        <md-button class="md-accent md-raised md-hue-1" ng-click="vm.responder(solicitud, 'aceptada')">Aceptar</md-button>
+                        <md-button class="md-raised md-warn" ng-click="vm.responder(solicitud, 'rechazada')">Rechazar</md-button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</md-content>
