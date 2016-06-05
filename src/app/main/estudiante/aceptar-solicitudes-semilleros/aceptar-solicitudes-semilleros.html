@@ -21,11 +21,12 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="semillero in vm.semilleros">
-                <td>{{ semillero.nombre }}</td>
-                <td>{{ vm.nombreTutor(semillero) }}</td>
+            <tr ng-repeat="solicitud in vm.solicitudes">
+                <td>{{ vm.nombreSemillero(solicitud) }}</td>
+                <td>{{ vm.nombreTutor(solicitud) }}</td>
                 <td>
-                    <md-button ng-click="vm.enviar(semillero)"  class="md-raised md-accent submit-button"                       aria-label="Aceptar" ng-init="semillero.enviado = false; semillero.mensaje = 'Enviar'"                      ng-disabled="semillero.enviado">{{semillero.mensaje}}
+                    <md-button ng-click="vm.aceptar(solicitud)"  class="md-raised md-accent submit-button"                      aria-label="Aceptar"
+                    >{{solicitud.respuesta}}
                     </md-button>
                 </td>
             </tr>
