@@ -5,7 +5,8 @@
         .module('app.tutor', [
             'app.tutor.registrarSemillero',
             'app.tutor.semilleroSolicitaEstudiante',
-            'app.tutor.registrarLineaInvestigacion'
+            'app.tutor.registrarLineaInvestigacion',
+            'app.tutor.solicitudAvalConvocatoria'
         ])
         .config(config);
 
@@ -53,7 +54,7 @@
           msNavigationServiceProvider.saveItem('tutor.solicitud-aval-convocatoria', {
              title: 'Convocatorias',
              icon: 'icon-tile-four',
-             state: 'app.solicitud-aval-convocatoria',
+             state: 'app.solicitud_aval_convocatoria',
              weight: 1,
              hidden: function(){
                  return authProvider.checkUser(['TUTOR']);

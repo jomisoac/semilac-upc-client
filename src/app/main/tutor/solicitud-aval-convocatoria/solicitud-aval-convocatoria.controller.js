@@ -9,11 +9,64 @@
     function SolicitudAvalConvocatoriaController(Restangular, $mdToast, authService) {
         //console.log("RegistrarInvitacionController");
         var vm = this;
-        vm.limpiar=limpiar;
+        vm.semillero = {};
+        vm.semilleros = [];
+        vm.convocatoria = {};
+        vm.convocatorias = [];
+        vm.solicitud_aval = {};
+        vm.solicitudes_aval = [];
+        vm.respuesta = 'enviar';
+        vm.enviar = enviar;
+        vm.limpiar = limpiar;
 
-       
+        var solicitudes = Restangular.all('/solicitud-aval-convocatoria');
+        //var convocatorias = Restangular.all('/convocatorias').getList().$object;
+
+        function enviar() {
+            var solicitud = {
+                'convocatoria_id': vm.convocatoria_id_seleccionado,
+                'semillero_id': vm.semillero_id_seleccionado
+            };
+            solicitudes.post(solicitud).then(
+                    function (d) {
+                        message(d.mensaje);
+                        solicitud = {};
+                    },
+                    function (error) {
+                        var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado.';
+
+                    }
+            );
+        }
 
         
+
+        cargarSemilleros();
+        function cargarSemilleros() {
+            var tutor_id = authService.currentUser().datos.id;
+            vm.semilleros = Restangular.all('/tutores/' + tutor_id + '/semilleros').getList().$objet;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         function message(body) {
             $mdToast.show({
