@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
 
     angular
@@ -46,8 +46,8 @@
         };
 
         vm.enviar = enviar;
-        vm.nombreTutor = nombreTutor;
-        
+        vm.getNombreCompletoTutor = getNombreCompletoTutor;
+
 
         function enviar(semillero) {
 
@@ -57,14 +57,14 @@
             };
 
             vm.solicitudes.post(solicitud).then(
-                function (d) {
+                function(d) {
                     message(d.mensaje);
                     semillero.enviado = true;
                     console.log(d);
-                    semillero.mensaje='en espera';
-                    solicitud = {};                    
+                    semillero.mensaje = 'en espera';
+                    solicitud = {};
                 },
-                function (error) {
+                function(error) {
                     var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error                    inesperado.';
 
                 }
@@ -73,14 +73,14 @@
 
         cargarSemilleros();
 
-        
+
         function cargarSemilleros() {
             vm.semilleros = Restangular.all('/semilleros/tutores').getList().$object;
 
         }
 
-        function nombreTutor(semillero) {
-            return semillero.tutor.nombres;
+        function getNombreCompletoTutor(semillero) {
+            return semillero.tutor.nombres + ' ' + semillero.tutor.apellidos;
         }
 
         function message(body) {
