@@ -54,6 +54,8 @@
                     return s.id === solicitud.id;
                 });
 
+                console.log(solicitud);
+
                 r.respuesta = 'aceptada';
                 r.put().then(function (d) {
                     message(d);

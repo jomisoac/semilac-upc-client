@@ -47,7 +47,7 @@
 
         vm.enviar = enviar;
         vm.nombreTutor = nombreTutor;
-        
+
 
         function enviar(semillero) {
 
@@ -61,8 +61,8 @@
                     message(d.mensaje);
                     semillero.enviado = true;
                     console.log(d);
-                    semillero.mensaje='en espera';
-                    solicitud = {};                    
+                    semillero.mensaje = 'en espera';
+                    solicitud = {};
                 },
                 function (error) {
                     var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error                    inesperado.';
@@ -72,10 +72,16 @@
         }
 
         cargarSemilleros();
+        cargarSolicitudes();
 
-        
         function cargarSemilleros() {
             vm.semilleros = Restangular.all('/semilleros/tutores').getList().$object;
+        }
+
+        function cargarSolicitudes() {
+            Restangular.all('estudiantes/solicitudes-semilleros').getList().then(function (solicitudes) {
+
+            });
 
         }
 
