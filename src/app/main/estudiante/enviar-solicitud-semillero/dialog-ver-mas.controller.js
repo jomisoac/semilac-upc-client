@@ -1,23 +1,20 @@
 function DialogVerMasController($mdDialog, Restangular, authService, DTOptionsBuilder, items) {
     // variables
     var vm = this;
-    vm.semillero={};
-    vm.semillero=items;
+    vm.semillero = {};
+    vm.semillero = items.semillero;
     // funciones
     vm.aceptar = aceptar;
     vm.answer = answer;
     vm.cancel = cancel;
+    vm.getNombreCompletoTutor = getNombreCompletoTutor;
     vm.hide = hide;
-    var programas = Restangular.all('/programas').getList().$object;
-    var grupos = Restangular.all('/grupo').getList().$object;
 
-    cargarProgramas();
-    function cargarProgramas() {
-        vm.programas = programas;
-    }
-    cargarGrupos();
-    function cargarGrupos() {
-        vm.grupos = grupos;
+    function activate() {
+        if (vm.semillero.grupo == null) {
+            vm.semillero.grupo = {};
+            vm.semillero.grupo.nombre = "Sin grupo";
+        }
     }
 
     function answer(answer) {
@@ -28,6 +25,10 @@ function DialogVerMasController($mdDialog, Restangular, authService, DTOptionsBu
         $mdDialog.cancel();
     }
 
+    function getNombreCompletoTutor(tutor) {
+        return tutor.nombres + ' ' + tutor.apellidos;
+    }
+
     function hide() {
         $mdDialog.hide();
     }
@@ -36,4 +37,5 @@ function DialogVerMasController($mdDialog, Restangular, authService, DTOptionsBu
         $mdDialog.hide(answer);
     }
 
+    activate();
 }

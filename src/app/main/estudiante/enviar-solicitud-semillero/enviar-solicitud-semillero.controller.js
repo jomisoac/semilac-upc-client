@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
 
     angular
@@ -57,7 +57,9 @@
                 clickOutsideToClose: true,
                 fullscreen: useFullScreen,
                 locals: {
-                    items: semillero
+                    items: {
+                        'semillero': semillero
+                    }
                 }
             })
         };
@@ -73,14 +75,14 @@
             };
 
             vm.solicitudes.post(solicitud).then(
-                function (d) {
+                function(d) {
                     message(d.mensaje);
                     semillero.enviado = true;
                     console.log(d);
                     semillero.mensaje = 'en espera';
                     solicitud = {};
                 },
-                function (error) {
+                function(error) {
                     var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error                    inesperado.';
 
                 }
@@ -91,7 +93,7 @@
 
 
         function cargarSemilleros() {
-            vm.semilleros = Restangular.all('/semilleros/tutores').getList().$object;
+            vm.semilleros = Restangular.all('/semilleros').getList().$object;
 
         }
 
