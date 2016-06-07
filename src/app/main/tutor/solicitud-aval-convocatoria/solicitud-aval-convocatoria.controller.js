@@ -9,10 +9,10 @@
     function SolicitudAvalConvocatoriaController(Restangular, $mdToast, authService) {
         //console.log("RegistrarInvitacionController");
         var vm = this;
-        vm.semillero = {};
-        vm.semilleros = [];
-        vm.convocatoria = {};
-        vm.convocatorias = [];
+       // vm.semillero = {};
+        //vm.semilleros = [];
+       // vm.convocatoria = {};
+       // vm.convocatorias = [];
         vm.solicitud_aval = {};
         vm.solicitudes_aval = [];
         vm.respuesta = 'enviar';
@@ -20,7 +20,7 @@
         vm.limpiar = limpiar;
 
         var solicitudes = Restangular.all('/solicitud-aval-convocatoria');
-        var convocatorias = Restangular.all('/convocatorias').getList().$object;
+        var convocatorias = Restangular.all('/convocatorias/convocatoria-abierta').getList().$object;
 
         function enviar() {
             var solicitud = {
@@ -39,41 +39,17 @@
             );
         }
 
-        
-
         cargarSemilleros();
         function cargarSemilleros() {
             var tutor_id = authService.currentUser().datos.id;
             vm.semilleros = Restangular.all('/tutores/' + tutor_id + '/semilleros').getList().$object;
-           // vm.semilleros = Restangular.all('/tutores/' + authService.currentUser().datos.id+'/semilleros').getList().$object;
         }
         
         cargarConvocatorias();
         function cargarConvocatorias(){
-            vm.convocatorias=convocatorias;
+            vm.convocatoria= convocatorias;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
         function message(body) {
             $mdToast.show({
                 template: '<md-toast id="language-message" layout="column" layout-align="center start"><div class="md-toast-content">' + body + '</div></md-toast>',
