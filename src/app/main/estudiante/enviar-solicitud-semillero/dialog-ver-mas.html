@@ -1,0 +1,101 @@
+<md-dialog aria-label="Estudiantes disponibles" style="width:70%; ">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Información completa del semillero</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="vm.cancel()">
+                <md-icon md-svg-src="assets/angular-material-assets/img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <form name="registroForm">
+            <style>
+                .layout-gt-sm-row {
+                    margin: -10px 0px -24px 0px !important;
+                }
+            </style>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Tutor</label>
+                    <input id="tutor" readonly ng-model="vm.getNombreCompletoTutor(vm.semillero.tutor)" name="tutor" />
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Programa</label>
+                    <input id="programa" readonly ng-model="vm.semillero.programa.nombre" name="programa" />
+                </md-input-container>
+            </div>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Grupo de investigación</label>
+                    <input id="grupo" readonly ng-model="vm.semillero.grupo.nombre" name="grupo" />
+                </md-input-container>
+            </div>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Nombre del semillero</label>
+                    <textarea id="nombre" readonly ng-model="vm.semillero.nombre" name="nombre"></textarea>
+                </md-input-container>
+            </div>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Misión del semillero</label>
+                    <textarea id="mision" readonly ng-model="vm.semillero.mision" name="mision"></textarea>
+                </md-input-container>
+            </div>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Visión del semillero</label>
+                    <textarea id="vision" readonly ng-model="vm.semillero.vision" name="vision"></textarea>
+                </md-input-container>
+            </div>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Objetivo general del semillero</label>
+                    <textarea id="objetivo_general" readonly ng-model="vm.semillero.objetivo_general" name="objetivo_general"></textarea>
+                </md-input-container>
+            </div>
+            <label style="color:#BDBDBD;">Objetivos específicos del semillero</label>
+
+            <div layout-gt-sm="row">
+
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>1.</label>
+                    <textarea id="objetivo_uno" readonly ng-model="vm.semillero.objetivo_uno" name="objetivo_uno"></textarea>
+                </md-input-container>
+            </div>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>2.</label>
+                    <textarea id="objetivo_dos" readonly ng-model="vm.semillero.objetivo_dos" name="objetivo_dos"></textarea>
+                </md-input-container>
+            </div>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>3.</label>
+                    <textarea id="objetivo_tres" readonly ng-model="vm.semillero.objetivo_tres" name="objetivo_tres"></textarea>
+                </md-input-container>
+            </div>
+            <label style="color:#BDBDBD;">Estrategias de formación y consolidación</label><br>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>1.</label>
+                    <textarea id="estrategia_uno" readonly ng-model="vm.semillero.estrategia_uno" name="estrategia_uno"></textarea>
+                </md-input-container>
+            </div>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>2.</label>
+                    <textarea id="estrategia_dos" readonly ng-model="vm.semillero.estrategia_dos" name="estrategia_dos"></textarea>
+                </md-input-container>
+            </div>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>3.</label>
+                    <textarea id="estrategia_tres" readonly ng-model="vm.semillero.estrategia_tres" name="estrategia_tres"></textarea>
+                </md-input-container>
+            </div>
+        </form>
+        </div>
+    </md-dialog-content>
+</md-dialog>

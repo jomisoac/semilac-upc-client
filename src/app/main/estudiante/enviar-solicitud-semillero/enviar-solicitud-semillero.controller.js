@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
 
     angular
@@ -7,11 +7,12 @@
 
 
     /** @ngInject */
-    function EnviarSolicitudSemillero(Restangular, $mdToast, authService) {
+    function EnviarSolicitudSemillero($mdDialog, Restangular, $mdToast, authService) {
         var vm = this;
         vm.semillero = {};
         vm.semilleros = [];
         vm.solicitud_semilleros = [];
+        vm.showVerMas = showVerMas;
 
 
         vm.solicitudes = Restangular.all('/solicitudes-semilleros');
@@ -45,9 +46,26 @@
             }
         };
 
+        function showVerMas(ev, semillero) {
+            var useFullScreen = false;
+            $mdDialog.show({
+                controller: DialogVerMasController,
+                controllerAs: 'vm',
+                templateUrl: 'app/main/estudiante/enviar-solicitud-semillero/dialog-ver-mas.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose: true,
+                fullscreen: useFullScreen,
+                locals: {
+                    items: {
+                        'semillero': semillero
+                    }
+                }
+            })
+        };
         vm.enviar = enviar;
-        vm.nombreTutor = nombreTutor;
-        
+        vm.getNombreCompletoTutor = getNombreCompletoTutor;
+
 
         function enviar(semillero) {
 
@@ -57,14 +75,14 @@
             };
 
             vm.solicitudes.post(solicitud).then(
-                function (d) {
+                function(d) {
                     message(d.mensaje);
                     semillero.enviado = true;
                     console.log(d);
-                    semillero.mensaje='en espera';
-                    solicitud = {};                    
+                    semillero.mensaje = 'en espera';
+                    solicitud = {};
                 },
-                function (error) {
+                function(error) {
                     var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error                    inesperado.';
 
                 }
@@ -73,14 +91,14 @@
 
         cargarSemilleros();
 
-        
+
         function cargarSemilleros() {
-            vm.semilleros = Restangular.all('/semilleros/tutores').getList().$object;
+            vm.semilleros = Restangular.all('/semilleros').getList().$object;
 
         }
 
-        function nombreTutor(semillero) {
-            return semillero.tutor.nombres;
+        function getNombreCompletoTutor(semillero) {
+            return semillero.tutor.nombres + ' ' + semillero.tutor.apellidos;
         }
 
         function message(body) {

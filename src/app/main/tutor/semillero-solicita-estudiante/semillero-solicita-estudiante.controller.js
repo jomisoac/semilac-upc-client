@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
 
     angular
@@ -9,17 +9,17 @@
     /** @ngInject */
     function SemilleroSolicitaEstudiante(Restangular, $mdToast, DTOptionsBuilder, authService) {
         var vm = this;
+        var estudiante;
+        var solicitudes = Restangular.all('/semillero_solicita_estudiante');
+
+        vm.enviar = enviar;
+        vm.estudiantes = [];
         vm.semillero = {};
         vm.semilleros = [];
-        var estudiante;
-        vm.estudiantes = [];
         vm.solicitud_semilleros = [];
-        vm.respuesta = 'enviar';
-
         vm.getNombreCompleto = getNombreCompleto;
         vm.getNombrePrograma = getNombrePrograma;
 
-        var solicitudes = Restangular.all('/semillero_solicita_estudiante');
         vm.dtOptions = {
             dom: '<"top"f>rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
             pagingType: 'simple',
@@ -50,40 +50,17 @@
             }
         };
 
-        vm.enviar = enviar;
-
-        function enviar(estudiante) {
-            var solicitud = {
-                'estudiante_id': authService.currentUser().datos.id,
-                'semillero_id': vm.semillero_id_seleccionado
-            };
-            solicitudes.post(solicitud).then(
-                function (d) {
-                    message(d.mensaje);
-                    solicitud = {};
-                    estudiante.enviado = true;
-                    estudiante.mensaje = "Enviado";
-                },
-                function (error) {
-                    var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado.';
-
-                }
-            );
+        function cargarEstudiantes() {
+            vm.estudiantes = Restangular.all('/estudiantes/disponibles').getList().$object;
         }
-
-        cargarSemilleros();
-        cargarEstudiantes();
-
 
         function cargarSemilleros() {
             vm.semilleros = Restangular.all('/semilleros').getList().$object;
         }
 
         function cargarSolicitudes() {
-
             vm.solicitud_semilleros = Restangular.all('/tutor/solicitudes-semilleros').getList().$object;
-
-            vm.solicitud_semilleros.forEach(function (solicitud) {
+            vm.solicitud_semilleros.forEach(function(solicitud) {
                 if (solicitud.respuesta == 'en espera') {
 
                 } else {
@@ -98,12 +75,32 @@
             });
         }
 
-        function cargarEstudiantes() {
-            vm.estudiantes = Restangular.all('/estudiantes/disponibles').getList().$object;
+        function enviar(estudiante, form) {
+            if (vm.semillero_id_seleccionado) {
+                var solicitud = {
+                    'estudiante_id': estudiante.id,
+                    'semillero_id': vm.semillero_id_seleccionado
+                };
+                solicitudes.post(solicitud).then(
+                    function(d) {
+                        message(d.mensaje);
+                        solicitud = {};
+                        estudiante.enviado = true;
+                        estudiante.mensaje = "Enviado";
+                    },
+                    function(error) {
+                        var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado.';
+
+                    }
+                );
+            } else {
+                //Debe seleccionar un semillero.
+                document.getElementById('semillero_id_seleccionado').focus();
+            }
         }
 
         function getNombreCompleto(persona) {
-            return persona.apellidos + " " + persona.nombres;
+            return persona.nombres + ' ' + persona.apellidos;
         }
 
         function getNombrePrograma(persona) {
@@ -119,5 +116,8 @@
                 parent: '#content'
             });
         }
+
+        cargarSemilleros();
+        cargarEstudiantes();
     }
 })();

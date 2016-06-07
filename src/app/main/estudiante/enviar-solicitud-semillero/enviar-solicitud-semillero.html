@@ -2,33 +2,35 @@
     <div class="white-bg md-whiteframe-1dp">
         <table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions">
             <thead>
-            <tr>
-                <th class="secondary-text">
-                    <div class="table-header">
-                        <span class="column-title">Nombre semillero</span>
-                    </div>
-                </th>
-                <th class="secondary-text">
-                    <div class="table-header">
-                        <span class="column-title">Tutor</span>
-                    </div>
-                </th>
-                <th class="secondary-text">
-                    <div class="table-header">
-                        <span class="column-title">Solicitar</span>
-                    </div>
-                </th>
-            </tr>
+                <tr>
+                    <th class="secondary-text">
+                        <div class="table-header">
+                            <span class="column-title">Nombre semillero</span>
+                        </div>
+                    </th>
+                    <th class="secondary-text">
+                        <div class="table-header">
+                            <span class="column-title">Tutor</span>
+                        </div>
+                    </th>
+                    <th class="secondary-text">
+                        <div class="table-header">
+                            <span class="column-title">Acciones</span>
+                        </div>
+                    </th>
+                </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="semillero in vm.semilleros">
-                <td>{{ semillero.nombre }}</td>
-                <td>{{ vm.nombreTutor(semillero) }}</td>
-                <td>
-                    <md-button ng-click="vm.enviar(semillero)"  class="md-raised md-accent submit-button"                       aria-label="Aceptar" ng-init="semillero.enviado = false; semillero.mensaje = 'Enviar'"                      ng-disabled="semillero.enviado">{{semillero.mensaje}}
-                    </md-button>
-                </td>
-            </tr>
+                <tr ng-repeat="semillero in vm.semilleros">
+                    <td>{{ semillero.nombre }}</td>
+                    <td>{{ vm.getNombreCompletoTutor(semillero) }}</td>
+                    <td>
+                        <md-button ng-click="vm.enviar(semillero)" class="md-raised md-accent submit-button" aria-label="Aceptar" ng-init="semillero.enviado = false; semillero.mensaje = 'Enviar'" ng-disabled="semillero.enviado">{{semillero.mensaje}}
+                        </md-button>
+                        <md-button ng-click="vm.showVerMas($event, semillero)" class="md-raised md-accent submit-button" aria-label="Aceptar">Ver más
+                        </md-button>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
