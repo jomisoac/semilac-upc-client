@@ -25,8 +25,11 @@
                 <td>{{ vm.nombreSemillero(solicitud) }}</td>
                 <td>{{ vm.nombreTutor(solicitud) }}</td>
                 <td>
-                    <md-button ng-click="vm.aceptar(solicitud)"  class="md-raised md-accent submit-button"                      aria-label="Aceptar"
-                    >{{solicitud.respuesta}}
+                    <md-button ng-click="vm.aceptar(solicitud,'aceptada')"  class="md-raised md-accent submit-button"                      aria-label="Aceptar"
+                    >Aceptar Solicitud
+                    </md-button>
+                    <md-button ng-click="vm.aceptar(solicitud,'rechazada')"  class="md-raised md-accent submit-button"                      aria-label="Aceptar"
+                    >rechazar
                     </md-button>
                 </td>
             </tr>

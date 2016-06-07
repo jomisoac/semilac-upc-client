@@ -97,13 +97,13 @@
 
         }
 
-        function nombreTutor(semillero) {
+        function getNombreCompletoTutor(semillero) {
             return semillero.tutor.nombres;
         }
 
         function message(body) {
             $mdToast.show({
-                template: '<md-toast id="language-message" layout="column" layout-align="center start"><div class="md-toast-content">' + body + '</div></md-toast>',
+                template: '<md-toast id="language-message" layout="column" layout-align="center                          start"><div class="md-toast-content">' + body + '</div></md-toast>',
                 hideDelay: 3000,
                 position: 'top right',
                 parent: '#content'
