@@ -55,7 +55,7 @@
         }
 
         function cargarSemilleros() {
-            vm.semilleros = Restangular.all('/semilleros').getList().$object;
+            vm.semilleros = Restangular.all('/tutores/' + authService.currentUser().datos.id + '/semilleros').getList().$object;
         }
 
         function cargarSolicitudes() {
