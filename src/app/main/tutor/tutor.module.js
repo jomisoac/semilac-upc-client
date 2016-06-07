@@ -6,7 +6,8 @@
             'app.tutor.registrarSemillero',
             'app.tutor.semilleroSolicitaEstudiante',
             'app.tutor.registrarLineaInvestigacion',
-            'app.tutor.solicitudAvalConvocatoria'
+            'app.tutor.solicitudAvalConvocatoria',
+            'app.tutor.SolicitudesMisGrupos'
         ])
         .config(config);
 

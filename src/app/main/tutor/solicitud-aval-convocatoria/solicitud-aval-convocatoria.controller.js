@@ -20,7 +20,7 @@
         vm.limpiar = limpiar;
 
         var solicitudes = Restangular.all('/solicitud-aval-convocatoria');
-        //var convocatorias = Restangular.all('/convocatorias').getList().$object;
+        var convocatorias = Restangular.all('/convocatorias').getList().$object;
 
         function enviar() {
             var solicitud = {
@@ -44,7 +44,13 @@
         cargarSemilleros();
         function cargarSemilleros() {
             var tutor_id = authService.currentUser().datos.id;
-            vm.semilleros = Restangular.all('/tutores/' + tutor_id + '/semilleros').getList().$objet;
+            vm.semilleros = Restangular.all('/tutores/' + tutor_id + '/semilleros').getList().$object;
+           // vm.semilleros = Restangular.all('/tutores/' + authService.currentUser().datos.id+'/semilleros').getList().$object;
+        }
+        
+        cargarConvocatorias();
+        function cargarConvocatorias(){
+            vm.convocatorias=convocatorias;
         }
 
 
