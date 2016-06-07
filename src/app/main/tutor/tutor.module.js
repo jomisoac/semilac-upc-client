@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
 
     angular
@@ -16,7 +16,7 @@
             title: 'TUTOR',
             group: true,
             weight: 1,
-            hidden: function () {
+            hidden: function() {
                 return authProvider.checkUser(['TUTOR']);
             }
         });
@@ -26,48 +26,46 @@
             icon: 'icon-tile-four',
             state: 'app.registrar_semillero',
             weight: 1,
-            hidden: function () {
+            hidden: function() {
                 return authProvider.checkUser(['TUTOR']);
             }
         });
 
-         msNavigationServiceProvider.saveItem('tutor.semillero-solicita-estudiante', {
-             title: 'Enviar solicitud de semillero',
-             icon: 'icon-tile-four',
-             state: 'app.semillero-solicita-estudiante',
-             weight: 1,
-             hidden: function(){
-                 return authProvider.checkUser(['TUTOR']);
-          }
-         });
+        msNavigationServiceProvider.saveItem('tutor.semillero-solicita-estudiante', {
+            title: 'Enviar solicitud a estudiantes',
+            icon: 'icon-tile-four',
+            state: 'app.semillero-solicita-estudiante',
+            weight: 1,
+            hidden: function() {
+                return authProvider.checkUser(['TUTOR']);
+            }
+        });
 
-          msNavigationServiceProvider.saveItem('tutor.linea-investigacion', {
-             title: 'Lineas de investigación',
-             icon: 'icon-tile-four',
-             state: 'app.registrar_linea_investigacion',
-             weight: 1,
-             hidden: function(){
-                 return authProvider.checkUser(['TUTOR']);
-          }
-         });
-         
-          msNavigationServiceProvider.saveItem('tutor.solicitudes-mis-grupos', {
-             title: 'Mis grupos de investigación',
-             icon: 'icon-tile-four',
-             weight: 1,
-             hidden: function(){
-                 return authProvider.checkUser(['TUTOR']);
-          }
-         }); 
-         
-          msNavigationServiceProvider.saveItem('tutor.solicitudes-mis-grupos.solicitudes', {
-             title: 'Solicitudes',
-             icon: 'icon-tile-four',
-             state: 'app.solicitudes-mis-grupos',
-             weight: 1,
-             hidden: function(){
-                 return authProvider.checkUser(['TUTOR']);
-          }
-         });                  
+        msNavigationServiceProvider.saveItem('tutor.mis-grupos', {
+            title: 'Mis grupos de investigación',
+            icon: 'icon-tile-four',
+            weight: 1,
+            hidden: function() {
+                return authProvider.checkUser(['TUTOR']);
+            }
+        });
+
+        msNavigationServiceProvider.saveItem('tutor.mis-grupos.linea-investigacion', {
+            title: 'Líneas de investigación',
+            state: 'app.registrar_linea_investigacion',
+            weight: 1,
+            hidden: function() {
+                return authProvider.checkUser(['TUTOR']);
+            }
+        });
+
+        msNavigationServiceProvider.saveItem('tutor.mis-grupos.solicitudes', {
+            title: 'Solicitudes de semilleros',
+            state: 'app.solicitudes-mis-grupos',
+            weight: 1,
+            hidden: function() {
+                return authProvider.checkUser(['TUTOR']);
+            }
+        });
     }
 })();

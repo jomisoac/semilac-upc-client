@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
 
     angular
@@ -9,11 +9,13 @@
     /** @ngInject */
     function ConsultarSemilleros(Restangular, $mdToast, DTOptionsBuilder, authService) {
         var vm = this;
+        var solicitudes = Restangular.all('/solicitud-semilleros');
+
+        vm.buscarTutor = buscarTutor;
         vm.semillero = {};
         vm.semilleros = [];
         vm.tutores = [];
 
-        var solicitudes = Restangular.all('/solicitud-semilleros');
         vm.dtOptions = DTOptionsBuilder
             .fromSource()
             .withLanguage({
@@ -39,15 +41,18 @@
                     "sSortDescending": ": activar para ordenar las columnas descendente"
                 }
             })
-        // Add Bootstrap compatibility
+            // Add Bootstrap compatibility
 
 
-        vm.buscarTutor = buscarTutor;
-
-
-        cargarSemilleros();
-        cargarTutores();
-
+        function buscarTutor(tutor_id) {
+            var nombreCompleto = '';
+            vm.tutores.forEach(function(item) {
+                if (item.id == tutor_id) {
+                    nombreCompleto = item.nombres + ' ' + item.apellidos;
+                }
+            });
+            return nombreCompleto;
+        }
 
         function cargarSemilleros() {
             vm.semilleros = Restangular.all('/semilleros').getList().$object;
@@ -57,17 +62,6 @@
             vm.tutores = Restangular.all('/tutores').getList().$object;
         }
 
-        function buscarTutor(tutor_id) {
-            var nombre = '';
-            vm.tutores.forEach(function (item) {
-                if (item.id == tutor_id) {
-                    nombre = item.nombres;
-                }
-            });
-            return nombre;
-        }
-
-
         function message(body) {
             $mdToast.show({
                 template: '<md-toast id="language-message" layout="column" layout-align="center start"><div class="md-toast-content">' + body + '</div></md-toast>',
@@ -76,5 +70,8 @@
                 parent: '#content'
             });
         }
+
+        cargarSemilleros();
+        cargarTutores();
     }
 })();

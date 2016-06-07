@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
 
     angular
@@ -13,7 +13,7 @@
                 url: '/consultar-semilleros',
                 views: {
                     'content@app': {
-                        templateUrl: 'app/main/director/consultar_semilleros/consultar-semilleros.html',
+                        templateUrl: 'app/main/director/semilleros-solicitando-aval/semilleros-solicitando-aval.html',
                         controller: 'ConsultarSemilleros as vm'
                     }
                 },

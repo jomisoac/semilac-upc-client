@@ -2,7 +2,7 @@
  * Created by Jose Soto
  * on 24/05/2016.
  */
-(function () {
+(function() {
     'use strict';
 
     angular
@@ -12,50 +12,51 @@
             'app.estudiante.aceptarSolicitudesSemilleros'
         ])
         .config(config);
+
     function config(msNavigationServiceProvider, authProvider) {
         // Navigation
         msNavigationServiceProvider.saveItem('estudiante', {
-            title : 'ESTUDIANTE',
-            group : true,
+            title: 'ESTUDIANTE',
+            group: true,
             weight: 1,
-            hidden: function(){
+            hidden: function() {
                 return authProvider.checkUser(['ESTUDIANTE']);
             }
         });
 
         msNavigationServiceProvider.saveItem('estudiante.registrar_proyecto', {
-            title : 'Registrar nuevo proyecto',
-            state : 'app.registrar_proyecto',
-            weight : 1,
-            icon  : 'icon-tile-four',
-            hidden: function () {
+            title: 'Registrar nuevo proyecto',
+            state: 'app.registrar_proyecto',
+            weight: 1,
+            icon: 'icon-tile-four',
+            hidden: function() {
                 return authProvider.checkUser(['ESTUDIANTE']);
             }
         });
         msNavigationServiceProvider.saveItem('estudiante.enviar-solicitud-semillero', {
-            title: 'Enviar Solicitud ',
+            title: 'Enviar solicitud a semilleros',
             icon: 'icon-tile-four',
-            state: 'app.enviar_solicitud_semillero',
+            state: 'app.enviar_solicitud_a_semilleros',
             /*stateParams: {
              'param1': 'page'
              },*/
             weight: 1,
-            hidden: function(){
+            hidden: function() {
                 return authProvider.checkUser(['ESTUDIANTE']);
             }
         });
         msNavigationServiceProvider.saveItem('estudiante.aceptar-solicitudes-semilleros', {
-            title: 'Solicitudes',
+            title: 'Invitaciones de semilleros',
             icon: 'icon-tile-four',
             state: 'app.aceptar_solicitudes_semilleros',
             /*stateParams: {
              'param1': 'page'
              },*/
             weight: 1,
-            hidden: function(){
+            hidden: function() {
                 return authProvider.checkUser(['ESTUDIANTE']);
             }
         });
-        
+
     }
 })();
