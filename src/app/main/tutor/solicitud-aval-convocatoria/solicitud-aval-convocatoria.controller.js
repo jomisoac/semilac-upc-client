@@ -1,35 +1,49 @@
-(function () {
+(function() {
     'use strict';
 
     angular
-            .module('app.tutor.solicitudAvalConvocatoria')
-            .controller('SolicitudAvalConvocatoriaController', SolicitudAvalConvocatoriaController);
+        .module('app.tutor.solicitudAvalConvocatoria')
+        .controller('SolicitudAvalConvocatoriaController', SolicitudAvalConvocatoriaController);
 
     /** @ngInject */
     function SolicitudAvalConvocatoriaController(Restangular, $mdToast, authService) {
-        //console.log("RegistrarInvitacionController");
+        //Según las buenas prácticas de @johnpapa, todo se organiza alfabéticamente y de la siguiente manera:
+
+        //1. Variables privadas
         var vm = this;
-        vm.semillero = {};
-        vm.semilleros = [];
-        vm.convocatoriaAbierta = {};
-        vm.solicitudes_aval = [];
-        vm.enviar = enviar;
-        vm.limpiar = limpiar;
-
-
         var solicitudes = Restangular.all('/solicitud-aval-convocatoria');
-        var convocatoriaAbierta = Restangular.one('/convocatorias/convocatoria-abierta').$object;
-        vm.convocatoriaAbierta = convocatoriaAbierta;
-        cargarSemilleros();
+        var convocatoriaAbierta = Restangular.one('/convocatorias/convocatoria-abierta');
+
+        //2. Variables y funciones públicas
+        vm.convocatoriaAbierta = {};
+        vm.enviar = enviar;
+        vm.estaCargando = true;
+        vm.hayConvocatoriaAbierta = false;
+        vm.limpiar = limpiar;
+        vm.semilleros = [];
+
+        //3. Declaración de las funciones
+        function cargarConvocatoriaAbierta() {
+            convocatoriaAbierta.get().then(
+                function(response) {
+                    vm.estaCargando = false;
+                    vm.hayConvocatoriaAbierta = !jQuery.isEmptyObject(response);
+                    if (vm.hayConvocatoriaAbierta) {
+                        vm.convocatoriaAbierta = response;
+                    }
+                    console.log(response, vm.hayConvocatoriaAbierta, vm.convocatoriaAbierta);
+                },
+                function(error) {
+                    var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error                    inesperado.';
+                    message(mensajeError);
+                }
+            );
+        }
+
         function cargarSemilleros() {
             var tutor_id = authService.currentUser().datos.id;
             vm.semilleros = Restangular.all('/tutores/' + tutor_id + '/semilleros').getList().$object;
         }
-
-        // cargarConvocatoria();
-        //function cargarConvocatoria() {
-        //   vm.convocatorias = convocatorias;
-        // }
 
         function enviar(form) {
             var solicitud = {
@@ -38,14 +52,22 @@
             };
 
             solicitudes.post(solicitud).then(
-                    function (d) {
-                        message(d.mensaje);
-                        solicitud = {};
-                    },
-                    function (error) {
-                        var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error                    inesperado.';
-                    }
+                function(d) {
+                    message(d.mensaje);
+                    solicitud = {};
+                },
+                function(error) {
+                    var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error                    inesperado.';
+                }
             );
+        }
+
+        function limpiar(form) {
+            vm.linea = {};
+            if (form) {
+                form.$setPristine();
+                form.$setUntouched();
+            }
         }
 
         function message(body) {
@@ -56,19 +78,9 @@
                 parent: '#content'
             });
         }
-        function limpiar(form) {
-            vm.linea = {};
-            if (form) {
-                form.$setPristine();
-                form.$setUntouched();
-            }
-        }
+
+        //4. El resto del código: Llamadas a la funciones, etc.
+        cargarConvocatoriaAbierta();
+        cargarSemilleros();
     }
 })();
-
-
-
-
-
-
-
