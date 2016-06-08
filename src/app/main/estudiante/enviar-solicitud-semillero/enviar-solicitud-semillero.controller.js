@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -91,19 +91,19 @@
 
         cargarSemilleros();
 
-
+        
         function cargarSemilleros() {
-            vm.semilleros = Restangular.all('/semilleros').getList().$object;
+            vm.semilleros = Restangular.all('/semilleros/tutores').getList().$object;
 
         }
 
         function getNombreCompletoTutor(semillero) {
-            return semillero.tutor.nombres + ' ' + semillero.tutor.apellidos;
+            return semillero.tutor.nombres;
         }
 
         function message(body) {
             $mdToast.show({
-                template: '<md-toast id="language-message" layout="column" layout-align="center start"><div class="md-toast-content">' + body + '</div></md-toast>',
+                template: '<md-toast id="language-message" layout="column" layout-align="center                          start"><div class="md-toast-content">' + body + '</div></md-toast>',
                 hideDelay: 3000,
                 position: 'top right',
                 parent: '#content'
