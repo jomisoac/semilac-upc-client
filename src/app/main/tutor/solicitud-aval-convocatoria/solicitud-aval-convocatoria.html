@@ -24,11 +24,13 @@
                             <div layout-gt-sm="row">
                                 <md-input-container class="md-block" flex-gt-sm>
                                     <label>Fecha de inicio</label>
-                                    <input type="text" id="fechainicial" name="fechainicial" ng-model="vm.convocatoriaAbierta.fechainicial" disabled/>
+                                    <span>{{vm.convocatoriaAbierta.fechainicial | date: 'longDate'}}</span>
+                                    <input type="text" id="fechainicial" name="fechainicial" ng-model="vm.convocatoriaAbierta.fechainicial" disabled ng-show="false"/>
                                 </md-input-container>
                                 <md-input-container class="md-block" flex-gt-sm>
                                     <label>Fecha de finalización</label>
-                                    <input type="text" id="fechafinal" name="fechafinal" ng-model="vm.convocatoriaAbierta.fechafinal" disabled/>
+                                    <span>{{vm.convocatoriaAbierta.fechafinal | date}}</span>
+                                    <input type="text" id="fechafinal" name="fechafinal" ng-model="vm.convocatoriaAbierta.fechafinal" disabled ng-show="false"/>
                                 </md-input-container>
                             </div>
                             <br><br>

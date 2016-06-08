@@ -31,7 +31,7 @@
                     if (vm.hayConvocatoriaAbierta) {
                         vm.convocatoriaAbierta = response;
                     }
-                    console.log(response, vm.hayConvocatoriaAbierta, vm.convocatoriaAbierta);
+                    // console.log(response, vm.hayConvocatoriaAbierta, vm.convocatoriaAbierta);
                 },
                 function(error) {
                     var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error                    inesperado.';
@@ -48,7 +48,8 @@
         function enviar(form) {
             var solicitud = {
                 'convocatoria_id': 1,
-                'semillero_id': vm.semillero_id_seleccionado
+                'semillero_id': vm.semillero_id_seleccionado,
+                'tutor_id': authService.currentUser().datos.id
             };
 
             solicitudes.post(solicitud).then(
