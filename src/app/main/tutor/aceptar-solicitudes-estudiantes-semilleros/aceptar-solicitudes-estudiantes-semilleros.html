@@ -1,0 +1,45 @@
+<md-content layout-padding>
+    <div class="white-bg md-whiteframe-1dp">
+        <table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions">
+            <thead>
+            <tr>
+                <th class="secondary-text">
+                    <div class="table-header">
+                        <span class="column-title">Estudiante</span>
+                    </div>
+                </th>
+                <th class="secondary-text">
+                    <div class="table-header">
+                        <span class="column-title">Semillero</span>
+                    </div>
+                </th>
+                <th class="secondary-text">
+                    <div class="table-header">
+                        <span class="column-title">Acciones</span>
+                    </div>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="invitacion in vm.invitaciones_de_estudiantes">
+                <td>{{ invitacion.estudiante.nombres }}</td>
+                <td>{{ invitacion.semillero.nombre }}</td>
+                <td>
+                    <md-button id="btn-Aceptar" ng-click="vm.aceptar(invitacion)"
+                               class="md-accent md-raised md-hue-1"
+                               ng-init="invitacion.respuesta != 'aceptada'; vm.mensaje = 'Aceptar'"
+                               ng-disabled="invitacion.respuesta == 'aceptada'">
+                        {{vm.mensaje}}
+                    </md-button>
+                   <!-- <md-button id="btn-Rechazar" ng-click="vm.enviar(estudiante)"
+                               class="md-raised md-warn"
+                               ng-init="estudiante.Rechazar = false; estudiante.mensaje = 'Rechazar'"
+                               ng-disabled="estudiante.Rechazado">
+                        {{estudiante.mensaje}}
+                    </md-button>-->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</md-content>

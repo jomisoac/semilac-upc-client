@@ -7,7 +7,8 @@
             'app.tutor.semilleroSolicitaEstudiante',
             'app.tutor.registrarLineaInvestigacion',
             'app.tutor.solicitudAvalConvocatoria',
-            'app.tutor.SolicitudesMisGrupos'
+            'app.tutor.SolicitudesMisGrupos',
+            'app.tutor.aceptarSolicitudesEstudiantesSemilleros'
         ])
         .config(config);
 
@@ -51,6 +52,15 @@
                  return authProvider.checkUser(['TUTOR']);
           }
          });
+
+        msNavigationServiceProvider.saveItem('tutor.aceptar-solicitudes-estudiantes-semilleros', {
+            icon: 'icon-tile-four',
+            state: 'app.aceptar-solicitudes-estudiantes-semilleros',
+            weight: 1,
+            hidden: function(){
+                return authProvider.checkUser(['TUTOR']);
+            }
+        });
          
           msNavigationServiceProvider.saveItem('tutor.solicitud-aval-convocatoria', {
              title: 'Convocatorias',
