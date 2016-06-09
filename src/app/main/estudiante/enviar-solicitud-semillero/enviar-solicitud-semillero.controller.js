@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
 
     angular
@@ -91,9 +91,9 @@
 
         cargarSemilleros();
 
-        
+
         function cargarSemilleros() {
-            vm.semilleros = Restangular.all('/semilleros/tutores').getList().$object;
+            vm.semilleros = Restangular.all('/semilleros').getList().$object;
 
         }
 
