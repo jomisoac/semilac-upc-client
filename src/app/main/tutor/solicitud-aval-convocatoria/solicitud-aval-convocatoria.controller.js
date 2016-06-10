@@ -47,7 +47,7 @@
 
         function enviar(form) {
             var solicitud = {
-                'convocatoria_id': 1,
+                'convocatoria_id': vm.convocatoriaAbierta.id,
                 'semillero_id': vm.semillero_id_seleccionado,
                 'tutor_id': authService.currentUser().datos.id
             };
