@@ -78,7 +78,7 @@
                 function(d) {
                     message(d.mensaje);
                     semillero.enviado = true;
-                    console.log(d);
+                    //console.log(d);
                     semillero.mensaje = 'en espera';
                     solicitud = {};
                 },
