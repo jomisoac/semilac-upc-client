@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
 
     angular
@@ -15,18 +15,19 @@
         vm.limpiar = limpiar;
 
         function guardar(form) {
-            director.post(vm.director).then(function (d) {
-                if (d.ok != 'false') {
-                    message(d);
-                    limpiar(form);
-                    //$timeout(atras, 4000)
-                } else {
-                    message(d.mensaje);
+            director.post(vm.director).then(function(d) {
+                    if (d.ok != 'false') {
+                        message(d.mensaje);
+                        limpiar(form);
+                        //$timeout(atras, 4000)
+                    } else {
+                        message(d.mensaje);
+                    }
+                }),
+                function(error) {
+                    var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado.';
+                    message(mensajeError);
                 }
-            }), function (error) {
-                var mensajeError = error.status == 401 ? error.data.mensajeError : 'A ocurrido un error inesperado';
-                message(mensajeError);
-            }
         };
 
         function limpiar(form) {

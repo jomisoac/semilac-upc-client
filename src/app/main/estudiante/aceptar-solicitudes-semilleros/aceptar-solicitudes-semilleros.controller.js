@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
 
     angular
@@ -11,7 +11,7 @@
 
         var vm = this;
         vm.solicitudes = [];
-        vm.listas=[];
+        vm.listas = [];
 
         vm.dtOptions = {
             dom: '<"top"f>rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
@@ -44,33 +44,34 @@
         };
 
         vm.nombreTutor = nombreTutor;
-        vm.nombreSemillero=nombreSemillero;
+        vm.nombreSemillero = nombreSemillero;
         vm.aceptar = aceptar;
         cargarSemilleros();
 
-        function aceptar(solicitud,respuesta) {
-            var r = Restangular.all('/semillero_solicita_estudiante').getList().then(function (solicitudes)           {
-                var r = _.find(solicitudes, function(s) {                    
+        function aceptar(solicitud, respuesta) {
+            var r = Restangular.all('/semillero_solicita_estudiante').getList().then(function(solicitudes) {
+                var r = _.find(solicitudes, function(s) {
                     return s.id === solicitud.id;
                 });
 
-                console.log(solicitud);
+                //console.log(solicitud);
 
                 r.respuesta = respuesta;
-                r.put().then(function (d) {
-                    message(d);
-                    cargarSemilleros();
-                }), function (error) {
-                    var mensajeError = error.status == 401 ? error.data.mensajeError : 'A ocurrido un                         error inesperado';
-                    message(mensajeError);
-                }
+                r.put().then(function(d) {
+                        message(d);
+                        cargarSemilleros();
+                    }),
+                    function(error) {
+                        var mensajeError = error.status == 401 ? error.data.mensajeError : 'A ocurrido un                         error inesperado';
+                        message(mensajeError);
+                    }
 
             });
 
         }
 
         function cargarSemilleros() {
-            vm.solicitudes = Restangular.all('/estudiantes/' + authService.currentUser().datos.id +                   '/invitaciones-de-semilleros').getList().$object;
+            vm.solicitudes = Restangular.all('/estudiantes/' + authService.currentUser().datos.id + '/invitaciones-de-semilleros').getList().$object;
 
         }
 
