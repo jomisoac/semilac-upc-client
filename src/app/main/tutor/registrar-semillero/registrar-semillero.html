@@ -1,157 +1,166 @@
-<div class="container">
-    <div style='padding: 25px;' layout="column" ng-cloak class="md-horintal-form">
-        <div layout="row">
-            <div flex layout="row" layout-align="center center">
-                <div flex-sm="100" flex-gt-sm="90" flex-gt-md="90" flex-gt-lg="50" class="md-whiteframe-z2">
-                    <md-content class="md-padding">
-                        <center><span class="md-display-1">Registrar Semillero</span></center>
-                        <br>
-                        <br>
-                        <form name="registroForm">
-                            <style>
-                                .layout-gt-sm-row {
-                                    margin: -10px 0px -24px 0px !important;
-                                }
-                            </style>
-                            <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
-                                    <label>Programa</label>
-                                    <md-select id="programa" name="programa" ng-model="vm.semillero.programa_id" required>
-                                        <md-optgroup label="Programas">
-                                            <md-option ng-value="programa.id" ng-repeat="programa in vm.programas">{{programa.nombre}}</md-option>
-                                        </md-optgroup>
-                                    </md-select>
-                                    <div ng-messages="!registroForm.$pristine && registroForm.programa.$error">
-                                        <div ng-message="required">Este campo es obligatorio.</div>
-                                    </div>
-                                </md-input-container>
-                                <md-input-container class="md-block" flex-gt-sm>
-                                    <label>Grupo al que se adscribe:</label>
-                                    <md-select id="grupo" name="grupo" ng-model="vm.semillero.grupo_id" required>
-                                        <md-optgroup label="Grupos">
-                                            <md-option ng-value="grupo.id" ng-repeat="grupo in vm.grupos">{{grupo.nombre}}</md-option>
-                                        </md-optgroup>
-                                    </md-select>
-                                    <div ng-messages="!registroForm.$pristine && registroForm.grupo.$error">
-                                        <div ng-message="required">Este campo es obligatorio.</div>
-                                    </div>
-                                </md-input-container>
-                            </div>
-                            <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
-                                    <label>Nombre del semillero</label>
-                                    <textarea id="nombre" ng-model="vm.semillero.nombre" required name="nombre"></textarea>
-                                    <div ng-messages="registroForm.nombre.$error">
-                                        <div ng-message="required">Este campo es obligatorio.</div>
-                                    </div>
-                                </md-input-container>
-                            </div>
-                            <!--div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
-                                    <label>Linea de investigación:</label>
-                                    <md-select id="linea" name="linea" ng-model="vm.semillero.linea_id" required >
-                                        <md-optgroup label="Lineas">
-                                            <md-option ng-value="linea_id" ng-repeat="linea in vm.lineas">{{linea.nombre}}</md-option>
-                                        </md-optgroup>
-                                    </md-select>
-                                    <div ng-messages="!registroForm.$pristine && registroForm.linea.$error">
-                                        <div ng-message="required">Este campo es obligatorio.</div>
-                                    </div>
-                                </md-input-container>
-                            </div-->
-                            <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
-                                    <label>Misión del semillero</label>
-                                    <textarea id="mision" ng-model="vm.semillero.mision" required name="mision"></textarea>
-                                    <div ng-messages="registroForm.mision.$error">
-                                        <div ng-message="required">Este campo es obligatorio.</div>
-                                    </div>
-                                </md-input-container>
-                            </div>
-                            <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
-                                    <label>Visión del semillero</label>
-                                    <textarea id="vision" ng-model="vm.semillero.vision" required name="vision"></textarea>
-                                    <div ng-messages="registroForm.vision.$error">
-                                        <div ng-message="required">Este campo es obligatorio.</div>
-                                    </div>
-                                </md-input-container>
-                            </div>
-                            <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
-                                    <label>Objetivo general del semillero</label>
-                                    <textarea id="objetivo_general" ng-model="vm.semillero.objetivo_general" required name="objetivo_general"></textarea>
-                                    <div ng-messages="registroForm.objetivo_general.$error">
-                                        <div ng-message="required">Este campo es obligatorio.</div>
-                                    </div>
-                                </md-input-container>
-                            </div>
-                            <label style="color:#BDBDBD;">Objetivos específicos del semillero</label>
-                            <div layout-gt-sm="row">
 
-                                <md-input-container class="md-block" flex-gt-sm>
-                                    <label>1.</label>
-                                    <textarea id="objetivo_uno" ng-model="vm.semillero.objetivo_uno" required name="objetivo_uno"></textarea>
-                                    <div ng-messages="registroForm.objetivo_uno.$error">
-                                        <div ng-message="required">Este campo es obligatorio.</div>
+<div id="forms" class="page-layout simple fullwidth doc-page" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <md-icon md-font-icon="icon-home" class="s16"></md-icon>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">TUTOR</span>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">Registrar semillero</span>
+            </div>
+            <span class="title">Registar semilleros de investigación</span>
+            <!--span class="md-subhead">Aquí podrás aceptar las solicitudes de los estudiantes que quieran pertenecer a tus
+                semilleros</span-->
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content" layout="column">
+        <div class="container">
+            <div style='padding: 15px;' layout="column" ng-cloak class="md-horintal-form">
+                <div layout="row">
+                    <div flex layout="row" layout-align="center center">
+                        <div flex-sm="100" flex-gt-sm="90" flex-gt-md="90" flex-gt-lg="50" class="md-whiteframe-z2">
+                            <md-content class="md-padding">
+                                <br>
+                                <form name="registroForm">
+                                    <style>
+                                        .layout-gt-sm-row {
+                                            margin: -10px 0px -24px 0px !important;
+                                        }
+                                    </style>
+                                    <div layout-gt-sm="row">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>Programa</label>
+                                            <md-select id="programa" name="programa" ng-model="vm.semillero.programa_id" required>
+                                                <md-optgroup label="Programas">
+                                                    <md-option ng-value="programa.id" ng-repeat="programa in vm.programas">{{programa.nombre}}</md-option>
+                                                </md-optgroup>
+                                            </md-select>
+                                            <div ng-messages="!registroForm.$pristine && registroForm.programa.$error">
+                                                <div ng-message="required">Este campo es obligatorio.</div>
+                                            </div>
+                                        </md-input-container>
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>Grupo al que se adscribe:</label>
+                                            <md-select id="grupo" name="grupo" ng-model="vm.semillero.grupo_id" required>
+                                                <md-optgroup label="Grupos">
+                                                    <md-option ng-value="grupo.id" ng-repeat="grupo in vm.grupos">{{grupo.nombre}}</md-option>
+                                                </md-optgroup>
+                                            </md-select>
+                                            <div ng-messages="!registroForm.$pristine && registroForm.grupo.$error">
+                                                <div ng-message="required">Este campo es obligatorio.</div>
+                                            </div>
+                                        </md-input-container>
                                     </div>
-                                </md-input-container>
-                            </div>
-                            <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
-                                    <label>2.</label>
-                                    <textarea id="objetivo_dos" ng-model="vm.semillero.objetivo_dos" required name="objetivo_dos"></textarea>
-                                    <div ng-messages="registroForm.objetivo_dos.$error">
-                                        <div ng-message="required">Este campo es obligatorio.</div>
+                                    <div layout-gt-sm="row">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>Nombre del semillero</label>
+                                            <textarea id="nombre" ng-model="vm.semillero.nombre" required name="nombre"></textarea>
+                                            <div ng-messages="registroForm.nombre.$error">
+                                                <div ng-message="required">Este campo es obligatorio.</div>
+                                            </div>
+                                        </md-input-container>
                                     </div>
-                                </md-input-container>
-                            </div>
-                            <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
-                                    <label>3.</label>
-                                    <textarea id="objetivo_tres" ng-model="vm.semillero.objetivo_tres" required name="objetivo_tres"></textarea>
-                                    <div ng-messages="registroForm.objetivo_tres.$error">
-                                        <div ng-message="required">Este campo es obligatorio.</div>
+                                    <div layout-gt-sm="row">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>Misión del semillero</label>
+                                            <textarea id="mision" ng-model="vm.semillero.mision" required name="mision"></textarea>
+                                            <div ng-messages="registroForm.mision.$error">
+                                                <div ng-message="required">Este campo es obligatorio.</div>
+                                            </div>
+                                        </md-input-container>
                                     </div>
-                                </md-input-container>
-                            </div>
-                            <label style="color:#BDBDBD;">Estrategias de formación y consolidación</label><br>
-                            <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
-                                    <label>1.</label>
-                                    <textarea id="estrategia_uno" ng-model="vm.semillero.estrategia_uno" required name="estrategia_uno"></textarea>
-                                    <div ng-messages="registroForm.estrategia_uno.$error">
-                                        <div ng-message="required">Este campo es obligatorio.</div>
+                                    <div layout-gt-sm="row">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>Visión del semillero</label>
+                                            <textarea id="vision" ng-model="vm.semillero.vision" required name="vision"></textarea>
+                                            <div ng-messages="registroForm.vision.$error">
+                                                <div ng-message="required">Este campo es obligatorio.</div>
+                                            </div>
+                                        </md-input-container>
                                     </div>
-                                </md-input-container>
-                            </div>
-                            <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
-                                    <label>2.</label>
-                                    <textarea id="estrategia_dos" ng-model="vm.semillero.estrategia_dos" required name="estrategia_dos"></textarea>
-                                    <div ng-messages="registroForm.estrategia_dos.$error">
-                                        <div ng-message="required">Este campo es obligatorio.</div>
+                                    <div layout-gt-sm="row">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>Objetivo general del semillero</label>
+                                            <textarea id="objetivo_general" ng-model="vm.semillero.objetivo_general" required name="objetivo_general"></textarea>
+                                            <div ng-messages="registroForm.objetivo_general.$error">
+                                                <div ng-message="required">Este campo es obligatorio.</div>
+                                            </div>
+                                        </md-input-container>
                                     </div>
-                                </md-input-container>
-                            </div>
-                            <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
-                                    <label>3.</label>
-                                    <textarea id="estrategia_tres" ng-model="vm.semillero.estrategia_tres" required name="estrategia_tres"></textarea>
-                                    <div ng-messages="registroForm.estrategia_tres.$error">
-                                        <div ng-message="required">Este campo es obligatorio.</div>
+                                    <label style="color:#BDBDBD;">Objetivos específicos del semillero</label>
+                                    <div layout-gt-sm="row">
+
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>1.</label>
+                                            <textarea id="objetivo_uno" ng-model="vm.semillero.objetivo_uno" required name="objetivo_uno"></textarea>
+                                            <div ng-messages="registroForm.objetivo_uno.$error">
+                                                <div ng-message="required">Este campo es obligatorio.</div>
+                                            </div>
+                                        </md-input-container>
                                     </div>
-                                </md-input-container>
-                            </div>
-                            <div flex layout="row" layout-align="center center">
-                                <md-button ng-click="vm.registrar(registroForm)" type="submit" class="md-raised md-accent submit-button" aria-label="Aceptar"
-                                    ng-disabled="registroForm.$invalid || registroForm.$pristine">Aceptar
-                                </md-button>
-                                <md-button ng-click="vm.limpiar(registroForm)" class="md-raised md-accent submit-button" aria-label="Cancelar">Cancelar
-                                </md-button>
-                            </div>
-                        </form>
-                    </md-content>
+                                    <div layout-gt-sm="row">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>2.</label>
+                                            <textarea id="objetivo_dos" ng-model="vm.semillero.objetivo_dos" required name="objetivo_dos"></textarea>
+                                            <div ng-messages="registroForm.objetivo_dos.$error">
+                                                <div ng-message="required">Este campo es obligatorio.</div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-sm="row">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>3.</label>
+                                            <textarea id="objetivo_tres" ng-model="vm.semillero.objetivo_tres" required name="objetivo_tres"></textarea>
+                                            <div ng-messages="registroForm.objetivo_tres.$error">
+                                                <div ng-message="required">Este campo es obligatorio.</div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
+                                    <label style="color:#BDBDBD;">Estrategias de formación y consolidación</label><br>
+                                    <div layout-gt-sm="row">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>1.</label>
+                                            <textarea id="estrategia_uno" ng-model="vm.semillero.estrategia_uno" required name="estrategia_uno"></textarea>
+                                            <div ng-messages="registroForm.estrategia_uno.$error">
+                                                <div ng-message="required">Este campo es obligatorio.</div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-sm="row">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>2.</label>
+                                            <textarea id="estrategia_dos" ng-model="vm.semillero.estrategia_dos" required name="estrategia_dos"></textarea>
+                                            <div ng-messages="registroForm.estrategia_dos.$error">
+                                                <div ng-message="required">Este campo es obligatorio.</div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-sm="row">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>3.</label>
+                                            <textarea id="estrategia_tres" ng-model="vm.semillero.estrategia_tres" required name="estrategia_tres"></textarea>
+                                            <div ng-messages="registroForm.estrategia_tres.$error">
+                                                <div ng-message="required">Este campo es obligatorio.</div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
+                                    <div flex layout="row" layout-align="center center">
+                                        <md-button ng-click="vm.registrar(registroForm)" type="submit" class="md-raised md-accent submit-button" aria-label="Aceptar"
+                                                   ng-disabled="registroForm.$invalid || registroForm.$pristine">Aceptar
+                                        </md-button>
+                                        <md-button ng-click="vm.limpiar(registroForm)" class="md-raised md-accent submit-button" aria-label="Cancelar">Cancelar
+                                        </md-button>
+                                    </div>
+                                </form>
+                            </md-content>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
