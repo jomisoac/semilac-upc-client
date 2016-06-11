@@ -12,7 +12,7 @@
         var jwt = sessionStorage.getItem('jwt');
       // config restangular
         RestangularProvider.setBaseUrl(api);
-        RestangularProvider.setDefaultHeaders({Authorization : 'Bearer '+ jwt});
+        // RestangularProvider.setDefaultHeaders({Authorization : 'Bearer '+ jwt});
         //
         $locationProvider.html5Mode(true);
 
