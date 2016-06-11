@@ -54,6 +54,7 @@
          });
 
         msNavigationServiceProvider.saveItem('tutor.aceptar-solicitudes-estudiantes-semilleros', {
+            title: 'Solicitudes de estudiantes',
             icon: 'icon-tile-four',
             state: 'app.aceptar-solicitudes-estudiantes-semilleros',
             weight: 1,
