@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
 
     angular
@@ -46,33 +46,36 @@
         function guardar() {
             //vm.convocatoria.usuario_id = JSON.parse(sessionStorage.usuario).id;
             var acta = vm.convocatoria.acta;
-            console.log(acta);
+            //console.log(acta);
             vm.convocatoria.usuario_id = authService.currentUser().usuario_id
             convocatoria.post(vm.convocatoria)
-                .then(function (data) {
-                    console.log(acta);
+                .then(function(data) {
+                    //console.log(acta);
                     if (acta) {
                         var formData = new FormData();
                         formData.append("acta", acta);
                         Restangular.all('/convocatorias/' + data.convocatoria.id + '/acta')
-                            .withHttpConfig({ transformRequest: angular.identity })
-                            .customPOST(formData, undefined, undefined,
-                            { 'Content-Type': undefined })
-                            .then(function (respuestaActa) {
+                            .withHttpConfig({
+                                transformRequest: angular.identity
+                            })
+                            .customPOST(formData, undefined, undefined, {
+                                'Content-Type': undefined
+                            })
+                            .then(function(respuestaActa) {
                                 message(data.mensaje);
-                                $timeout(function () {
+                                $timeout(function() {
                                     $state.transitionTo($state.current, $stateParams, {
                                         reload: true,
                                         inherit: false,
                                         notify: true
                                     });
                                 }, 3000);
-                            }, function (error) {
+                            }, function(error) {
                                 var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado.';
                                 message(mensajeError);
                             });
                     }
-                }, function (error) {
+                }, function(error) {
                     var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado.';
                     message(mensajeError);
                 });

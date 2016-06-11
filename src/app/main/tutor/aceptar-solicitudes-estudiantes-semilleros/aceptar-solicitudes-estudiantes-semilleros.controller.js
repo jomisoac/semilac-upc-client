@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
 
     angular
@@ -55,20 +55,20 @@
         cargarInvitaciones();
 
         function aceptar(solicitud) {
-            console.log(solicitud)
+            //console.log(solicitud)
             var update_solicitud = Restangular.one('invitaciones-semilleros', solicitud.id);
             update_solicitud.respuesta = 'aceptada';
             update_solicitud.put().then(
-                function (d) {
-                    console.log(d)
+                function(d) {
+                    //console.log(d)
                     message(d);
                     solicitud = {};
                     vm.inhabilitar = true;
                     vm.mensaje = "Aceptado";
                     cargarInvitaciones();
-                   
+
                 },
-                function (error) {
+                function(error) {
                     var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado.';
 
                 }

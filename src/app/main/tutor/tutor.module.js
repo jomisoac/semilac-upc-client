@@ -43,15 +43,7 @@
           }
          });
 
-          msNavigationServiceProvider.saveItem('tutor.linea-investigacion', {
-             title: 'Lineas de investigación',
-             icon: 'icon-tile-four',
-             state: 'app.registrar_linea_investigacion',
-             weight: 1,
-             hidden: function(){
-                 return authProvider.checkUser(['TUTOR']);
-          }
-         });
+
 
         msNavigationServiceProvider.saveItem('tutor.aceptar-solicitudes-estudiantes-semilleros', {
             title: 'Solicitudes de estudiantes',
@@ -79,7 +71,16 @@
              hidden: function(){
                  return authProvider.checkUser(['TUTOR']);
           }
-         }); 
+         });
+          msNavigationServiceProvider.saveItem('tutor.solicitudes-mis-grupos.linea-investigacion', {
+             title: 'Lineas de investigación',
+             icon: 'icon-tile-four',
+             state: 'app.registrar_linea_investigacion',
+             weight: 1,
+             hidden: function(){
+                 return authProvider.checkUser(['TUTOR']);
+          }
+         });
          
           msNavigationServiceProvider.saveItem('tutor.solicitudes-mis-grupos.solicitudes', {
              title: 'Solicitudes',

@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
 
     angular
@@ -18,26 +18,30 @@
         vm.guardar = guardar;
         vm.limpiar = limpiar;
 
-        function guardar() {
+        function guardar(form) {
             vm.grupo.usuario_id = JSON.parse(sessionStorage.usuario).usuario_id;
             grupo.post(vm.grupo).then(
-                function (d) {
+                function(d) {
                     if (d.estado == 'true') {
                         message(d.mensaje)
-                        vm.grupo = {};
+                        limpiar(form);
                     } else {
                         message(d.mensaje)
                     }
                 },
-                function (error) {
+                function(error) {
                     var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado.';
 
                 }
             );
         }
 
-        function limpiar() {
-            vm.director = {};
+        function limpiar(form) {
+            vm.grupo = {};
+            if (form) {
+                form.$setPristine();
+                form.$setUntouched();
+            }
         }
 
         function message(body) {
@@ -48,23 +52,23 @@
                 parent: '#content'
             });
         }
-        vm.showAdvanced = function (ev) {
+        vm.showAdvanced = function(ev) {
             //var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && vm.customFullscreen;
             var useFullScreen = false;
             $mdDialog.show({
-                controller: DialogTutoresController,
-                controllerAs: 'vm',
-                templateUrl: 'app/main/director/registrar-grupo/dialog-tutores.tmpl.html',
-                parent: angular.element(document.body),
-                targetEvent: ev,
-                clickOutsideToClose: true,
-                fullscreen: useFullScreen
-            })
-                .then(function (answer) {
+                    controller: DialogTutoresController,
+                    controllerAs: 'vm',
+                    templateUrl: 'app/main/director/registrar-grupo/dialog-tutores.tmpl.html',
+                    parent: angular.element(document.body),
+                    targetEvent: ev,
+                    clickOutsideToClose: true,
+                    fullscreen: useFullScreen
+                })
+                .then(function(answer) {
                     vm.grupo.tutor_id = answer.id;
                     vm.grupo.lider = answer.nombres + " " + answer.apellidos;
                     vm.status = 'You said the information was "' + answer + '".';
-                }, function () {
+                }, function() {
                     vm.status = 'You cancelled the dialog.';
                 });
         };
