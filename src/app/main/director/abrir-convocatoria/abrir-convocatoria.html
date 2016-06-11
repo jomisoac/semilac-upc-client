@@ -1,11 +1,24 @@
-<div class="container">
-    <div style='padding: 25px;' layout="column" ng-cloak class="md-horintal-form">
-        <md-content layout-padding>
-            <div class="borde">
-                <center>
-                    <span class="md-display-1">Abrir convocatoria</span>
-                </center>
-                <br>
+<div id="forms" class="page-layout simple fullwidth doc-page" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <md-icon md-font-icon="icon-home" class="s16"></md-icon>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">TUTOR</span>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">ABRIR CONVOCATORIA</span>
+            </div>
+            <span class="title">Abrir Convocatoria</span>
+            <span class="md-subhead">Aquí puedes abrir las convocatorias, para que los semilleros puedan postularse y obtener el aval institucional   </span>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content" layout="column">
+
                 <form name="userForm">
                     <div layout-gt-sm="row" layout-align="center center">
                         <mdp-date-picker ng-model="vm.convocatoria.fechainicial" ng-change="vm.cambioFechaInicial()" name="fechainicial" mdp-placeholder="Fecha inicial"
@@ -50,7 +63,8 @@
                         </md-button>
                     </div>
                 </form>
-            </div>
+
         </md-content>
     </div>
+    <!-- / CONTENT -->
 </div>

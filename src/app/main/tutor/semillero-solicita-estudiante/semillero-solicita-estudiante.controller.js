@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -12,6 +12,7 @@
         var estudiante;
         var solicitudes = Restangular.all('/semillero_solicita_estudiante');
 
+        vm.mensajeEstudiante = mensajeEstudiante;
         vm.enviar = enviar;
         vm.estudiantes = [];
         vm.semillero = {};
@@ -51,28 +52,19 @@
         };
 
         function cargarEstudiantes() {
-            vm.estudiantes = Restangular.all('/estudiantes/disponibles').getList().$object;
+            vm.estudiantes = Restangular.all('/tutores/' + authService.currentUser().datos.id + '/estudiantes-para-invitar').getList().$object;
         }
 
         function cargarSemilleros() {
             vm.semilleros = Restangular.all('/tutores/' + authService.currentUser().datos.id + '/semilleros').getList().$object;
         }
 
-        function cargarSolicitudes() {
-            vm.solicitud_semilleros = Restangular.all('/tutor/solicitudes-semilleros').getList().$object;
-            vm.solicitud_semilleros.forEach(function(solicitud) {
-                if (solicitud.respuesta == 'en espera') {
-
-                } else {
-                    if (solicitud.respuesta == 'rechazada') {
-                        vm.respuesta = 'rechazada';
-                    } else {
-                        if (solicitud.respuesta == 'aceptada') {
-                            vm.respuesta = 'aceptada';
-                        }
-                    }
-                }
-            });
+        function mensajeEstudiante(estudiante) {
+            if (estudiante.invitado) {
+                return "En espera";
+            } else {
+                return "Enviar";
+            }
         }
 
         function enviar(estudiante, form) {
@@ -82,13 +74,12 @@
                     'semillero_id': vm.semillero_id_seleccionado
                 };
                 solicitudes.post(solicitud).then(
-                    function(d) {
+                    function (d) {
                         message(d.mensaje);
+                        estudiante.invitado = true;
                         solicitud = {};
-                        estudiante.enviado = true;
-                        estudiante.mensaje = "Enviado";
                     },
-                    function(error) {
+                    function (error) {
                         var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error inesperado.';
 
                     }
