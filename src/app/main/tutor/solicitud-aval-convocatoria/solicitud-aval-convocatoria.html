@@ -55,24 +55,26 @@
                                         </md-input-container>
                                     </div>
                                     <br><br>
-                                    <center><span class="md-display-1">Para postular tu semillero, escógelo a continuación y haz clic en postular </span></center>
-                                    <div layout-gt-sm="row">
-                                        <md-input-container class="md-block" flex="50">
-                                            <label>Semilleros</label>
-                                            <md-select id="semillero" name="semillero" ng-model="vm.semillero_id_seleccionado" required>
-                                                <md-optgroup label="Semilleros">
-                                                    <md-option ng-value="semillero.id" ng-repeat="semillero in vm.semilleros">{{semillero.nombre}}
-                                                    </md-option>
-                                                </md-optgroup>
-                                            </md-select>
-                                            <div ng-messages="!registroForm.$pristine && registroForm.semillero.$error">
-                                                <div ng-message="required">Este campo es obligatorio.</div>
-                                            </div>
-                                        </md-input-container>
-                                    </div>
-                                    <div flex layout="row" layout-align="center center">
-                                        <md-button ng-click="vm.enviar(registroForm)" type="submit" class="md-raised md-accent" ng-disabled="registroForm.$invalid || registroForm.$pristine">Postular
-                                        </md-button>
+                                    <div  ng-show="vm.semilleros">
+                                        <center><span class="md-display-1">Para postular tu semillero, escógelo a continuación y haz clic en postular </span></center>
+                                        <div layout-gt-sm="row">
+                                            <md-input-container class="md-block" flex="50">
+                                                <label>Semilleros</label>
+                                                <md-select id="semillero" name="semillero" ng-model="vm.semillero_id_seleccionado" required>
+                                                    <md-optgroup label="Semilleros">
+                                                        <md-option ng-value="semillero.id" ng-repeat="semillero in vm.semilleros">{{semillero.nombre}}
+                                                        </md-option>
+                                                    </md-optgroup>
+                                                </md-select>
+                                                <div ng-messages="!registroForm.$pristine && registroForm.semillero.$error">
+                                                    <div ng-message="required">Este campo es obligatorio.</div>
+                                                </div>
+                                            </md-input-container>
+                                        </div>
+                                        <div flex layout="row" layout-align="center center">
+                                            <md-button ng-click="vm.enviar(registroForm)" type="submit" class="md-raised md-accent" ng-disabled="registroForm.$invalid || registroForm.$pristine">Postular
+                                            </md-button
+                                        </div>
                                     </div>
                                 </form>
                             </md-content>
