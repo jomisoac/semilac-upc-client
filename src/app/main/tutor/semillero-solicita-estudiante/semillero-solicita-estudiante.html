@@ -1,22 +1,40 @@
-<md-content layout-padding>
-    <form name="enviarForm">
-        <div layout-gt-sm="row">
-            <md-input-container class="md-block" flex="50">
-                <label>Semilleros</label>
-                <md-select id="semillero_id_seleccionado" name="semillero" ng-model="vm.semillero_id_seleccionado" required>
-                    <md-optgroup label="Semilleros">
-                        <md-option ng-value="semillero.id" ng-repeat="semillero in vm.semilleros">{{semillero.nombre}}
-                        </md-option>
-                    </md-optgroup>
-                </md-select>
-                <div ng-messages="!enviarForm.$pristine && enviarForm.semillero.$error">
-                    <div ng-message="required">Este campo es obligatorio.</div>
-                </div>
-            </md-input-container>
+<div id="forms" class="page-layout simple fullwidth doc-page" layout="column">
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <md-icon md-font-icon="icon-home" class="s16"></md-icon>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">TUTOR</span>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">Enviar solicitud de semilleros</span>
+            </div>
+            <span class="title">Enviar solicitudes a estudiantes</span>
+            <span class="md-subhead">Aquí podrás enviar solicitud a estudiantes para que pertenezcan a tus semilleros</span>
         </div>
-        <div class="white-bg md-whiteframe-1dp">
-            <table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions">
-                <thead>
+    </div>
+    <!-- / HEADER -->
+    <md-content layout-padding>
+        <form name="enviarForm">
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex="50">
+                    <label>Semilleros</label>
+                    <md-select id="semillero_id_seleccionado" name="semillero" ng-model="vm.semillero_id_seleccionado"
+                               required>
+                        <md-optgroup label="Semilleros">
+                            <md-option ng-value="semillero.id" ng-repeat="semillero in vm.semilleros">
+                                {{semillero.nombre}}
+                            </md-option>
+                        </md-optgroup>
+                    </md-select>
+                    <div ng-messages="!enviarForm.$pristine && enviarForm.semillero.$error">
+                        <div ng-message="required">Este campo es obligatorio.</div>
+                    </div>
+                </md-input-container>
+            </div>
+            <div class="white-bg md-whiteframe-1dp">
+                <table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions">
+                    <thead>
                     <tr>
                         <th class="secondary-text">
                             <div class="table-header">
@@ -34,19 +52,23 @@
                             </div>
                         </th>
                     </tr>
-                </thead>
-                <tbody>
+                    </thead>
+                    <tbody>
                     <tr ng-repeat="estudiante in vm.estudiantes">
                         <td>{{vm.getNombrePrograma(estudiante)}}</td>
                         <td>{{vm.getNombreCompleto(estudiante)}}</td>
                         <td>
-                            <md-button id="btn-enviar" type="submit" ng-click="vm.enviar(estudiante, enviarForm)" class="md-raised md-accent submit-button" ng-init="estudiante.enviado = false; estudiante.mensaje = 'Enviar'" ng-disabled="estudiante.enviado">
+                            <md-button id="btn-enviar" type="submit" ng-click="vm.enviar(estudiante, enviarForm)"
+                                       class="md-raised md-accent submit-button"
+                                       ng-init="estudiante.enviado = false; estudiante.mensaje = 'Enviar'"
+                                       ng-disabled="estudiante.enviado">
                                 {{estudiante.mensaje}}
                             </md-button>
                         </td>
                     </tr>
-                </tbody>
-            </table>
-        </div>
-    </form>
-</md-content>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </md-content>
+</div>

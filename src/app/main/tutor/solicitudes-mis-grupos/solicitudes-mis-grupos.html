@@ -1,7 +1,25 @@
-<md-content layout-padding>
-    <div class="white-bg md-whiteframe-1dp">
-        <table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions">
-            <thead>
+<div id="forms" class="page-layout simple fullwidth doc-page" layout="column">
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <md-icon md-font-icon="icon-home" class="s16"></md-icon>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">TUTOR</span>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">Mis grupos de investigación</span>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">Solicitudes</span>
+            </div>
+            <span class="title">Solicitudes a mi grupo</span>
+            <span class="md-subhead">Aquí podrás responder las solicitudes de los semilleros que quieran pertenecer a tu grupo de investigación</span>
+        </div>
+    </div>
+    <!-- / HEADER -->
+    <md-content layout-padding>
+        <div class="white-bg md-whiteframe-1dp">
+            <table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions">
+                <thead>
                 <tr>
                     <th class="secondary-text">
                         <div class="table-header">
@@ -19,17 +37,21 @@
                         </div>
                     </th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <tr ng-repeat='solicitud in vm.solicitudes'>
                     <td>{{ solicitud.semillero.nombre }}</td>
                     <td>{{ solicitud.grupo.nombre }}</td>
                     <td>
-                        <md-button class="md-accent md-raised md-hue-1" ng-click="vm.responder(solicitud, 'aceptada')">Aceptar</md-button>
-                        <md-button class="md-raised md-warn" ng-click="vm.responder(solicitud, 'rechazada')">Rechazar</md-button>
+                        <md-button class="md-accent md-raised md-hue-1" ng-click="vm.responder(solicitud, 'aceptada')">
+                            Aceptar
+                        </md-button>
+                        <md-button class="md-raised md-warn" ng-click="vm.responder(solicitud, 'rechazada')">Rechazar
+                        </md-button>
                     </td>
                 </tr>
-            </tbody>
-        </table>
-    </div>
-</md-content>
+                </tbody>
+            </table>
+        </div>
+    </md-content>
+</div>
