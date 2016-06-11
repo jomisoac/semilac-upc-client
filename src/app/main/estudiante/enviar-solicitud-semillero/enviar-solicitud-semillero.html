@@ -1,37 +1,68 @@
-<md-content layout-padding>
-    <div class="white-bg md-whiteframe-1dp">
-        <table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions">
-            <thead>
-                <tr>
-                    <th class="secondary-text">
-                        <div class="table-header">
-                            <span class="column-title">Nombre semillero</span>
-                        </div>
-                    </th>
-                    <th class="secondary-text">
-                        <div class="table-header">
-                            <span class="column-title">Tutor</span>
-                        </div>
-                    </th>
-                    <th class="secondary-text">
-                        <div class="table-header">
-                            <span class="column-title">Acciones</span>
-                        </div>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="semillero in vm.semilleros">
-                    <td>{{ semillero.nombre }}</td>
-                    <td>{{ vm.getNombreCompletoTutor(semillero) }}</td>
-                    <td>
-                        <md-button ng-click="vm.enviar(semillero)" class="md-raised md-accent submit-button" aria-label="Aceptar" ng-init="semillero.enviado = false; semillero.mensaje = 'Enviar'" ng-disabled="semillero.enviado">{{semillero.mensaje}}
-                        </md-button>
-                        <md-button ng-click="vm.showVerMas($event, semillero)" class="md-raised md-accent submit-button" aria-label="Aceptar">Ver más
-                        </md-button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+<div id="forms" class="page-layout simple fullwidth doc-page" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <md-icon md-font-icon="icon-home" class="s16"></md-icon>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">ESTUDIANTE</span>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">ENVIAR SOLICITID SEMILLERO</span>
+            </div>
+            <span class="title">Enviar solicitud a los semillero </span>
+            <span class="md-subhead">Aquí puedes  enviar las solicitudes a los semilleros, para               pertenecer a uno de ellos
+            </span>
+        </div>
     </div>
-</md-content>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content" layout="column">
+
+        <md-content layout-padding>
+            <div class="white-bg md-whiteframe-1dp">
+                <table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions">
+                    <thead>
+                    <tr>
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Nombre semillero</span>
+                            </div>
+                        </th>
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Tutor</span>
+                            </div>
+                        </th>
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Acciones</span>
+                            </div>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="semillero in vm.semilleros">
+                        <td>{{ semillero.nombre }}</td>
+                        <td>{{ vm.getNombreCompletoTutor(semillero) }}</td>
+                        <td>
+                            <md-button ng-click="vm.enviar(semillero)" class="md-raised md-accent                                        submit-button"
+                                       aria-label="Aceptar"
+                                       ng-init="semillero.enviado = false; semillero.mensaje =                                           'Enviar'"
+                                       ng-disabled="semillero.enviado">{{semillero.mensaje}}
+                            </md-button>
+                            <md-button ng-click="vm.showVerMas($event, semillero)"
+                                       class="md-raised md-accent submit-button"                                                         aria-label="Aceptar">Ver más
+                            </md-button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </md-content>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

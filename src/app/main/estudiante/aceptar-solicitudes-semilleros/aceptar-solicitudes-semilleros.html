@@ -1,39 +1,64 @@
-<md-content layout-padding>
-    <div class="white-bg md-whiteframe-1dp">
-        <table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions">
-            <thead>
-            <tr>
-                <th class="secondary-text">
-                    <div class="table-header">
-                        <span class="column-title">Nombre semillero</span>
-                    </div>
-                </th>
-                <th class="secondary-text">
-                    <div class="table-header">
-                        <span class="column-title">Tutor</span>
-                    </div>
-                </th>
-                <th class="secondary-text">
-                    <div class="table-header">
-                        <span class="column-title">Solicitar</span>
-                    </div>
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="solicitud in vm.solicitudes">
-                <td>{{ vm.nombreSemillero(solicitud) }}</td>
-                <td>{{ vm.nombreTutor(solicitud) }}</td>
-                <td>
-                    <md-button ng-click="vm.aceptar(solicitud,'aceptada')"  class="md-raised md-accent submit-button"                      aria-label="Aceptar"
-                    >Aceptar Solicitud
-                    </md-button>
-                    <md-button ng-click="vm.aceptar(solicitud,'rechazada')"  class="md-raised md-accent submit-button"                      aria-label="Aceptar"
-                    >rechazar
-                    </md-button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+<div id="forms" class="page-layout simple fullwidth doc-page" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <md-icon md-font-icon="icon-home" class="s16"></md-icon>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">ESTUDIANTE</span>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">ACEPTAR SOLICITUD</span>
+            </div>
+            <span class="title">Solicitudes de Semilleros</span>
+            <span class="md-subhead">Aquí puedes aceptar las solicitudes, que han sido enviadas de            los semilleros, para que seas de ellos</span>
+        </div>
     </div>
-</md-content>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content" layout="column">
+
+        <md-content layout-padding>
+            <div class="white-bg md-whiteframe-1dp">
+                <table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions">
+                    <thead>
+                    <tr>
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Nombre semillero</span>
+                            </div>
+                        </th>
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Tutor</span>
+                            </div>
+                        </th>
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Solicitar</span>
+                            </div>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="solicitud in vm.solicitudes">
+                        <td>{{ vm.nombreSemillero(solicitud) }}</td>
+                        <td>{{ vm.nombreTutor(solicitud) }}</td>
+                        <td>
+                            <md-button ng-click="vm.aceptar(solicitud,'aceptada')"
+                                       class="md-raised md-accent submit-button" aria-label="Aceptar"
+                            >Aceptar Solicitud
+                            </md-button>
+                            <md-button ng-click="vm.aceptar(solicitud,'rechazada')"
+                                       class="md-raised md-accent submit-button" aria-label="Aceptar"
+                            >rechazar
+                            </md-button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </md-content>
+    </div>
+</div>
