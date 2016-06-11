@@ -7,10 +7,10 @@
                 <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
                 <span class="parent">TUTOR</span>
                 <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
-                <span class="parent">Enviar solicitud de semilleros</span>
+                <span class="parent">Enviar solicitudes a  estudiantes</span>
             </div>
             <span class="title">Enviar solicitudes a estudiantes</span>
-            <span class="md-subhead">Aquí podrás enviar solicitud a estudiantes para que pertenezcan a tus semilleros</span>
+            <span class="md-subhead">Aquí podrás invitar a los estudiantes para que pertenezcan a tus semilleros.</span>
         </div>
     </div>
     <!-- / HEADER -->
@@ -60,9 +60,8 @@
                         <td>
                             <md-button id="btn-enviar" type="submit" ng-click="vm.enviar(estudiante, enviarForm)"
                                        class="md-raised md-accent submit-button"
-                                       ng-init="estudiante.enviado = false; estudiante.mensaje = 'Enviar'"
-                                       ng-disabled="estudiante.enviado">
-                                {{estudiante.mensaje}}
+                                       ng-disabled="estudiante.invitado">
+                                {{vm.mensajeEstudiante(estudiante)}}
                             </md-button>
                         </td>
                     </tr>

@@ -1,18 +1,35 @@
-<md-content layout-padding>
-    <div>
-        <table class="table table-striped" datatable="ng" dt-options="vm.dtOptions">
-            <thead>
-            <tr>
-                <th>Nombre del Semillero</th>
-                <th>Tutor</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="semillero in vm.semilleros">
-                <td>{{ semillero.nombre }}</td>
-                <td>{{ vm.buscarTutor(semillero.tutor_id) }}</td>
-            </tr>
-            </tbody>
-        </table>
+<div id="forms" class="page-layout simple fullwidth doc-page" layout="column">
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <md-icon md-font-icon="icon-home" class="s16"></md-icon>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">DIRECTOR</span>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">Semilleros solicitando aval</span>
+            </div>
+            <span class="title">Semilleros solicitando aval</span>
+            <span class="md-subhead">Aquí podrás ver los semilleros que estan solicitando el aval</span>
+        </div>
     </div>
-</md-content>
+    <!-- / HEADER -->
+    <md-content layout-padding>
+        <div>
+            <table class="table table-striped" datatable="ng" dt-options="vm.dtOptions">
+                <thead>
+                <tr>
+                    <th>Nombre del Semillero</th>
+                    <th>Tutor</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="semillero in vm.semilleros">
+                    <td>{{ semillero.nombre }}</td>
+                    <td>{{ vm.buscarTutor(semillero.tutor_id) }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </md-content>
+</div>

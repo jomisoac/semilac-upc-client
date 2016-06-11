@@ -34,7 +34,7 @@
         });
 
          msNavigationServiceProvider.saveItem('tutor.semillero-solicita-estudiante', {
-             title: 'Enviar solicitud de semillero',
+             title: 'Enviar solicitudes a estudiante',
              icon: 'icon-tile-four',
              state: 'app.semillero-solicita-estudiante',
              weight: 1,
@@ -46,7 +46,7 @@
 
 
         msNavigationServiceProvider.saveItem('tutor.aceptar-solicitudes-estudiantes-semilleros', {
-            title: 'Solicitudes de estudiantes',
+            title: 'Responder solicitudes de estudiantes',
             icon: 'icon-tile-four',
             state: 'app.aceptar-solicitudes-estudiantes-semilleros',
             weight: 1,
