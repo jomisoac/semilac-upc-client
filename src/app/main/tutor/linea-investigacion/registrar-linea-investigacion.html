@@ -1,78 +1,100 @@
-<div class="container" style="width:100% !important;">
-    <div style="padding: 25px;" layout="column" ng-cloak class="md-horintal-form">
-        <div layout="row">
-            <div flex layout="row" layout-align="center center">
-                <div flex-sm="100" flex-gt-sm="90" flex-gt-md="90" flex-gt-lg="50" class="md-whiteframe-z2">
-                    <md-content layout-padding>
-                        <center><span class="md-display-1">Registrar línea de investigación</span></center>
-                        <br>
-                        <form name="registroForm">
-                            <style>
-                                .layout-gt-sm-row {
-                                    margin: -10px 4px -24px 0px !important;
-                                }
-                            </style>
-                            <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex="50">
-                                    <label>Grupo:</label>
-                                    <md-select id="grupo" name="grupo" ng-model="vm.linea.grupo_id" required>
-                                        <md-optgroup label="Grupos">
-                                            <md-option ng-value="grupo.id" ng-repeat="grupo in vm.grupos">{{grupo.nombre}}</md-option>
-                                        </md-optgroup>
-                                    </md-select>
-                                    <div ng-messages="!registroForm.$pristine && registroForm.grupo.$error">
-                                        <div ng-message="required">Este campo es obligatorio.</div>
-                                    </div>
-                                </md-input-container>
-                                <!--md-input-container class="md-block" flex="50">
-                                    <md-button id="agregar" type="button" class="md-raised md-accent submit-button" aria-label="Aceptar">Agregar Línea</md-button>
-                                </md-input-container-->
-                            </div>
-                            <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
-                                    <label>Nombre de la línea</label>
-                                    <textarea id="nombre" ng-model="vm.linea.nombre" required name="nombre"></textarea>
-                                    <div ng-messages="registroForm.nombre.$error">
-                                        <div ng-message="required">Este campo es obligatorio.</div>
-                                    </div>
-                                </md-input-container>
-                            </div>
-                            <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
-                                    <label>Objetivo de la línea</label>
-                                    <textarea id="objetivo" ng-model="vm.linea.objetivo" required name="objetivo"></textarea>
-                                    <div ng-messages="registroForm.objetivo.$error">
-                                        <div ng-message="required">Este campo es obligatorio.</div>
-                                    </div>
-                                </md-input-container>
-                            </div>
-                            <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
-                                    <label>Logros de la línea</label>
-                                    <textarea id="logro" ng-model="vm.linea.logro" required name="logro"></textarea>
-                                    <div ng-messages="registroForm.logro.$error">
-                                        <div ng-message="required">Este campo es obligatorio.</div>
-                                    </div>
-                                </md-input-container>
-                            </div>
-                            <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
-                                    <label>Efectos de la línea</label>
-                                    <textarea id="efecto" ng-model="vm.linea.efecto" required name="efecto"></textarea>
-                                    <div ng-messages="registroForm.efecto.$error">
-                                        <div ng-message="required">Este campo es obligatorio.</div>
-                                    </div>
-                                </md-input-container>
-                            </div>
-                            <div flex layout="row" layout-align="center center">
-                                <md-button ng-click="vm.guardar(registroForm)" type="submit" class="md-raised md-accent submit-button" aria-label="Aceptar" ng-disabled="registroForm.$invalid || registroForm.$pristine">Guardar
+<div id="forms" class="page-layout simple fullwidth doc-page" layout="column">
 
-                                </md-button>
-                                <md-button type="reset" ng-click="vm.limpiar(registroForm)" class="md-raised md-accent submit-button" aria-label="Cancelar">Limpiar datos
-                                </md-button>
-                            </div>
-                        </form>
-                    </md-content>
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <md-icon md-font-icon="icon-home" class="s16"></md-icon>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">TUTOR</span>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">Registrar linea de investigación</span>
+            </div>
+            <span class="title">Lineas de investigación</span>
+            <!--span class="md-subhead">Aquí podrás aceptar las solicitudes de los estudiantes que quieran pertenecer a tus
+                semilleros</span-->
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content" layout="column">
+        <div class="container" style="width:100% !important;">
+            <div style="padding: 25px;" layout="column" ng-cloak class="md-horintal-form">
+                <div layout="row">
+                    <div flex layout="row" layout-align="center center">
+                        <div flex-sm="100" flex-gt-sm="90" flex-gt-md="90" flex-gt-lg="50" class="md-whiteframe-z2">
+                            <md-content layout-padding>
+                                <br>
+                                <form name="registroForm">
+                                    <style>
+                                        .layout-gt-sm-row {
+                                            margin: -10px 4px -24px 0px !important;
+                                        }
+                                    </style>
+                                    <div layout-gt-sm="row">
+                                        <md-input-container class="md-block" flex="50">
+                                            <label>Grupo:</label>
+                                            <md-select id="grupo" name="grupo" ng-model="vm.linea.grupo_id" required>
+                                                <md-optgroup label="Grupos">
+                                                    <md-option ng-value="grupo.id" ng-repeat="grupo in vm.grupos">{{grupo.nombre}}</md-option>
+                                                </md-optgroup>
+                                            </md-select>
+                                            <div ng-messages="!registroForm.$pristine && registroForm.grupo.$error">
+                                                <div ng-message="required">Este campo es obligatorio.</div>
+                                            </div>
+                                        </md-input-container>
+                                        <!--md-input-container class="md-block" flex="50">
+                                            <md-button id="agregar" type="button" class="md-raised md-accent submit-button" aria-label="Aceptar">Agregar Línea</md-button>
+                                        </md-input-container-->
+                                    </div>
+                                    <div layout-gt-sm="row">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>Nombre de la línea</label>
+                                            <textarea id="nombre" ng-model="vm.linea.nombre" required name="nombre"></textarea>
+                                            <div ng-messages="registroForm.nombre.$error">
+                                                <div ng-message="required">Este campo es obligatorio.</div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-sm="row">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>Objetivo de la línea</label>
+                                            <textarea id="objetivo" ng-model="vm.linea.objetivo" required name="objetivo"></textarea>
+                                            <div ng-messages="registroForm.objetivo.$error">
+                                                <div ng-message="required">Este campo es obligatorio.</div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-sm="row">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>Logros de la línea</label>
+                                            <textarea id="logro" ng-model="vm.linea.logro" required name="logro"></textarea>
+                                            <div ng-messages="registroForm.logro.$error">
+                                                <div ng-message="required">Este campo es obligatorio.</div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-sm="row">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>Efectos de la línea</label>
+                                            <textarea id="efecto" ng-model="vm.linea.efecto" required name="efecto"></textarea>
+                                            <div ng-messages="registroForm.efecto.$error">
+                                                <div ng-message="required">Este campo es obligatorio.</div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
+                                    <div flex layout="row" layout-align="center center">
+                                        <md-button ng-click="vm.guardar(registroForm)" type="submit" class="md-raised md-accent submit-button" aria-label="Aceptar" ng-disabled="registroForm.$invalid || registroForm.$pristine">Guardar
+
+                                        </md-button>
+                                        <md-button type="reset" ng-click="vm.limpiar(registroForm)" class="md-raised md-accent submit-button" aria-label="Cancelar">Limpiar datos
+                                        </md-button>
+                                    </div>
+                                </form>
+                            </md-content>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

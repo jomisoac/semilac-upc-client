@@ -3,6 +3,7 @@ function DialogVerMasController($mdDialog, Restangular, authService, DTOptionsBu
     var vm = this;
     vm.semillero = {};
     vm.semillero = items.semillero;
+
     // funciones
     vm.aceptar = aceptar;
     vm.answer = answer;
@@ -15,6 +16,7 @@ function DialogVerMasController($mdDialog, Restangular, authService, DTOptionsBu
             vm.semillero.grupo = {};
             vm.semillero.grupo.nombre = "Sin grupo";
         }
+        console.log(items);
     }
 
     function answer(answer) {
