@@ -9,7 +9,7 @@
     /** @ngInject */
     function ConsultarSemilleros(Restangular, $mdToast, DTOptionsBuilder, authService) {
         var vm = this;
-        var solicitudes = Restangular.all('/solicitud-semilleros');
+        var solicitudes = Restangular.all('/semilleros/semilleros-solicitudes-aval');
 
         vm.buscarTutor = buscarTutor;
         vm.semillero = {};
