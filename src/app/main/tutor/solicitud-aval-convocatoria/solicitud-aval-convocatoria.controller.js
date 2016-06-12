@@ -1,9 +1,9 @@
-(function() {
+(function () {
     'use strict';
 
     angular
-        .module('app.tutor.solicitudAvalConvocatoria')
-        .controller('SolicitudAvalConvocatoriaController', SolicitudAvalConvocatoriaController);
+            .module('app.tutor.solicitudAvalConvocatoria')
+            .controller('SolicitudAvalConvocatoriaController', SolicitudAvalConvocatoriaController);
 
     /** @ngInject */
     function SolicitudAvalConvocatoriaController(Restangular, $mdToast, authService) {
@@ -25,24 +25,29 @@
         //3. Declaración de las funciones
         function cargarConvocatoriaAbierta() {
             convocatoriaAbierta.get().then(
-                function(response) {
-                    vm.estaCargando = false;
-                    vm.hayConvocatoriaAbierta = !jQuery.isEmptyObject(response);
-                    if (vm.hayConvocatoriaAbierta) {
-                        vm.convocatoriaAbierta = response;
+                    function (response) {
+                        vm.estaCargando = false;
+                        vm.hayConvocatoriaAbierta = !jQuery.isEmptyObject(response);
+                        if (vm.hayConvocatoriaAbierta) {
+                            vm.convocatoriaAbierta = response;
+                            cargarSemilleros();
+
+                        }
+                        // console.log(response, vm.hayConvocatoriaAbierta, vm.convocatoriaAbierta);
+                    },
+                    function (error) {
+                        var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error                    inesperado.';
+                        message(mensajeError);
                     }
-                    // console.log(response, vm.hayConvocatoriaAbierta, vm.convocatoriaAbierta);
-                },
-                function(error) {
-                    var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error                    inesperado.';
-                    message(mensajeError);
-                }
             );
         }
 
         function cargarSemilleros() {
             var tutor_id = authService.currentUser().datos.id;
-            vm.semilleros = Restangular.all('/tutores/' + tutor_id + '/semilleros').getList().$object;
+            Restangular.all('convocatorias/' + vm.convocatoriaAbierta.id + '/tutores/' + tutor_id + '/semilleros-no-postulados').getList()
+                    .then(function (response) {
+                        vm.semilleros = response;
+                    });
         }
 
         function enviar(form) {
@@ -53,13 +58,13 @@
             };
 
             solicitudes.post(solicitud).then(
-                function(d) {
-                    message(d.mensaje);
-                    solicitud = {};
-                },
-                function(error) {
-                    var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error                    inesperado.';
-                }
+                    function (d) {
+                        message(d.mensaje);
+                        solicitud = {};
+                    },
+                    function (error) {
+                        var mensajeError = error.status == 401 ? error.data.mensajeError : 'Ha ocurrido un error                    inesperado.';
+                    }
             );
         }
 
@@ -82,6 +87,5 @@
 
         //4. El resto del código: Llamadas a la funciones, etc.
         cargarConvocatoriaAbierta();
-        cargarSemilleros();
     }
 })();

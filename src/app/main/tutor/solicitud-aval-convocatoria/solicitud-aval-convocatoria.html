@@ -1,60 +1,85 @@
-<div class="container">
-    <div ng-if="vm.estaCargando">
-        <center>
-            <span class="md-display-3">Cargando...</span>
-        </center>
+<div id="forms" class="page-layout simple fullwidth doc-page" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <md-icon md-font-icon="icon-home" class="s16"></md-icon>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">TUTOR</span>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">Solicitud aval</span>
+            </div>
+            <span class="title">Registar solicitud de aval semillero</span>
+            <!--span class="md-subhead">Aquí podrás aceptar las solicitudes de los estudiantes que quieran pertenecer a tus
+                semilleros</span-->
+        </div>
     </div>
-    <div ng-if="!vm.hayConvocatoriaAbierta && !vm.estaCargando">
-        <center>
-            <span class="md-display-3">Actualmente no hay convocatorias abiertas</span>
-        </center>
-    </div>
-    <div ng-if="vm.hayConvocatoriaAbierta" style="padding: 25px;" layout="column" ng-cloak class="md-horintal-form">
-        <div layout="row">
-            <div flex layout="row" layout-align="center center">
-                <div flex-sm="100" flex-gt-sm="90" flex-gt-md="90" flex-gt-lg="50" class="md-whiteframe-z2">
-                    <md-content layout-padding>
-                        <center><span class="md-display-1">Actualmente está abierta la convocatoria</span></center>
-                        <form name="registroForm">
-                            <style>
-                                .layout-gt-sm-row {
-                                    margin: -10px 4px -24px 0px !important;
-                                }
-                            </style>
-                            <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
-                                    <label>Fecha de inicio</label>
-                                    <span>{{vm.convocatoriaAbierta.fechainicial | date: 'longDate'}}</span>
-                                    <input type="text" id="fechainicial" name="fechainicial" ng-model="vm.convocatoriaAbierta.fechainicial" disabled ng-show="false"/>
-                                </md-input-container>
-                                <md-input-container class="md-block" flex-gt-sm>
-                                    <label>Fecha de finalización</label>
-                                    <span>{{vm.convocatoriaAbierta.fechafinal | date}}</span>
-                                    <input type="text" id="fechafinal" name="fechafinal" ng-model="vm.convocatoriaAbierta.fechafinal" disabled ng-show="false"/>
-                                </md-input-container>
-                            </div>
-                            <br><br>
-                            <center><span class="md-display-1">Para postular tu semillero, escógelo a continuación y haz clic en postular </span></center>
-                            <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex="50">
-                                    <label>Semilleros</label>
-                                    <md-select id="semillero" name="semillero" ng-model="vm.semillero_id_seleccionado" required>
-                                        <md-optgroup label="Semilleros">
-                                            <md-option ng-value="semillero.id" ng-repeat="semillero in vm.semilleros">{{semillero.nombre}}
-                                            </md-option>
-                                        </md-optgroup>
-                                    </md-select>
-                                    <div ng-messages="!registroForm.$pristine && registroForm.semillero.$error">
-                                        <div ng-message="required">Este campo es obligatorio.</div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content" layout="column">
+        <div class="container">
+            <div ng-if="vm.estaCargando">
+                <center>
+                    <span class="md-display-3">Cargando...</span>
+                </center>
+            </div>
+            <div ng-if="!vm.hayConvocatoriaAbierta && !vm.estaCargando">
+                <center>
+                    <span class="md-display-3">Actualmente no hay convocatorias abiertas</span>
+                </center>
+            </div>
+            <div ng-if="vm.hayConvocatoriaAbierta" style="padding: 25px;" layout="column" ng-cloak class="md-horintal-form">
+                <div layout="row">
+                    <div flex layout="row" layout-align="center center">
+                        <div flex-sm="100" flex-gt-sm="90" flex-gt-md="90" flex-gt-lg="50" class="md-whiteframe-z2">
+                            <md-content layout-padding>
+                                <center><span class="md-display-1">Actualmente está abierta la convocatoria</span></center>
+                                <form name="registroForm">
+                                    <style>
+                                        .layout-gt-sm-row {
+                                            margin: -10px 4px -24px 0px !important;
+                                        }
+                                    </style>
+                                    <div layout-gt-sm="row">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>Fecha de inicio</label>
+                                            <span>{{vm.convocatoriaAbierta.fechainicial| date: 'longDate'}}</span>
+                                            <input type="text" id="fechainicial" name="fechainicial" ng-model="vm.convocatoriaAbierta.fechainicial" disabled ng-show="false"/>
+                                        </md-input-container>
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>Fecha de finalización</label>
+                                            <span>{{vm.convocatoriaAbierta.fechafinal| date}}</span>
+                                            <input type="text" id="fechafinal" name="fechafinal" ng-model="vm.convocatoriaAbierta.fechafinal" disabled ng-show="false"/>
+                                        </md-input-container>
                                     </div>
-                                </md-input-container>
-                            </div>
-                            <div flex layout="row" layout-align="center center">
-                                <md-button ng-click="vm.enviar(registroForm)" type="submit" class="md-raised md-accent" ng-disabled="registroForm.$invalid || registroForm.$pristine">Postular
-                                </md-button>
-                            </div>
-                        </form>
-                    </md-content>
+                                    <br><br>
+                                    <div  ng-show="vm.semilleros">
+                                        <center><span class="md-display-1">Para postular tu semillero, escógelo a continuación y haz clic en postular </span></center>
+                                        <div layout-gt-sm="row">
+                                            <md-input-container class="md-block" flex="50">
+                                                <label>Semilleros</label>
+                                                <md-select id="semillero" name="semillero" ng-model="vm.semillero_id_seleccionado" required>
+                                                    <md-optgroup label="Semilleros">
+                                                        <md-option ng-value="semillero.id" ng-repeat="semillero in vm.semilleros">{{semillero.nombre}}
+                                                        </md-option>
+                                                    </md-optgroup>
+                                                </md-select>
+                                                <div ng-messages="!registroForm.$pristine && registroForm.semillero.$error">
+                                                    <div ng-message="required">Este campo es obligatorio.</div>
+                                                </div>
+                                            </md-input-container>
+                                        </div>
+                                        <div flex layout="row" layout-align="center center">
+                                            <md-button ng-click="vm.enviar(registroForm)" type="submit" class="md-raised md-accent" ng-disabled="registroForm.$invalid || registroForm.$pristine">Postular
+                                            </md-button
+                                        </div>
+                                    </div>
+                                </form>
+                            </md-content>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

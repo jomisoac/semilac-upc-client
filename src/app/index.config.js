@@ -6,9 +6,9 @@
         .config(config);
 
     /** @ngInject */
-    function config(jwtInterceptorProvider, $httpProvider, api) {
+    function config(jwtInterceptorProvider, $httpProvider) {
         /** @ngInject */
-        jwtInterceptorProvider.tokenGetter = function (jwtHelper, $http) {
+        jwtInterceptorProvider.tokenGetter = function (jwtHelper, $http, api) {
             var jwt = sessionStorage.getItem('jwt');
             if (jwt) {
                 if (jwtHelper.isTokenExpired(jwt)) {
@@ -18,6 +18,7 @@
                         method: 'GET',
                         headers: {Authorization: 'Bearer ' + jwt},
                     }).then(function (response) {
+                        console.log(response)
                         sessionStorage.setItem('jwt', response.data.token);
                         return response.data.token;
                     }, function (response) {
@@ -28,7 +29,6 @@
                 }
             }
         }
-        /** @ngInject */
         $httpProvider.interceptors.push('jwtInterceptor');
     }
 

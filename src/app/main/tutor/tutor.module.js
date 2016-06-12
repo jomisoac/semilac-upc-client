@@ -34,7 +34,7 @@
         });
 
          msNavigationServiceProvider.saveItem('tutor.semillero-solicita-estudiante', {
-             title: 'Enviar solicitud de semillero',
+             title: 'Enviar solicitudes a estudiante',
              icon: 'icon-tile-four',
              state: 'app.semillero-solicita-estudiante',
              weight: 1,
@@ -43,10 +43,10 @@
           }
          });
 
-         
+
 
         msNavigationServiceProvider.saveItem('tutor.aceptar-solicitudes-estudiantes-semilleros', {
-            title: 'Solicitud Estudiante',
+            title: 'Responder solicitudes de estudiantes',
             icon: 'icon-tile-four',
             state: 'app.aceptar-solicitudes-estudiantes-semilleros',
             weight: 1,
@@ -71,7 +71,7 @@
              hidden: function(){
                  return authProvider.checkUser(['TUTOR']);
           }
-         }); 
+         });
           msNavigationServiceProvider.saveItem('tutor.solicitudes-mis-grupos.linea-investigacion', {
              title: 'Lineas de investigación',
              icon: 'icon-tile-four',

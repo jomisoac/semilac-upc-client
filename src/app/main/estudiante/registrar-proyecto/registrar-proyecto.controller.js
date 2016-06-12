@@ -59,7 +59,7 @@
         function limpiar(form) {
             vm.proyectoN = {};
             vm.companero = {};
-            vm.nombres = '';
+            vm.nombres = {};
             if(form){
                 form.$setPristine();
                 form.$setUntouched();

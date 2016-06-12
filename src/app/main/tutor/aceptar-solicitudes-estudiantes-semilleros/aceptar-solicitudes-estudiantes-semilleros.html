@@ -1,45 +1,65 @@
-<md-content layout-padding>
-    <div class="white-bg md-whiteframe-1dp">
-        <table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions">
-            <thead>
-            <tr>
-                <th class="secondary-text">
-                    <div class="table-header">
-                        <span class="column-title">Estudiante</span>
-                    </div>
-                </th>
-                <th class="secondary-text">
-                    <div class="table-header">
-                        <span class="column-title">Semillero</span>
-                    </div>
-                </th>
-                <th class="secondary-text">
-                    <div class="table-header">
-                        <span class="column-title">Acciones</span>
-                    </div>
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="invitacion in vm.invitaciones_de_estudiantes">
-                <td>{{ invitacion.estudiante.nombres }}</td>
-                <td>{{ invitacion.semillero.nombre }}</td>
-                <td>
-                    <md-button id="btn-Aceptar" ng-click="vm.aceptar(invitacion)"
-                               class="md-accent md-raised md-hue-1"
-                               ng-init="invitacion.respuesta != 'aceptada'; vm.mensaje = 'Aceptar'"
-                               ng-disabled="invitacion.respuesta == 'aceptada'">
-                        {{vm.mensaje}}
-                    </md-button>
-                   <!-- <md-button id="btn-Rechazar" ng-click="vm.enviar(estudiante)"
-                               class="md-raised md-warn"
-                               ng-init="estudiante.Rechazar = false; estudiante.mensaje = 'Rechazar'"
-                               ng-disabled="estudiante.Rechazado">
-                        {{estudiante.mensaje}}
-                    </md-button>-->
-                </td>
-            </tr>
-            </tbody>
-        </table>
+<div id="forms" class="page-layout simple fullwidth doc-page" layout="column">
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <md-icon md-font-icon="icon-home" class="s16"></md-icon>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">TUTOR</span>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">Responder solicitudes de estudiantes</span>
+            </div>
+            <span class="title">Solicitudes de estudiantes a semilleros</span>
+            <span class="md-subhead">Aquí podrás responder las solicitudes de los estudiantes que quieran pertenecer a tus
+                semilleros.</span>
+        </div>
     </div>
-</md-content>
+    <!-- / HEADER -->
+    <md-content layout-padding>
+
+
+        <div class="white-bg md-whiteframe-1dp">
+            <table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions">
+                <thead>
+                <tr>
+                    <th class="secondary-text">
+                        <div class="table-header">
+                            <span class="column-title">Estudiante</span>
+                        </div>
+                    </th>
+                    <th class="secondary-text">
+                        <div class="table-header">
+                            <span class="column-title">Semillero</span>
+                        </div>
+                    </th>
+                    <th class="secondary-text">
+                        <div class="table-header">
+                            <span class="column-title">Acciones</span>
+                        </div>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="invitacion in vm.invitaciones_de_estudiantes">
+                    <td>{{ invitacion.estudiante.nombres }}</td>
+                    <td>{{ invitacion.semillero.nombre }}</td>
+                    <td>
+                        <md-button id="btn-Aceptar" ng-click="vm.aceptar(invitacion)"
+                                   class="md-accent md-raised md-hue-1"
+                                   ng-init="invitacion.respuesta != 'aceptada'; vm.mensaje = 'Aceptar'"
+                                   ng-disabled="invitacion.respuesta == 'aceptada'">
+                            {{vm.mensaje}}
+                        </md-button>
+                        <!-- <md-button id="btn-Rechazar" ng-click="vm.enviar(estudiante)"
+                                    class="md-raised md-warn"
+                                    ng-init="estudiante.Rechazar = false; estudiante.mensaje = 'Rechazar'"
+                                    ng-disabled="estudiante.Rechazado">
+                             {{estudiante.mensaje}}
+                         </md-button>-->
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </md-content>
+</div>
