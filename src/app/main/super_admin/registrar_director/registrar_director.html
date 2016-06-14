@@ -1,91 +1,133 @@
-<div class="container">
-    <div style="padding: 25px;" layout="column" ng-cloak class="md-horintal-form">
-        <div layout="row">
-            <div flex layout="row" layout-align="center center">
-                <div flex-sm="100" flex-gt-sm="90" flex-gt-md="90" flex-gt-lg="50" class="md-whiteframe-z2">
-                    <md-content layout-padding>
-                        <center><span class="md-display-1">Datos del director</span></center>
-                        <form name="registroForm">
-                            <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
-                                    <label>Nombres</label>
-                                    <input ng-model="vm.director.nombres" required name="nombre" autofocus ng-model-options="{ updateOn: 'blur' }" id="nombres">
-                                    <div ng-messages="!registroForm.$pristine && registroForm.nombre.$error">
-                                        <div ng-message="required">Este campo es obligatorio.</div>
-                                    </div>
-                                </md-input-container>
-                                <md-input-container class="md-block" flex-gt-sm>
-                                    <label>Apellidos</label>
-                                    <input ng-model="vm.director.apellidos" required name="apellidos" ng-model-options="{ updateOn: 'blur' }" id="apellidos">
-                                    <div ng-messages="!registroForm.$pristine && registroForm.apellidos.$error">
-                                        <div ng-message="required">Este campo es obligatorio.</div>
-                                    </div>
-                                </md-input-container>
-                            </div>
-                            <div layout-gt-sm="row">
-                                <md-input-container class="md-block" flex-gt-sm>
-                                    <label>Tipo de documento</label>
-                                    <md-select id="tipo_documento" name="tipo_documento" ng-model="vm.director.tipo_documento" required>
-                                        <md-option value="C.C">C.C</md-option>
-                                        <md-option value="C.E">C.E</md-option>
-                                    </md-select>
-                                    <div ng-messages="registroForm.tipo_documento.$error">
-                                        <div ng-message="required">Este campo es obligatorio.</div>
-                                    </div>
-                                </md-input-container>
-                                <md-input-container class="md-block" flex-gt-sm>
-                                    <label>Identificación</label>
-                                    <input id="identificacion" type="number" ng-maxlength="11" ng-minlength="7" ng-model="vm.director.identificacion" required name="identificacion" min="0" ng-model-options="{ updateOn: 'blur' }">
-                                    <div ng-messages="!registroForm.$pristine && registroForm.identificacion.$error">
-                                        <div ng-message="required">Este campo es obligatorio.</div>
-                                        <div ng-message="minlength">Ese campo debe contener al menos 7 números.</div>
-                                        <div ng-message="maxlength">Ha excedido la longitud de números para este campo: mínimo 11.</div>
-                                    </div>
-                                </md-input-container>
-                                <mdp-date-picker id="fechaIngreso" ng-model="vm.director.fechaIngreso" name="fechaIngreso" mdp-placeholder="Fecha de ingreso" mdp-max-date="vm.fechaIngresoMax" mdp-open-on-click mdp-format="DD/MM/YYYY" flex-gt-sm required>
-                                    <div ng-messages="demoForm.fecha_expedicion.$error">
-                                        <div ng-message="required">Este campo es requerido.</div>
-                                        <div ng-message="format">Formato inválido.</div>
-                                    </div>
-                                </mdp-date-picker>
-                            </div>
-                            <fieldset class="standard">
-                                <legend align="center">Datos de usuario</legend>
+<div id="forms" class="page-layout simple fullwidth doc-page" layout="column">
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <md-icon md-font-icon="icon-home" class="s16"></md-icon>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">REGISTRAR DIRECTOR</span>
+            </div>
+            <span class="title">Registrar director</span>
+            <span class="md-subhead">Aquí podrás registrar el nuevo director.</span>
+        </div>
+    </div>
+    <!-- / HEADER -->
+    <div class="container">
+        <div style="padding: 25px;" layout="column" ng-cloak class="md-horintal-form">
+            <div layout="row">
+                <div flex layout="row" layout-align="center center">
+                    <div flex-sm="100" flex-gt-sm="90" flex-gt-md="90" flex-gt-lg="50" class="md-whiteframe-z2">
+                        <md-content layout-padding>
+                            <form name="registroForm">
                                 <div layout-gt-sm="row">
                                     <md-input-container class="md-block" flex-gt-sm>
-                                        <label>Correo institucional</label>
-                                        <input type="email" name="email" ng-model="vm.director.usuario.email" placeholder="ejemplo@unicesar.edu.co" ng-pattern="/^.+@.+\..+$/" required id="email">
-                                        <div ng-messages="!registroForm.$pristine && registroForm.email.$error" role="alert" multiple>
-                                            <div ng-message="required">
-                                                <span>Este campo es requrido.</span>
-                                            </div>
-                                            <div ng-message="pattern">
-                                                <span>Ingresa una dirección de email válida.</span>
-                                            </div>
+                                        <label>Nombres</label>
+                                        <input ng-model="vm.director.nombres" required name="nombre" autofocus
+                                               ng-model-options="{ updateOn: 'blur' }" id="nombres">
+
+                                        <div ng-messages="!registroForm.$pristine && registroForm.nombre.$error">
+                                            <div ng-message="required">Este campo es obligatorio.</div>
                                         </div>
                                     </md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
-                                        <input id="pass" type="password" name="password" ng-model="vm.director.usuario.pass" ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($‌​)$-$_]{8,15}$/" placeholder="Contrase&ntilde;a" required>
-                                        <div ng-messages="!registroForm.$pristine && registroForm.password.$error" role="alert">
-                                            <div ng-message="required">
-                                                <span>Este campo es requerido.</span>
-                                            </div>
-                                            <div ng-message="pattern" class="message">
-                                                <span>La contraseña debe tener como minimo 8 caracteres. Entre ellos: una letra minúscula, una mayúscula y un carácter especial.</span>
-                                            </div>
+                                        <label>Apellidos</label>
+                                        <input ng-model="vm.director.apellidos" required name="apellidos"
+                                               ng-model-options="{ updateOn: 'blur' }" id="apellidos">
+
+                                        <div ng-messages="!registroForm.$pristine && registroForm.apellidos.$error">
+                                            <div ng-message="required">Este campo es obligatorio.</div>
                                         </div>
                                     </md-input-container>
                                 </div>
-                            </fieldset>
-                            <div flex layout="row" layout-align="center center">
-                                <md-button ng-click="vm.guardar(registroForm)" type="submit" class="md-raised md-accent submit-button" aria-label="Aceptar" ng-disabled="registroForm.$invalid || registroForm.$pristine" id="btn-guardar">Guardar
+                                <div layout-gt-sm="row">
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Tipo de documento</label>
+                                        <md-select id="tipo_documento" name="tipo_documento"
+                                                   ng-model="vm.director.tipo_documento" required>
+                                            <md-option value="C.C">C.C</md-option>
+                                            <md-option value="C.E">C.E</md-option>
+                                        </md-select>
+                                        <div ng-messages="registroForm.tipo_documento.$error">
+                                            <div ng-message="required">Este campo es obligatorio.</div>
+                                        </div>
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Identificación</label>
+                                        <input id="identificacion" type="number" ng-maxlength="11" ng-minlength="7"
+                                               ng-model="vm.director.identificacion" required name="identificacion"
+                                               min="0" ng-model-options="{ updateOn: 'blur' }">
 
-                                </md-button>
-                                <md-button type="button" class="md-raised md-accent submit-button" aria-label="Cancelar" id="btn-limpiar" ng-click="vm.limpiar(registroForm)">Limpiar datos
-                                </md-button>
-                            </div>
-                        </form>
-                    </md-content>
+                                        <div ng-messages="!registroForm.$pristine && registroForm.identificacion.$error">
+                                            <div ng-message="required">Este campo es obligatorio.</div>
+                                            <div ng-message="minlength">Ese campo debe contener al menos 7 números.
+                                            </div>
+                                            <div ng-message="maxlength">Ha excedido la longitud de números para este
+                                                campo: mínimo 11.
+                                            </div>
+                                        </div>
+                                    </md-input-container>
+                                    <mdp-date-picker id="fechaIngreso" ng-model="vm.director.fechaIngreso"
+                                                     name="fechaIngreso" mdp-placeholder="Fecha de ingreso"
+                                                     mdp-max-date="vm.fechaIngresoMax" mdp-open-on-click
+                                                     mdp-format="DD/MM/YYYY" flex-gt-sm required>
+                                        <div ng-messages="demoForm.fecha_expedicion.$error">
+                                            <div ng-message="required">Este campo es requerido.</div>
+                                            <div ng-message="format">Formato inválido.</div>
+                                        </div>
+                                    </mdp-date-picker>
+                                </div>
+                                <fieldset class="standard">
+                                    <legend align="center">Datos de usuario</legend>
+                                    <div layout-gt-sm="row">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>Correo institucional</label>
+                                            <input type="email" name="email" ng-model="vm.director.usuario.email"
+                                                   placeholder="ejemplo@unicesar.edu.co" ng-pattern="/^.+@.+\..+$/"
+                                                   required id="email">
+
+                                            <div ng-messages="!registroForm.$pristine && registroForm.email.$error"
+                                                 role="alert" multiple>
+                                                <div ng-message="required">
+                                                    <span>Este campo es requrido.</span>
+                                                </div>
+                                                <div ng-message="pattern">
+                                                    <span>Ingresa una dirección de email válida.</span>
+                                                </div>
+                                            </div>
+                                        </md-input-container>
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <input id="pass" type="password" name="password"
+                                                   ng-model="vm.director.usuario.pass"
+                                                   ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($‌​)$-$_]{8,15}$/"
+                                                   placeholder="Contrase&ntilde;a" required>
+
+                                            <div ng-messages="!registroForm.$pristine && registroForm.password.$error"
+                                                 role="alert">
+                                                <div ng-message="required">
+                                                    <span>Este campo es requerido.</span>
+                                                </div>
+                                                <div ng-message="pattern" class="message">
+                                                    <span>La contraseña debe tener como minimo 8 caracteres. Entre ellos: una letra minúscula, una mayúscula y un carácter especial.</span>
+                                                </div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
+                                </fieldset>
+                                <div flex layout="row" layout-align="center center">
+                                    <md-button ng-click="vm.guardar(registroForm)" type="submit"
+                                               class="md-raised md-accent submit-button" aria-label="Aceptar"
+                                               ng-disabled="registroForm.$invalid || registroForm.$pristine"
+                                               id="btn-guardar">Guardar
+
+                                    </md-button>
+                                    <md-button type="button" class="md-raised md-accent submit-button"
+                                               aria-label="Cancelar" id="btn-limpiar"
+                                               ng-click="vm.limpiar(registroForm)">Limpiar datos
+                                    </md-button>
+                                </div>
+                            </form>
+                        </md-content>
+                    </div>
                 </div>
             </div>
         </div>
