@@ -20,7 +20,7 @@
         <span ng-if="vm.solicitudes.length==0"> No hay solictudes </span>
         <md-list-item ng-repeat="solicitud in vm.solicitudes" class="noright">
             <p>{{ solicitud.semillero.nombre }}</p>
-            <p>quiere unirse a tu grupo</p>
+            <p>quiere pertenecer a tu grupo</p>
             <p>{{ solicitud.grupo.nombre }}</p>
             <md-button class="md-accent md-raised md-hue-1" ng-click="vm.responder(solicitud, 'aceptada')">
                 Aceptar
