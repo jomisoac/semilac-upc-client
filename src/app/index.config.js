@@ -18,7 +18,6 @@
                         method: 'GET',
                         headers: {Authorization: 'Bearer ' + jwt},
                     }).then(function (response) {
-                        console.log(response)
                         sessionStorage.setItem('jwt', response.data.token);
                         return response.data.token;
                     }, function (response) {

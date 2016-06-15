@@ -26,10 +26,13 @@
         function cargarRolesUsuario() {
             if(usuario.roles.length == 1){
                 redirectRol(usuario.roles);
-            }else{
+            }else if(usuario.roles.length > 1){
                 for(var i = 0; i < usuario.roles.length; i++){
                     vm.roles.push(usuario.roles[i]);
                 }
+            }else{
+                sessionStorage.clear();
+                $state.go('app.pages_autenticacion_login');
             }
         }
 
