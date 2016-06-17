@@ -8,7 +8,8 @@
             'app.tutor.registrarLineaInvestigacion',
             'app.tutor.solicitudAvalConvocatoria',
             'app.tutor.SolicitudesMisGrupos',
-            'app.tutor.aceptarSolicitudesEstudiantesSemilleros'
+            'app.tutor.aceptarSolicitudesEstudiantesSemilleros',
+            'app.tutor.RespuestaSolicitudAval'
         ])
         .config(config);
 
@@ -56,14 +57,32 @@
         });
          
           msNavigationServiceProvider.saveItem('tutor.solicitud-aval-convocatoria', {
-             title: 'Convocatorias',
+             title: 'Convocatorias para el aval',
              icon: 'icon-tile-four',
-             state: 'app.solicitud_aval_convocatoria',
              weight: 1,
              hidden: function(){
                  return authProvider.checkUser(['TUTOR']);
           }
          });
+
+        msNavigationServiceProvider.saveItem('tutor.solicitud-aval-convocatoria.solicitud-aval-convocatoria', {
+            title: 'Postular tu semillero',
+            icon: 'icon-tile-four',
+            state: 'app.solicitud_aval_convocatoria',
+            weight: 1,
+            hidden: function(){
+                return authProvider.checkUser(['TUTOR']);
+            }
+        });
+        msNavigationServiceProvider.saveItem('tutor.solicitud-aval-convocatoria.respuesta-solicitud-aval', {
+            title: 'Mis solicitudes de aval',
+            icon: 'icon-tile-four',
+            state: 'app.respuesta-solicitud-aval',
+            weight: 1,
+            hidden: function(){
+                return authProvider.checkUser(['TUTOR']);
+            }
+        });
           msNavigationServiceProvider.saveItem('tutor.solicitudes-mis-grupos', {
              title: 'Mis grupos de investigación',
              icon: 'icon-tile-four',

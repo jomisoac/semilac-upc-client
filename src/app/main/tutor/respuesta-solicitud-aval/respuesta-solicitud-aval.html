@@ -1,0 +1,59 @@
+<div id="forms" class="page-layout simple fullwidth doc-page" layout="column">
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="column" layout-align="space-between">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <md-icon md-font-icon="icon-home" class="s16"></md-icon>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">TUTOR</span>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">Convocatorias para el aval</span>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">Mis solicitudes de aval</span>
+            </div>
+            <span class="title">Respuesta a tus solicitudes</span>
+            <span class="md-subhead">Aquí podrás visualizar las respuestas de tus solicitudes para obtener el aval institucional.</span>
+        </div>
+    </div>
+    <!-- / HEADER -->
+    <md-content layout-padding>
+
+
+        <div class="white-bg md-whiteframe-1dp">
+            <table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions">
+                <thead>
+                <tr>
+                    <th class="secondary-text">
+                        <div class="table-header">
+                            <span class="column-title">Semillero</span>
+                        </div>
+                    </th>
+                    <th class="secondary-text">
+                        <div class="table-header">
+                            <span class="column-title">Asunto de  la convocatoria</span>
+                        </div>
+                    </th>
+                    <th class="secondary-text">
+                        <div class="table-header">
+                            <span class="column-title">Estado</span>
+                        </div>
+                    </th>
+                    <th class="secondary-text">
+                        <div class="table-header">
+                            <span class="column-title">Fecha final</span>
+                        </div>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="solicitud in vm.solicitudes">
+                    <td>{{ solicitud.semillero.nombre }}</td>
+                    <td>{{ solicitud.convocatoria.asunto }}</td>
+                    <td>{{ solicitud.respuesta | uppercase }}</td>
+                    <td>{{ solicitud.convocatoria.fechafinal }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </md-content>
+</div>
