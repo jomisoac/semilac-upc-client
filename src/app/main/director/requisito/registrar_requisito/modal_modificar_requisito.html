@@ -5,25 +5,22 @@
                 <h2>Modificar requisito</h2>
                 <span flex></span>{{vm.cancelar}}
                 <md-button class="md-icon-button" ng-click="vm.cancelar()">
-                    <md-icon md-svg-src="assets/angular-material-assets/img/icons/ic_close_24px.svg"
-                             aria-label="Cerrar"></md-icon>
+                    <md-icon md-svg-src="assets/angular-material-assets/img/icons/ic_close_24px.svg" aria-label="Cerrar"></md-icon>
                 </md-button>
             </div>
         </md-toolbar>
         <md-dialog-content style="max-width:800px;max-height:810px; ">
             <form name="registroForm">
-                <div layout-gt-sm="row" >
+                <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex="80">
                         <label>Requisito</label>
-                        <input ng-model="vm.requisito.nombre_requisito" name="nombre_requisito" required>
+                        <input id="nombre_requisito" ng-model="vm.requisito.nombre_requisito" name="nombre_requisito" required>
                         <div ng-messages="registroForm.nombre_requisito.$error">
                             <div ng-message="required">Este campo es requerido.</div>
                         </div>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
-                        <md-button ng-click="vm.modificar(vm.requisito)"
-                                   class="md-raised md-accent submit-button" aria-label="Modificar"
-                                   ng-disabled="registroForm.$invalid || registroForm.$pristine">Modificar
+                        <md-button id="btn-modificar" ng-click="vm.modificar(vm.requisito)" class="md-raised md-accent submit-button" aria-label="Modificar" ng-disabled="registroForm.$invalid || registroForm.$pristine">Modificar
                         </md-button>
                     </md-input-container>
                 </div>
@@ -35,6 +32,5 @@
                 Cerrar
             </md-button>
         </md-dialog-actions>
-    </form>
     </form>
 </md-dialog>

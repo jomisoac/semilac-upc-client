@@ -11,35 +11,34 @@
         </div>
         <span flex></span>
         <div id="creala" md-offset="0 72" md-position-mode="target-right target">
-            <md-button class="language-button"
-                       md-menu-origin md-menu-align-target>
+            <md-button class="language-button" md-menu-origin md-menu-align-target>
                 <div layout="row" layout-align="center center">
                     <span class="iso">Crea tu cuenta como:</span>
                 </div>
             </md-button>
         </div>
 
-        <div id="estudiante">
+        <div>
             <div md-position-mode="left bottom">
-                <md-button class="user-button" ng-click="vm.registrarTutor()">
-                <div layout="row" layout-align="space-between center">
-                    <div class="avatar-wrapper">
-                        <img md-menu-align-target class="avatar" src="assets/images/avatars/profile.jpg">
+                <md-button id="tutor" class="user-button" ng-click="vm.registrarTutor()">
+                    <div layout="row" layout-align="space-between center">
+                        <div class="avatar-wrapper">
+                            <img md-menu-align-target class="avatar" src="assets/images/avatars/profile.jpg">
+                        </div>
+                        <span class="username" hide-xs>Tutor</span>
                     </div>
-                    <span class="username" hide-xs>Tutor</span>
-                </div>
                 </md-button>
             </div>
         </div>
-        <div id="tutor">
+        <div>
             <div md-position-mode="left bottom">
-                <md-button class="user-button" ng-click="vm.registrarEstudiante()">
-                <div layout="row" layout-align="space-between center">
-                    <div class="avatar-wrapper">
-                        <img md-menu-align-target class="avatar" src="assets/images/avatars/profile.jpg">
+                <md-button id="estudiante" class="user-button" ng-click="vm.registrarEstudiante()">
+                    <div layout="row" layout-align="space-between center">
+                        <div class="avatar-wrapper">
+                            <img md-menu-align-target class="avatar" src="assets/images/avatars/profile.jpg">
+                        </div>
+                        <span class="username" hide-xs>Estudiante</span>
                     </div>
-                    <span class="username" hide-xs>Estudiante</span>
-                </div>
                 </md-button>
             </div>
         </div>
@@ -68,9 +67,7 @@
 
             <form name="loginForm" novalidate>
                 <md-input-container class="md-block" md-no-float>
-                    <input type="email" name="email" ng-model="vm.usuario.name"
-                           placeholder="Ej: ejemplo@ejemplo.com"
-                           ng-pattern="/^.+@.+\..+$/" required>
+                    <input id="email" type="email" name="email" ng-model="vm.usuario.name" placeholder="Ej: ejemplo@ejemplo.com" ng-pattern="/^.+@.+\..+$/" required>
                     <div ng-messages="loginForm.email.$error" role="alert" multiple>
                         <div ng-message="required">
                             <span>Este campo es requrido</span>
@@ -82,8 +79,7 @@
                 </md-input-container>
 
                 <md-input-container class="md-block" md-no-float>
-                    <input type="password" name="password" ng-model="vm.usuario.pass" placeholder="Contrase&ntilde;a"
-                           required>
+                    <input id="password" type="password" name="password" ng-model="vm.usuario.pass" placeholder="Contrase&ntilde;a" required>
                     <div ng-messages="loginForm.password.$error" role="alert">
                         <div ng-message="required">
                             <span>Este campo es requerido</span>
@@ -92,14 +88,12 @@
                 </md-input-container>
 
                 <!--<div class="remember-forgot-password" layout="row" layout-sm="column"-->
-                     <!--layout-align="space-between center">-->
-                    <!--<a ui-sref="app.pages_auth_forgot-password" class="forgot-password md-accent-color">-->
-                        <!--¿Se te olvidó tu contraseña?</a>-->
+                <!--layout-align="space-between center">-->
+                <!--<a ui-sref="app.pages_auth_forgot-password" class="forgot-password md-accent-color">-->
+                <!--¿Se te olvidó tu contraseña?</a>-->
                 <!--</div>-->
 
-                <md-button ng-click="vm.iniciarSesion()" type="submit" class="md-raised md-accent submit-button"
-                           aria-label="INICIAR SESIÓN"
-                           ng-disabled="loginForm.$invalid || loginForm.$pristine">
+                <md-button id="btn-iniciar-sesion" ng-click="vm.iniciarSesion()" type="submit" class="md-raised md-accent submit-button" aria-label="INICIAR SESIÓN" ng-disabled="loginForm.$invalid || loginForm.$pristine">
                     INICIAR SESIÓN
                 </md-button>
             </form>

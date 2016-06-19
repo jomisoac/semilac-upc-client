@@ -14,64 +14,58 @@
         </div>
     </div>
     <!-- / HEADER -->
-<center>
-    <div layout="column" ng-cloak class="md-inline-form" style="width:90%;">
-        <md-content layout-padding>
-            <div class="borde">
-                <form name="registroForm" novalidate>
-                    <div layout-gt-sm="row">
-                        <md-input-container class="md-block" flex="80">
-                            <label>Requisito</label>
-                            <input ng-model="vm.requisito.nombre_requisito" name="nombre_requisito" required>
-                            <div ng-messages="registroForm.nom_requisito.$error">
-                                <div ng-message="required">Este campo es requerido.</div>
-                            </div>
-                        </md-input-container>
-                        <md-input-container class="md-block" flex-gt-sm>
-                            <md-button ng-click="vm.guardar(registroForm);" ng-model-options="{ updateOn: 'blur' }"
-                                       class="md-raised md-accent submit-button" aria-label="Registrar"
-                                       ng-disabled="registroForm.$invalid || registroForm.$pristine">Registrar
-                            </md-button>
-                        </md-input-container>
-                    </div>
-                    <md-input-container class="md-block">
-                        <div class="simple-table-container md-whiteframe-4dp">
-                            <div class="table-title">Lista De Requisitos</div>
-                            <div class="ms-responsive-table-wrapper">
-                                <table class="simple" ms-responsive-table="">
-                                    <thead>
-                                    <tr>
-                                        <th>Requisitos</th>
-                                        <th>Editar</th>
-                                        <th>Eliminar</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr ng-repeat="requisito in vm.requisitos">
-                                        <td class="name ng-binding">{{requisito.nombre_requisito}}</td>
-                                        <td class="position ng-binding">
-                                            <md-button class="md-fab md-mini" aria-label="Eat cake"
-                                                       ng-click="vm.modalModificar($event, requisito);">
-                                                <md-icon md-svg-src="assets/icons/border-color.svg"></md-icon>
-                                            </md-button>
-                                        </td>
-                                        <td class="position ng-binding">
-                                            <md-button class="md-fab md-mini" aria-label="Eat cake"
-                                                       style="background-color:#FE2E2E;"
-                                                       ng-click="vm.elminar($event, requisito.id);">
-                                                <md-icon md-svg-src="assets/icons/close.svg"></md-icon>
-                                            </md-button>
-                                        </td>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+    <center>
+        <div layout="column" ng-cloak class="md-inline-form" style="width:90%;">
+            <md-content layout-padding>
+                <div class="borde">
+                    <form name="registroForm" novalidate>
+                        <div layout-gt-sm="row">
+                            <md-input-container class="md-block" flex="80">
+                                <label>Requisito</label>
+                                <input id="nombre_requisito" ng-model="vm.requisito.nombre_requisito" name="nombre_requisito" required>
+                                <div ng-messages="registroForm.nom_requisito.$error">
+                                    <div ng-message="required">Este campo es requerido.</div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <md-button id="btn-registrar" ng-click="vm.guardar(registroForm);" ng-model-options="{ updateOn: 'blur' }" class="md-raised md-accent submit-button" aria-label="Registrar" ng-disabled="registroForm.$invalid || registroForm.$pristine">Registrar
+                                </md-button>
+                            </md-input-container>
                         </div>
-                    </md-input-container>
-                </form>
-            </div>
-        </md-content>
-    </div>
-</center>
+                        <md-input-container class="md-block">
+                            <div class="simple-table-container md-whiteframe-4dp">
+                                <div class="table-title">Lista De Requisitos</div>
+                                <div class="ms-responsive-table-wrapper">
+                                    <table class="simple" ms-responsive-table="">
+                                        <thead>
+                                            <tr>
+                                                <th>Requisitos</th>
+                                                <th>Editar</th>
+                                                <th>Eliminar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="requisito in vm.requisitos">
+                                                <td class="name ng-binding">{{requisito.nombre_requisito}}</td>
+                                                <td class="position ng-binding">
+                                                    <md-button id="btn-modificar{{$index}}" class="md-fab md-mini" aria-label="Eat cake" ng-click="vm.modalModificar($event, requisito);">
+                                                        <md-icon md-svg-src="assets/icons/border-color.svg"></md-icon>
+                                                    </md-button>
+                                                </td>
+                                                <td class="position ng-binding">
+                                                    <md-button id="btn-eliminar{{$index}}" class="md-fab md-mini" aria-label="Eat cake" style="background-color:#FE2E2E;" ng-click="vm.elminar($event, requisito.id);">
+                                                        <md-icon md-svg-src="assets/icons/close.svg"></md-icon>
+                                                    </md-button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </md-input-container>
+                    </form>
+                </div>
+            </md-content>
+        </div>
+    </center>
 </div>

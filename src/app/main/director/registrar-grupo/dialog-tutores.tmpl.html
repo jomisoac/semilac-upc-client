@@ -12,9 +12,9 @@
         <md-dialog-content>
             <div class="md-dialog-content">
                 <md-radio-group ng-model="vm.selectedIndex">
-                    <div ng-repeat='tutor in vm.tutores' class="row">
-                        <div flex layout='row' layout-padding layout-align="start center">
-                            <md-radio-button flex ng-value="tutor.id" class="md-primary">
+                    <div ng-repeat="tutor in vm.tutores" class="row">
+                        <div flex layout="row" layout-padding layout-align="start center">
+                            <md-radio-button flex ng-value="tutor.id" class="md-primary" id="rb-tutor{{$index}}">
                                 {{vm.getNombreCompleto(tutor)}}
                             </md-radio-button>
                         </div>
@@ -33,10 +33,10 @@
                 More on Wikipedia
             </md-button>
             <span flex></span>-->
-            <md-button ng-click="vm.cancel()">
+            <md-button id="btn-cancelar" ng-click="vm.cancel()">
                 Cancelar
             </md-button>
-            <md-button ng-click="vm.aceptar()" style="margin-right:20px;">
+            <md-button id="btn-aceptar" ng-click="vm.aceptar()" style="margin-right:20px;">
                 Aceptar
             </md-button>
         </md-dialog-actions>

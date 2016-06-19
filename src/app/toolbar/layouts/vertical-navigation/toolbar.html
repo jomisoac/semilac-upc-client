@@ -1,7 +1,6 @@
 <div layout="row" layout-align="start center">
     <div layout="row" layout-align="start center" flex>
-        <md-button id="navigation-toggle" class="md-icon-button" ng-click="vm.toggleSidenav('navigation')"
-                   hide-gt-sm aria-label="Toggle navigation">
+        <md-button id="navigation-toggle" class="md-icon-button" ng-click="vm.toggleSidenav('navigation')" hide-gt-sm aria-label="Toggle navigation">
             <md-icon md-font-icon="icon-menu" class="icon"></md-icon>
         </md-button>
 
@@ -9,39 +8,35 @@
 
         <div class="toolbar-separator"></div>
 
-        <md-progress-circular id="toolbar-progress" ng-if="$root.loadingProgress" class="md-accent"
-                              md-mode="indeterminate" md-diameter="64">
+        <md-progress-circular id="toolbar-progress" ng-if="$root.loadingProgress" class="md-accent" md-mode="indeterminate" md-diameter="64">
         </md-progress-circular>
     </div>
 
     <div layout="row" layout-align="start center">
         <md-menu-bar id="user-menu">
             <md-menu md-position-mode="left bottom">
-                <md-button class="user-button" ng-click="$mdOpenMenu()"
-                           aria-label="User settings">
+                <md-button id="toolbar" class="user-button" ng-click="$mdOpenMenu()" aria-label="User settings">
                     <div layout="row" layout-align="space-between center">
                         <div class="avatar-wrapper">
                             <img md-menu-align-target class="avatar" src="assets/images/avatars/profile.jpg">
                         </div>
                         <span ng-if="vm.userRol == 'SUPER_ADMIN'" class="username" hide-xs>{{vm.userRol}}</span>
                         <span ng-if="vm.userRol != 'SUPER_ADMIN'" class="username" hide-xs>{{vm.fullName}}</span>
-                        <md-icon md-font-icon="icon-chevron-down"
-                                 class="icon s16" hide-xs></md-icon>
+                        <md-icon md-font-icon="icon-chevron-down" class="icon s16" hide-xs></md-icon>
                     </div>
                 </md-button>
 
                 <md-menu-content width="3">
-                    <md-menu-item class="md-indent" ui-sref="app.perfil_usuario({ id: vm.userId })"
-                                  ng-if="vm.userRol != 'SUPER_ADMIN'">
+                    <md-menu-item class="md-indent" ui-sref="app.perfil_usuario({ id: vm.userId })" ng-if="vm.userRol != 'SUPER_ADMIN'">
                         <md-icon md-font-icon="icon-account" class="icon"></md-icon>
-                        <md-button>Mi perfil</md-button>
+                        <md-button id="btn-mi-perfil">Mi perfil</md-button>
                     </md-menu-item>
 
                     <md-menu-divider></md-menu-divider>
 
                     <md-menu-item class="md-indent">
                         <md-icon md-font-icon="icon-logout" class="icon"></md-icon>
-                        <md-button ng-click="vm.logout()">Cerrar sesión</md-button>
+                        <md-button id="btn-cerrar-sesion" ng-click="vm.logout()">Cerrar sesión</md-button>
                     </md-menu-item>
                 </md-menu-content>
             </md-menu>

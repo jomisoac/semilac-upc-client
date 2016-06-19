@@ -1,8 +1,7 @@
 <div id="register" class="flex-scrollable" layout="column" ms-scroll>
     <div id="register-form-wrapper" layout="column" layout-align="center center">
         <div id="register-form-tutor" class="md-whiteframe-9dp">
-            <md-button ng-click="vm.atras()" style="float: left" class="md-icon-button md-primary"
-                       aria-label="Settings">
+            <md-button ng-click="vm.atras()" style="float: left" class="md-icon-button md-primary" aria-label="Settings">
                 <md-icon md-svg-icon="assets/angular-material-assets/img/icons/ic_arrow_back_24px.svg"></md-icon>
             </md-button>
             <center style="float: inherit"><span class="md-display-1">Regístrate como tutor</span></center>
@@ -16,16 +15,14 @@
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Nombres</label>
-                        <input ng-model="vm.tutor.nombres" required name="nombres" autofocus
-                               ng-model-options="{ updateOn: 'blur' }">
+                        <input id="nombres" ng-model="vm.tutor.nombres" required name="nombres" autofocus ng-model-options="{ updateOn: 'blur' }">
                         <div ng-messages="registroForm.nombres.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
                         </div>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Apellidos</label>
-                        <input ng-model="vm.tutor.apellidos" required name="apellidos"
-                               ng-model-options="{ updateOn: 'blur' }">
+                        <input id="apellidos" ng-model="vm.tutor.apellidos" required name="apellidos" ng-model-options="{ updateOn: 'blur' }">
                         <div ng-messages="registroForm.apellidos.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
                         </div>
@@ -34,9 +31,9 @@
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Tipo de documento</label>
-                        <md-select required name="tipo_documento" ng-model="vm.tutor.tipo_documento" required>
-                            <md-option value="C.C">C.C</md-option>
-                            <md-option value="C.E">C.E</md-option>
+                        <md-select id="tipo_documento" name="tipo_documento" ng-model="vm.tutor.tipo_documento" required>
+                            <md-option id="tipo_documento-cc" value="C.C">C.C</md-option>
+                            <md-option id="tipo_documento-ce" value="C.E">C.E</md-option>
                         </md-select>
                         <div ng-messages="registroForm.tipo_documento.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
@@ -44,8 +41,7 @@
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Identificación</label>
-                        <input ng-model="vm.tutor.identificacion" type="number" required name="identificacion"
-                               minlength="7" maxlength="10" min="0" ng-model-options="{ updateOn: 'blur' }">
+                        <input id="identificacion" ng-model="vm.tutor.identificacion" type="number" required name="identificacion" minlength="7" maxlength="10" min="0" ng-model-options="{ updateOn: 'blur' }">
                         <div ng-messages="registroForm.identificacion.$error">
                             <div ng-message="required">Este campo es obligatorio</div>
                             <div ng-message="minlength">Ese campo debe contener al menos 11 numeros.</div>
@@ -55,10 +51,10 @@
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Género</label>
-                        <md-select required name="sexo" ng-model="vm.tutor.sexo" required>
-                            <md-option value="F">Femenino</md-option>
-                            <md-option value="M">Masculino</md-option>
-                            <md-option value="O">Otro</md-option>
+                        <md-select id="sexo" name="sexo" ng-model="vm.tutor.sexo" required>
+                            <md-option id="sexo-f" value="F">Femenino</md-option>
+                            <md-option id="sexo-m" value="M">Masculino</md-option>
+                            <md-option id="sexo-otro" value="O">Otro</md-option>
                         </md-select>
                         <div ng-messages="registroForm.sexo.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
@@ -66,28 +62,15 @@
                     </md-input-container>
                 </div>
                 <div layout-gt-sm="row">
-                    <mdp-date-picker ng-change="vm.cambiarFechaNacimientoMax()"
-                                     ng-model="vm.tutor.fecha_expedicion"
-                                     mdp-min-date="vm.fechaExpedicionMin"
-                                     mdp-max-date="vm.fechaExpedicionMax"
-                                     mdp-open-on-click required
-                                     name="fecha_expedicion"
-                                     mdp-placeholder="Fecha de expedición"
-                                     mdp-format="DD/MM/YYYY"
-                                     flex-gt-sm>
+                    <mdp-date-picker id="fecha_expedicion" ng-change="vm.cambiarFechaNacimientoMax()" ng-model="vm.tutor.fecha_expedicion" mdp-min-date="vm.fechaExpedicionMin" mdp-max-date="vm.fechaExpedicionMax" mdp-open-on-click required name="fecha_expedicion" mdp-placeholder="Fecha de expedición"
+                        mdp-format="DD/MM/YYYY" flex-gt-sm>
                         <div ng-messages="demoForm.fecha_expedicion.$error">
                             <div ng-message="required">Este campo es requerido</div>
                             <div ng-message="format">Formato invalido</div>
                         </div>
                     </mdp-date-picker>
-                    <mdp-date-picker ng-change="vm.cambiarFechaExpedicionMin()"
-                                     ng-model="vm.tutor.fecha_nacimiento"
-                                     mdp-max-date="vm.fechaNacimientoMax"
-                                     mdp-open-on-click required
-                                     name="fecha_nacimiento"
-                                     mdp-placeholder="Fecha de nacimiento"
-                                     mdp-format="DD/MM/YYYY"
-                                     flex-gt-sm>
+                    <mdp-date-picker id="fecha_nacimiento" ng-change="vm.cambiarFechaExpedicionMin()" ng-model="vm.tutor.fecha_nacimiento" mdp-max-date="vm.fechaNacimientoMax" mdp-open-on-click required name="fecha_nacimiento" mdp-placeholder="Fecha de nacimiento" mdp-format="DD/MM/YYYY"
+                        flex-gt-sm>
                         <div ng-messages="demoForm.fecha_nacimiento.$error">
                             <div ng-message="required">Este campo es requerido</div>
                             <div ng-message="format">Formato invalido</div>
@@ -97,9 +80,8 @@
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Enlace del CvLAC</label>
-                        <input ng-model="vm.tutor.cvlac" required name="cvlac" type="url"
-                               ng-model-options="{ updateOn: 'blur' }">
-                        <div ng-messages="registroForm.cvlac.$error"  role="alert">
+                        <input id="cvlac" ng-model="vm.tutor.cvlac" required name="cvlac" type="url" ng-model-options="{ updateOn: 'blur' }">
+                        <div ng-messages="registroForm.cvlac.$error" role="alert">
                             <div ng-message="url" class="message">
                                 <span>Este campo debe ser una URL válida.</span>
                             </div>
@@ -110,30 +92,25 @@
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Dirección de residencia</label>
-                        <input ng-model="vm.tutor.direccion"  name="direccion"
-                               ng-model-options="{ updateOn: 'blur' }">
-                       <!-- <div ng-messages="registroForm.direccion.$error">
+                        <input id="direccion" ng-model="vm.tutor.direccion" name="direccion" ng-model-options="{ updateOn: 'blur' }">
+                        <!-- <div ng-messages="registroForm.direccion.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
                         </div>-->
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Celular</label>
-                        <input ng-model="vm.tutor.celular" type="number" minlength="10" maxlength="10" min="0"
-                               name="celular" ng-pattern="/\b3\B/" ng-model-options="{ updateOn: 'blur' }"
-                               required>
+                        <input id="celular" ng-model="vm.tutor.celular" type="number" minlength="10" maxlength="10" min="0" name="celular" ng-pattern="/\b3\B/" ng-model-options="{ updateOn: 'blur' }" required>
                         <div ng-messages="registroForm.celular.$error">
                             <div ng-message="required">Este campo es obligatorio.</div>
                             <div ng-message="pattern">El numero de celular debe empezar por 3</div>
                             <div ng-message="minlength">El celular no contiene 10 digitos</div>
-                            <div ng-message="maxlength">El celular que desea registrar excede el límite de diez
-                                digitos
+                            <div ng-message="maxlength">El celular que desea registrar excede el límite de diez digitos
                             </div>
                         </div>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Correo personal</label>
-                        <input ng-model="vm.tutor.email_personal" type="email" placeholder="ejemplo@ejemplo.com"
-                               ng-pattern="/^.+@.+\..+$/" name="email" ng-model-options="{ updateOn: 'blur' }">
+                        <input id="email_personal" ng-model="vm.tutor.email_personal" type="email" placeholder="ejemplo@ejemplo.com" ng-pattern="/^.+@.+\..+$/" name="email" ng-model-options="{ updateOn: 'blur' }">
                     </md-input-container>
                 </div>
                 <fieldset class="standard">
@@ -141,9 +118,7 @@
                     <div layout-gt-sm="row">
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>Correo institucional</label>
-                            <input type="email" name="email" ng-model="vm.tutor.usuario.email"
-                                   placeholder="ejemplo@unicesar.edu.co"
-                                   ng-pattern="/^.+@.+\..+$/" required ng-model-options="{ updateOn: 'blur' }">
+                            <input id="email" type="email" name="email" ng-model="vm.tutor.usuario.email" placeholder="ejemplo@unicesar.edu.co" ng-pattern="/^.+@.+\..+$/" required ng-model-options="{ updateOn: 'blur' }">
                             <div ng-messages="registroForm.email.$error" role="alert" multiple>
                                 <div ng-message="required">
                                     <span>Este campo es requerido</span>
@@ -154,9 +129,7 @@
                             </div>
                         </md-input-container>
                         <md-input-container class="md-block" flex-gt-sm>
-                            <input type="password" name="password" ng-model="vm.tutor.usuario.pass"
-                                   ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($‌​)$-$_]{8,15}$/"
-                                   placeholder="Contrase&ntilde;a" required>
+                            <input id="password" type="password" name="password" ng-model="vm.tutor.usuario.pass" ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($‌​)$-$_]{8,15}$/" placeholder="Contrase&ntilde;a" required>
                             <div ng-messages="registroForm.$pristine && registroForm.pass.$error" role="alert">
                                 <div ng-message="required"><span>Este campo es obligatorio.</span></div>
                                 <div ng-message="pattern"><span>La contraseña debe tener como minimo 8 caracteres. Entre ellos: una letra minúscula, una mayúscula y un carácter especial.</span>
@@ -166,16 +139,13 @@
                     </div>
                 </fieldset>
                 <div flex layout="row" layout-align="center center">
-                    <md-button ng-click="vm.registrarse(registroForm)" type="submit"
-                               class="md-raised md-accent submit-button" aria-label="Guardar"
-                               ng-disabled="registroForm.$invalid || registroForm.$pristine">Guardar
+                    <md-button id="btn-guardar" ng-click="vm.registrarse(registroForm)" type="submit" class="md-raised md-accent submit-button" aria-label="Guardar" ng-disabled="registroForm.$invalid || registroForm.$pristine">Guardar
                     </md-button>
-                    <md-button ng-click="vm.atras()" class="md-raised md-accent submit-button" aria-label="Cancelar">
+                    <md-button id="btn-cancelar" ng-click="vm.atras()" class="md-raised md-accent submit-button" aria-label="Cancelar">
                         Cancelar
                     </md-button>
                 </div>
             </form>
-
         </div>
     </div>
 </div>
