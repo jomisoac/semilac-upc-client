@@ -3,52 +3,50 @@
         <div class="md-toolbar-tools">
             <h2>Estudiantes disponibles</h2>
             <span flex></span>
-            <md-button class="md-icon-button" ng-click="vm.cancel()">
-                <md-icon md-svg-src="assets/angular-material-assets/img/icons/ic_close_24px.svg"
-                         aria-label="Close dialog"></md-icon>
+            <md-button id="btn-close" class="md-icon-button" ng-click="vm.cancel()">
+                <md-icon md-svg-src="assets/angular-material-assets/img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
             </md-button>
         </div>
     </md-toolbar>
     <md-dialog-content>
         <!--<div >-->
-            <!--<md-input-container class="md-block" flex-gt-sm>-->
-                <!--<label>Busca a tu compa&ntilde;ero</label>-->
-                <!--<input ng-model="filtro">-->
-            <!--</md-input-container>-->
+        <!--<md-input-container class="md-block" flex-gt-sm>-->
+        <!--<label>Busca a tu compa&ntilde;ero</label>-->
+        <!--<input ng-model="filtro">-->
+        <!--</md-input-container>-->
         <!--</div>-->
         <div class="md-dialog-content">
             <div class="white-bg md-whiteframe-1dp">
                 <table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions">
                     <thead>
-                    <tr>
-                        <th class="secondary-text">
-                            <div class="table-header">
-                                <span class="column-title">Nombre del estudiante</span>
-                            </div>
-                        </th>
-                        <th class="secondary-text">
-                            <div class="table-header">
-                                <span class="column-title">Programa</span>
-                            </div>
-                        </th>
-                        <th class="secondary-text">
-                            <div class="table-header">
-                                <span class="column-title">Escoger</span>
-                            </div>
-                        </th>
-                    </tr>
+                        <tr>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Nombre del estudiante</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Programa</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Escoger</span>
+                                </div>
+                            </th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat='estudiante in vm.estudiantes'>
-                        <td>{{ vm.getNombreCompleto(estudiante) }}</td>
-                        <td>{{ vm.getNombrePrograma(estudiante) }}</td>
-                        <td>
-                            <md-button class="md-icon-button" ng-click="vm.selectedUser(estudiante)">
-                                <md-icon md-svg-src="assets/angular-material-assets/img/icons/cursor-pointer.svg"
-                                         aria-label="Close dialog"></md-icon>
-                            </md-button>
-                        </td>
-                    </tr>
+                        <tr ng-repeat="estudiante in vm.estudiantes">
+                            <td>{{ vm.getNombreCompleto(estudiante) }}</td>
+                            <td>{{ vm.getNombrePrograma(estudiante) }}</td>
+                            <td>
+                                <md-button id="btn-seleccionar{{$index}}" class="md-icon-button" ng-click="vm.selectedUser(estudiante)">
+                                    <md-icon md-svg-src="assets/angular-material-assets/img/icons/cursor-pointer.svg" aria-label="Close dialog"></md-icon>
+                                </md-button>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -64,12 +62,11 @@
         </div>
     </md-dialog-content>
     <md-dialog-actions layout="row">
-        <md-button ng-click="vm.cancel()">
+        <md-button id="btn-cerrar" ng-click="vm.cancel()">
             Cerrar
         </md-button>
         <!--<md-button ng-click="vm.aceptar()" style="margin-right:20px;">-->
-            <!--Aceptar-->
+        <!--Aceptar-->
         <!--</md-button>-->
     </md-dialog-actions>
-
 </md-dialog>

@@ -46,16 +46,16 @@
                                         <md-input-container class="md-block" flex-gt-sm>
                                             <label>Fecha de inicio</label>
                                             <span>{{vm.convocatoriaAbierta.fechainicial| date: 'longDate'}}</span>
-                                            <input type="text" id="fechainicial" name="fechainicial" ng-model="vm.convocatoriaAbierta.fechainicial" disabled ng-show="false"/>
+                                            <input type="text" id="fechainicial" name="fechainicial" ng-model="vm.convocatoriaAbierta.fechainicial" disabled ng-show="false" />
                                         </md-input-container>
                                         <md-input-container class="md-block" flex-gt-sm>
                                             <label>Fecha de finalización</label>
                                             <span>{{vm.convocatoriaAbierta.fechafinal| date}}</span>
-                                            <input type="text" id="fechafinal" name="fechafinal" ng-model="vm.convocatoriaAbierta.fechafinal" disabled ng-show="false"/>
+                                            <input type="text" id="fechafinal" name="fechafinal" ng-model="vm.convocatoriaAbierta.fechafinal" disabled ng-show="false" />
                                         </md-input-container>
                                     </div>
                                     <br><br>
-                                    <div  ng-show="vm.semilleros">
+                                    <div ng-show="vm.semilleros">
                                         <center><span class="md-display-1">Para postular tu semillero, escógelo a continuación y haz clic en postular </span></center>
                                         <div layout-gt-sm="row">
                                             <md-input-container class="md-block" flex="50">
@@ -72,8 +72,8 @@
                                             </md-input-container>
                                         </div>
                                         <div flex layout="row" layout-align="center center">
-                                            <md-button ng-click="vm.enviar(registroForm)" type="submit" class="md-raised md-accent" ng-disabled="registroForm.$invalid || registroForm.$pristine">Postular
-                                            </md-button
+                                            <md-button id="btn-postular" ng-click="vm.enviar(registroForm)" type="submit" class="md-raised md-accent" ng-disabled="registroForm.$invalid || registroForm.$pristine">Postular
+                                            </md-button>
                                         </div>
                                     </div>
                                 </form>
